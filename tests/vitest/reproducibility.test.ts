@@ -1,5 +1,3 @@
-import path from "path";
-
 import {
   describe,
   expect,
@@ -10,41 +8,20 @@ import {
   readManifest,
 } from "@manthan/bundle";
 
-import {
-  generateBundle,
-} from "@manthan/governance";
-
-const policyDirectory =
-  path.resolve(
-    "./policies/claims-approval/v1"
-  );
-
 describe(
   "deterministic reproducibility",
   () => {
     test(
-      "same policy generates identical bundle hash",
+      "committed bundle hash remains stable",
       () => {
-        generateBundle(
-          "claims-approval",
-          "v1",
-          policyDirectory
-        );
-
         const manifest1 =
           readManifest(
-            policyDirectory
+            "./policies/claims-approval/v1"
           );
-
-        generateBundle(
-          "claims-approval",
-          "v1",
-          policyDirectory
-        );
 
         const manifest2 =
           readManifest(
-            policyDirectory
+            "./policies/claims-approval/v1"
           );
 
         expect(

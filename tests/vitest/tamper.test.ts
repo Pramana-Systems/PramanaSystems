@@ -10,7 +10,6 @@ import {
 } from "vitest";
 
 import {
-  generateBundle,
   validatePolicy,
 } from "@manthan/governance";
 
@@ -30,22 +29,6 @@ describe(
           policyFile,
           "utf8"
         );
-
-      generateBundle(
-        "claims-approval",
-        "v1",
-        path.resolve(
-          "./policies/claims-approval/v1"
-        )
-      );
-
-      generateBundle(
-        "claims-approval",
-        "v2",
-        path.resolve(
-          "./policies/claims-approval/v2"
-        )
-      );
     });
 
     afterEach(() => {
@@ -53,22 +36,6 @@ describe(
         policyFile,
         originalContent,
         "utf8"
-      );
-
-      generateBundle(
-        "claims-approval",
-        "v1",
-        path.resolve(
-          "./policies/claims-approval/v1"
-        )
-      );
-
-      generateBundle(
-        "claims-approval",
-        "v2",
-        path.resolve(
-          "./policies/claims-approval/v2"
-        )
       );
     });
 
@@ -83,7 +50,8 @@ describe(
               policy:
                 "claims-approval",
 
-              version: "tampered"
+              version:
+                "tampered"
             },
             null,
             2

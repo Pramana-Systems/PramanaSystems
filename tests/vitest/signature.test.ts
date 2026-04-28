@@ -15,10 +15,6 @@ import {
 } from "@manthan/bundle";
 
 import {
-  generateBundle,
-} from "@manthan/governance";
-
-import {
   readSignature,
   verifySignature,
 } from "@manthan/crypto";
@@ -37,7 +33,7 @@ const policyFile =
 let originalContent = "";
 
 describe(
-  "signature invalidation",
+  "signature verification",
   () => {
     beforeEach(() => {
       originalContent =
@@ -45,12 +41,6 @@ describe(
           policyFile,
           "utf8"
         );
-
-      generateBundle(
-        "claims-approval",
-        "v1",
-        policyDirectory
-      );
     });
 
     afterEach(() => {
@@ -59,16 +49,10 @@ describe(
         originalContent,
         "utf8"
       );
-
-      generateBundle(
-        "claims-approval",
-        "v1",
-        policyDirectory
-      );
     });
 
     test(
-      "modified bundle invalidates manifest integrity",
+      "committed signature validates committed manifest",
       () => {
         const manifest =
           readManifest(
@@ -80,15 +64,20 @@ describe(
             policyDirectory
           );
 
-        const initialValid =
+        const valid =
           verifySignature(
             manifest,
             signature
           );
 
-        expect(initialValid)
+        expect(valid)
           .toBe(true);
+      }
+    );
 
+    test(
+      "manifest integrity fails after mutation",
+      () => {
         fs.writeFileSync(
           policyFile,
 
@@ -107,19 +96,19 @@ describe(
           "utf8"
         );
 
-        const mutatedManifest =
+        const manifest =
           readManifest(
             policyDirectory
           );
 
-        const manifestResult =
+        const result =
           verifyManifest(
-            mutatedManifest,
+            manifest,
             policyDirectory
           );
 
         expect(
-          manifestResult.valid
+          result.valid
         ).toBe(false);
       }
     );
