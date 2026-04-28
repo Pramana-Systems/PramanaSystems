@@ -31,6 +31,10 @@
 
       "@manthan/cli": [
         "./packages/cli/src"
+      ],
+
+      "@manthan/runtime": [
+        "./packages/runtime/src"
       ]
     }
   }

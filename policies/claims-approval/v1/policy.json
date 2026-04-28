@@ -1,4 +1,45 @@
 {
-  "policy": "claims-approval",
-  "version": "v1"
+
+  "schema_version": "1.0.0",
+  "signals": {
+    "insurance_active": {
+      "type": "boolean",
+      "required": true
+    },
+
+    "risk_score": {
+      "type": "number",
+      "required": true
+    },
+
+    "vip_customer": {
+      "type": "boolean",
+      "required": true
+    }
+  },
+
+  "decision": "approve",
+
+  "rules": {
+    "all": [
+      {
+        "signal": "insurance_active",
+        "equals": true
+      },
+
+      {
+        "any": [
+          {
+            "signal": "risk_score",
+            "less_than": 70
+          },
+
+          {
+            "signal": "vip_customer",
+            "equals": true
+          }
+        ]
+      }
+    ]
+  }
 }

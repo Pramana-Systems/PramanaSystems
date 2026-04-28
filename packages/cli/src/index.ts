@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 
 import {
+  verifyAttestationFile,
+} from "./verifier";
+
+import {
   createPolicy,
   upgradePolicy,
   validatePolicy,
@@ -8,15 +12,41 @@ import {
 
 function main(): void {
   try {
+    const command =
+      process.argv[2];
+
+    if (
+      command ===
+      "verify"
+    ) {
+      const file =
+        process.argv[3];
+
+      if (!file) {
+        throw new Error(
+          "Missing attestation file"
+        );
+      }
+
+      verifyAttestationFile(
+        file
+      );
+
+      return;
+    }
+
     const [
       ,
       ,
       domain,
-      command,
+      governanceCommand,
       policyId,
     ] = process.argv;
 
-    if (domain !== "governance") {
+    if (
+      domain !==
+      "governance"
+    ) {
       throw new Error(
         "Unknown domain"
       );
@@ -28,16 +58,22 @@ function main(): void {
       );
     }
 
-    switch (command) {
+    switch (
+      governanceCommand
+    ) {
       case "create-policy": {
         const result =
-          createPolicy(policyId);
+          createPolicy(
+            policyId
+          );
 
         console.log(
           JSON.stringify(
             {
               success: true,
-              created: result,
+
+              created:
+                result,
             },
             null,
             2
@@ -49,13 +85,17 @@ function main(): void {
 
       case "upgrade-policy": {
         const result =
-          upgradePolicy(policyId);
+          upgradePolicy(
+            policyId
+          );
 
         console.log(
           JSON.stringify(
             {
               success: true,
-              upgraded: result,
+
+              upgraded:
+                result,
             },
             null,
             2
@@ -67,12 +107,15 @@ function main(): void {
 
       case "validate-policy": {
         const result =
-          validatePolicy(policyId);
+          validatePolicy(
+            policyId
+          );
 
         console.log(
           JSON.stringify(
             {
-              success: result,
+              success:
+                result,
             },
             null,
             2
@@ -88,7 +131,7 @@ function main(): void {
 
       default:
         throw new Error(
-          `Unknown command: ${command}`
+          `Unknown command: ${governanceCommand}`
         );
     }
   } catch (error) {
@@ -101,6 +144,7 @@ function main(): void {
       JSON.stringify(
         {
           success: false,
+
           error: message,
         },
         null,

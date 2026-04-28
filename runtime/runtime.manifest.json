@@ -1,0 +1,9 @@
+{
+  "runtime_version": "1.0.0",
+
+  "runtime_name": "manthan-runtime",
+
+  "build_type": "deterministic",
+
+  "schema_version": "1.0.0"
+}
