@@ -1,0 +1,105 @@
+import fs from "fs";
+import path from "path";
+
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  test,
+} from "vitest";
+
+import {
+  generateBundle,
+  validatePolicy,
+} from "@manthan/governance";
+
+const policyFile =
+  path.resolve(
+    "./policies/claims-approval/v1/policy.json"
+  );
+
+let originalContent = "";
+
+describe(
+  "tamper detection",
+  () => {
+    beforeEach(() => {
+      originalContent =
+        fs.readFileSync(
+          policyFile,
+          "utf8"
+        );
+
+      generateBundle(
+        "claims-approval",
+        "v1",
+        path.resolve(
+          "./policies/claims-approval/v1"
+        )
+      );
+
+      generateBundle(
+        "claims-approval",
+        "v2",
+        path.resolve(
+          "./policies/claims-approval/v2"
+        )
+      );
+    });
+
+    afterEach(() => {
+      fs.writeFileSync(
+        policyFile,
+        originalContent,
+        "utf8"
+      );
+
+      generateBundle(
+        "claims-approval",
+        "v1",
+        path.resolve(
+          "./policies/claims-approval/v1"
+        )
+      );
+
+      generateBundle(
+        "claims-approval",
+        "v2",
+        path.resolve(
+          "./policies/claims-approval/v2"
+        )
+      );
+    });
+
+    test(
+      "tampered policy fails validation",
+      () => {
+        fs.writeFileSync(
+          policyFile,
+
+          JSON.stringify(
+            {
+              policy:
+                "claims-approval",
+
+              version: "tampered"
+            },
+            null,
+            2
+          ),
+
+          "utf8"
+        );
+
+        const valid =
+          validatePolicy(
+            "claims-approval"
+          );
+
+        expect(valid)
+          .toBe(false);
+      }
+    );
+  }
+);

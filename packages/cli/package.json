@@ -1,0 +1,9 @@
+{
+  "name": "@manthan/cli",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "manthan": "./src/index.ts"
+  }
+}
