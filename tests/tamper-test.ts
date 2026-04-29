@@ -7,28 +7,36 @@ import { generateManifest }
 import { writeManifest }
   from "../packages/bundle/src/write";
 
-import { readManifest }
-  from "../packages/bundle/src/read";
+import { verifyManifest }
+  from "../packages/bundle/src/verify";
 
 import { signManifest }
   from "../packages/crypto/src/sign";
-
-import { verifySignature }
-  from "../packages/crypto/src/verify";
 
 import {
   writeSignature,
   readSignature,
 } from "../packages/crypto/src/persist";
 
-const directory = path.resolve(
-  "./tests/bundle-example"
-);
+import { verifySignature }
+  from "../packages/crypto/src/verify";
 
-const policyFile = path.join(
-  directory,
-  "policy.json"
-);
+const directory =
+  path.resolve(
+    "./tests/bundle-example"
+  );
+
+const manifestPath =
+  path.join(
+    directory,
+    "bundle.manifest.json"
+  );
+
+const policyFile =
+  path.join(
+    directory,
+    "policy.json"
+  );
 
 const originalContent =
   fs.readFileSync(
@@ -49,7 +57,9 @@ writeManifest(
 );
 
 const signature =
-  signManifest(manifest);
+  signManifest(
+    manifestPath
+  );
 
 writeSignature(
   signature,
@@ -58,16 +68,19 @@ writeSignature(
 
 fs.writeFileSync(
   policyFile,
+
   JSON.stringify(
     {
       policy:
         "claims-approval",
 
-      version: "v2"
+      version:
+        "v2"
     },
     null,
     2
   ),
+
   "utf8"
 );
 
@@ -78,18 +91,30 @@ const tamperedManifest =
     directory
   );
 
-const loadedSignature =
-  readSignature(directory);
-
-const valid =
-  verifySignature(
+const manifestValid =
+  verifyManifest(
     tamperedManifest,
+    directory
+  );
+
+const loadedSignature =
+  readSignature(
+    directory
+  );
+
+const signatureValid =
+  verifySignature(
+    manifestPath,
     loadedSignature
   );
 
 console.log({
   tampered: true,
-  valid,
+
+  manifestValid:
+    manifestValid.valid,
+
+  signatureValid,
 });
 
 fs.writeFileSync(

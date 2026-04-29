@@ -10,7 +10,6 @@ export * from "./verify-runtime";
 
 export * from "./execute";
 
-
 export * from "./verify-audit";
 
 export * from "./evaluator";
@@ -23,7 +22,7 @@ export * from "./sign-execution-result";
 
 export * from "./verify-execution-result";
 
-export * from "./hash-runtime"; 
+export * from "./hash-runtime";
 
 export * from "./replay-store-interface";
 
@@ -44,3 +43,11 @@ export * from "./aws-kms-signer";
 export * from "./verifier-interface";
 
 export * from "./local-verifier";
+
+export * from "./runtime-manifest";
+
+export * from "./sign-runtime-manifest";
+
+export * from "./verify-runtime-manifest";
+
+export * from "./execution-context";

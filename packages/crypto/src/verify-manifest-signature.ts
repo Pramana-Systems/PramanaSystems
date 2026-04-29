@@ -1,28 +1,26 @@
-import fs from "fs";
-
 import crypto from "crypto";
 
 import {
   loadPublicKey,
 } from "./keys";
 
-export function verifySignature(
-  manifestPath: string,
+export function verifyManifestSignature(
+  manifest: string,
   signature: string
 ): boolean {
-
-  const manifest =
-    fs.readFileSync(
-      manifestPath
-    );
 
   const publicKey =
     loadPublicKey();
 
   return crypto.verify(
     null,
-    manifest,
+
+    Buffer.from(
+      manifest
+    ),
+
     publicKey,
+
     Buffer.from(
       signature,
       "base64"

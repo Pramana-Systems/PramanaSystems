@@ -18,6 +18,12 @@ import {
   LocalVerifier,
 } from "@manthan/runtime";
 
+import {
+  runtimeManifest,
+  runtimeRequirements,
+  executionRequirements,
+} from "./execution-context-fixture";
+
 const signer =
   new LocalSigner(
     fs.readFileSync(
@@ -55,20 +61,46 @@ describe(
             signer
           );
 
-        executeDecision(
+        executeDecision({
           token,
-          signature,
+
+          token_signature:
+            signature,
+
           signer,
-          verifier
-        );
+
+          verifier,
+
+          runtime_manifest:
+            runtimeManifest,
+
+          runtime_requirements:
+            runtimeRequirements,
+
+          execution_requirements:
+            executionRequirements,
+        });
 
         expect(() =>
-          executeDecision(
+          executeDecision({
             token,
-            signature,
+
+            token_signature:
+              signature,
+
             signer,
-            verifier
-          )
+
+            verifier,
+
+            runtime_manifest:
+              runtimeManifest,
+
+            runtime_requirements:
+              runtimeRequirements,
+
+            execution_requirements:
+              executionRequirements,
+          })
         ).toThrow(
           "Replay attack detected"
         );

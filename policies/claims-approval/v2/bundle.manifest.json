@@ -5,8 +5,21 @@
       "path": "policy.json"
     }
   ],
-  "bundle_hash": "1472b858960181e1676ffe3058369e8626f77ca138cbb8644d9aa3e0e1c2f8ba",
+  "bundle_hash": "b3155b686e313cc9afdd9bb098c223b7cf672c922713b51115da64ab578a6c78",
   "manifest_version": "1",
   "policy_id": "claims-approval",
-  "policy_version": "v2"
+  "policy_version": "v2",
+  "runtime_requirements": {
+    "required_capabilities": [
+      "replay-protection",
+      "attestation-signing",
+      "bundle-verification"
+    ],
+    "supported_runtime_versions": [
+      "1.0.0"
+    ],
+    "supported_schema_versions": [
+      "1.0.0"
+    ]
+  }
 }

@@ -20,9 +20,16 @@ import {
   readSignature,
 } from "../packages/crypto/src/persist";
 
-const directory = path.resolve(
-  "./tests/bundle-example"
-);
+const directory =
+  path.resolve(
+    "./tests/bundle-example"
+  );
+
+const manifestPath =
+  path.join(
+    directory,
+    "bundle.manifest.json"
+  );
 
 const manifest =
   generateManifest(
@@ -37,22 +44,27 @@ writeManifest(
 );
 
 const signature =
-  signManifest(manifest);
+  signManifest(
+    manifestPath
+  );
 
 writeSignature(
   signature,
   directory
 );
 
-const loadedManifest =
-  readManifest(directory);
+readManifest(
+  directory
+);
 
 const loadedSignature =
-  readSignature(directory);
+  readSignature(
+    directory
+  );
 
 const valid =
   verifySignature(
-    loadedManifest,
+    manifestPath,
     loadedSignature
   );
 

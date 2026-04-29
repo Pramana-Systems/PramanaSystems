@@ -15,11 +15,13 @@ export function generateManifest(
   policyVersion: string,
   directory: string
 ): BundleManifest {
+
   const files =
     traverseDirectory(directory);
 
   const artifacts: BundleArtifact[] =
     files.map((relativePath) => {
+
       const fullPath =
         path.join(
           directory,
@@ -33,27 +35,55 @@ export function generateManifest(
         );
 
       return {
-        path: relativePath,
-        hash: sha256(content),
+        path:
+          relativePath,
+
+        hash:
+          sha256(content),
       };
     });
 
   const manifest: BundleManifest = {
-    manifest_version: "1",
+    manifest_version:
+      "1",
 
-    policy_id: policyId,
-    policy_version: policyVersion,
+    policy_id:
+      policyId,
+
+    policy_version:
+      policyVersion,
 
     artifacts,
 
-    bundle_hash: "",
+    runtime_requirements: {
+      required_capabilities: [
+        "replay-protection",
+        "attestation-signing",
+        "bundle-verification",
+      ],
+
+      supported_runtime_versions: [
+        "1.0.0",
+      ],
+
+      supported_schema_versions: [
+        "1.0.0",
+      ],
+    },
+
+    bundle_hash:
+      "",
   };
 
   const canonical =
-    canonicalize(manifest);
+    canonicalize(
+      manifest
+    );
 
   const bundleHash =
-    sha256(canonical);
+    sha256(
+      canonical
+    );
 
   manifest.bundle_hash =
     bundleHash;

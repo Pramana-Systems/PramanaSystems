@@ -14,11 +14,13 @@ export function verifyManifest(
   manifest: BundleManifest,
   directory: string
 ): VerifyResult {
+
   const files =
     traverseDirectory(directory);
 
   const recalculatedArtifacts =
     files.map((relativePath) => {
+
       const fullPath =
         path.join(
           directory,
@@ -33,7 +35,9 @@ export function verifyManifest(
 
       return {
         path: relativePath,
-        hash: sha256(content),
+
+        hash:
+          sha256(content),
       };
     });
 
@@ -51,6 +55,9 @@ export function verifyManifest(
       artifacts:
         recalculatedArtifacts,
 
+      runtime_requirements:
+        manifest.runtime_requirements,
+
       bundle_hash: "",
     };
 
@@ -60,7 +67,9 @@ export function verifyManifest(
     );
 
   const recalculatedBundleHash =
-    sha256(canonical);
+    sha256(
+      canonical
+    );
 
   return {
     valid:

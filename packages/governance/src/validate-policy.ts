@@ -14,25 +14,36 @@ import {
 export function validatePolicy(
   policyId: string
 ): boolean {
-  const policyRoot = path.join(
-    "./policies",
-    policyId
-  );
 
-  if (!fs.existsSync(policyRoot)) {
+  const policyRoot =
+    path.join(
+      "./policies",
+      policyId
+    );
+
+  if (
+    !fs.existsSync(
+      policyRoot
+    )
+  ) {
     throw new Error(
       `Policy does not exist: ${policyId}`
     );
   }
 
-  const versions = fs
-    .readdirSync(policyRoot)
-    .filter((entry) =>
-      entry.startsWith("v")
-    )
-    .sort();
+  const versions =
+    fs
+      .readdirSync(
+        policyRoot
+      )
+      .filter(
+        (entry) =>
+          entry.startsWith("v")
+      )
+      .sort();
 
   for (const version of versions) {
+
     const versionDirectory =
       path.join(
         policyRoot,
@@ -50,7 +61,15 @@ export function validatePolicy(
         versionDirectory
       );
 
-    if (!manifestResult.valid) {
+    console.log(
+      "MANIFEST",
+      version,
+      manifestResult
+    );
+
+    if (
+      !manifestResult.valid
+    ) {
       return false;
     }
 
@@ -59,13 +78,27 @@ export function validatePolicy(
         versionDirectory
       );
 
+    const manifestPath =
+      path.join(
+        versionDirectory,
+        "bundle.manifest.json"
+      );
+
     const signatureValid =
       verifySignature(
-        manifest,
+        manifestPath,
         signature
       );
 
-    if (!signatureValid) {
+    console.log(
+      "SIGNATURE",
+      version,
+      signatureValid
+    );
+
+    if (
+      !signatureValid
+    ) {
       return false;
     }
   }

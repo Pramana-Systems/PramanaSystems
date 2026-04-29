@@ -42,6 +42,10 @@ import {
   LocalVerifier,
 } from "./local-verifier";
 
+import {
+  getRuntimeManifest,
+} from "./runtime-manifest";
+
 declare module "fastify" {
   interface FastifyRequest {
     startTime?: number;
@@ -66,6 +70,34 @@ const runtimeVerifier =
       "utf8"
     )
   );
+
+const runtimeManifest =
+  getRuntimeManifest();
+
+const runtimeRequirements = {
+  required_capabilities: [
+    "replay-protection",
+    "attestation-signing",
+  ],
+
+  supported_runtime_versions: [
+    "1.0.0",
+  ],
+
+  supported_schema_versions: [
+    "1.0.0",
+  ],
+};
+
+const executionRequirements = {
+  replay_protection_required: true,
+
+  attestation_required: true,
+
+  audit_chain_required: true,
+
+  independent_verification_required: true,
+};
 
 server.addHook(
   "onRequest",
@@ -530,12 +562,28 @@ server.post(
         traceId,
 
       attestation:
-        executeDecision(
-          body.token,
-          body.signature,
-          runtimeSigner,
-          runtimeVerifier
-        ),
+        executeDecision({
+          token:
+            body.token,
+
+          token_signature:
+            body.signature,
+
+          signer:
+            runtimeSigner,
+
+          verifier:
+            runtimeVerifier,
+
+          runtime_manifest:
+            runtimeManifest,
+
+          runtime_requirements:
+            runtimeRequirements,
+
+          execution_requirements:
+            executionRequirements,
+        }),
     };
   }
 );

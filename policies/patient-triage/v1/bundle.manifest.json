@@ -1,13 +1,13 @@
 {
   "artifacts": [
     {
-      "hash": "030d448a7d1da6705aa53a002a3784883fe1e695afc2233e630838a712e51d5d",
+      "hash": "f96f447ec8b1f650ddc7afcff9a7b14c9d66d396a4be9c0867d5c0757712765a",
       "path": "policy.json"
     }
   ],
-  "bundle_hash": "3e520a49e9b40f96fd46c1bbd1bb126b38f9ffe7bfca6d8615abee31acbfb3ec",
+  "bundle_hash": "c3e2c365ee43a2876ebfee09be5629ca0310c5700c1eb94be3436da1834def16",
   "manifest_version": "1",
-  "policy_id": "claims-approval",
+  "policy_id": "patient-triage",
   "policy_version": "v1",
   "runtime_requirements": {
     "required_capabilities": [

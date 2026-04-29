@@ -19,8 +19,11 @@ export function generateBundle(
   policyVersion: string,
   policyDirectory: string
 ): BundleGenerationResult {
+
   const directory =
-    path.resolve(policyDirectory);
+    path.resolve(
+      policyDirectory
+    );
 
   const manifest =
     generateManifest(
@@ -34,8 +37,16 @@ export function generateBundle(
     directory
   );
 
+  const manifestPath =
+    path.join(
+      directory,
+      "bundle.manifest.json"
+    );
+
   const signature =
-    signManifest(manifest);
+    signManifest(
+      manifestPath
+    );
 
   writeSignature(
     signature,
@@ -46,10 +57,7 @@ export function generateBundle(
     success: true,
 
     manifest_path:
-      path.join(
-        directory,
-        "bundle.manifest.json"
-      ),
+      manifestPath,
 
     signature_path:
       path.join(

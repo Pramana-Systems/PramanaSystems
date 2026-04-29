@@ -1,14 +1,6 @@
 import type {
-  Signer,
-} from "./signer-interface";
-
-import type {
-  Verifier,
-} from "./verifier-interface";
-
-import type {
-  ExecutionToken,
-} from "./execution-token";
+  ExecutionContext,
+} from "./execution-context";
 
 import type {
   ExecutionResult,
@@ -42,22 +34,61 @@ import {
   verifyExecutionToken,
 } from "./verify-token";
 
+import {
+  verifyRuntimeCompatibility,
+} from "@manthan/verifier";
+
+import {
+  verifyExecutionRequirements,
+} from "@manthan/verifier";
+
 const defaultReplayStore =
   new MemoryReplayStore();
 
 export function executeDecision(
-  token: ExecutionToken,
-  signature: string,
-  signer: Signer,
-  verifier: Verifier,
+  context: ExecutionContext,
   replayStore: ReplayStore =
     defaultReplayStore
 ): ExecutionAttestation {
 
+  const {
+    token,
+    token_signature,
+    signer,
+    verifier,
+    runtime_manifest,
+    runtime_requirements,
+    execution_requirements,
+  } = context;
+
+  const compatibility =
+    verifyRuntimeCompatibility(
+      runtime_manifest,
+      runtime_requirements
+    );
+
+  if (!compatibility.valid) {
+    throw new Error(
+      "Runtime compatibility validation failed"
+    );
+  }
+
+  const executionValidation =
+    verifyExecutionRequirements(
+      runtime_manifest,
+      execution_requirements
+    );
+
+  if (!executionValidation.valid) {
+    throw new Error(
+      "Execution requirements validation failed"
+    );
+  }
+
   const valid =
     verifyExecutionToken(
       token,
-      signature,
+      token_signature,
       verifier
     );
 

@@ -8,17 +8,15 @@ import {
 
 import {
   issueExecutionToken,
-
   signExecutionToken,
-
   executeDecision,
-
-  verifyExecutionResult,
-
   LocalSigner,
-
   LocalVerifier,
 } from "@manthan/runtime";
+
+import {
+  verifyAttestation,
+} from "@manthan/verifier";
 
 import {
   runtimeManifest,
@@ -43,10 +41,11 @@ const verifier =
   );
 
 describe(
-  "execution attestation verification",
+  "independent verifier",
   () => {
+
     test(
-      "signed execution attestation verifies",
+      "valid attestation verifies",
       () => {
 
         const token =
@@ -57,7 +56,7 @@ describe(
             "signals-hash-example"
           );
 
-        const tokenSignature =
+        const signature =
           signExecutionToken(
             token,
             signer
@@ -68,7 +67,7 @@ describe(
             token,
 
             token_signature:
-              tokenSignature,
+              signature,
 
             signer,
 
@@ -84,15 +83,67 @@ describe(
               executionRequirements,
           });
 
-        const valid =
-          verifyExecutionResult(
-            attestation.result,
-            attestation.signature,
+        const result =
+          verifyAttestation(
+            attestation,
             verifier
           );
 
-        expect(valid)
+        expect(result.valid)
           .toBe(true);
+      }
+    );
+
+    test(
+      "tampered attestation fails verification",
+      () => {
+
+        const token =
+          issueExecutionToken(
+            "claims-approval",
+            "v1",
+            "approve-claim",
+            "signals-hash-example"
+          );
+
+        const signature =
+          signExecutionToken(
+            token,
+            signer
+          );
+
+        const attestation =
+          executeDecision({
+            token,
+
+            token_signature:
+              signature,
+
+            signer,
+
+            verifier,
+
+            runtime_manifest:
+              runtimeManifest,
+
+            runtime_requirements:
+              runtimeRequirements,
+
+            execution_requirements:
+              executionRequirements,
+          });
+
+        attestation.result.decision =
+          "deny-claim";
+
+        const result =
+          verifyAttestation(
+            attestation,
+            verifier
+          );
+
+        expect(result.valid)
+          .toBe(false);
       }
     );
   }

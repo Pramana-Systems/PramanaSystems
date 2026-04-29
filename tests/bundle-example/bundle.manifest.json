@@ -5,7 +5,7 @@
       "path": "policy.json"
     }
   ],
-  "bundle_hash": "a235bcc2e0c8b1cd3cd0209c15d14704366eb5286ea564e7a2a414e3a1ecd867",
+  "bundle_hash": "9d18337358f35b881ee1973079c0e1828eb9ede8be4c12ea199e83375e0de187",
   "manifest_version": "1",
   "policy_id": "claims-approval",
   "policy_version": "v1"

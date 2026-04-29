@@ -30,12 +30,20 @@ const policyFile =
     "policy.json"
   );
 
+const manifestPath =
+  path.join(
+    policyDirectory,
+    "bundle.manifest.json"
+  );
+
 let originalContent = "";
 
 describe(
   "signature verification",
   () => {
+
     beforeEach(() => {
+
       originalContent =
         fs.readFileSync(
           policyFile,
@@ -44,6 +52,7 @@ describe(
     });
 
     afterEach(() => {
+
       fs.writeFileSync(
         policyFile,
         originalContent,
@@ -54,10 +63,10 @@ describe(
     test(
       "committed signature validates committed manifest",
       () => {
-        const manifest =
-          readManifest(
-            policyDirectory
-          );
+
+        readManifest(
+          policyDirectory
+        );
 
         const signature =
           readSignature(
@@ -66,7 +75,7 @@ describe(
 
         const valid =
           verifySignature(
-            manifest,
+            manifestPath,
             signature
           );
 
@@ -78,6 +87,7 @@ describe(
     test(
       "manifest integrity fails after mutation",
       () => {
+
         fs.writeFileSync(
           policyFile,
 

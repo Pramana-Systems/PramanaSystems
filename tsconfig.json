@@ -35,6 +35,10 @@
 
       "@manthan/runtime": [
         "./packages/runtime/src"
+      ],
+
+      "@manthan/verifier": [
+        "./packages/verifier/src"
       ]
     }
   }

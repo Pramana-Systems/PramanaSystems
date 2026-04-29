@@ -11,7 +11,11 @@
     "prepare": "husky",
     "export:openapi": "tsx ./scripts/export-openapi.ts",
     "typecheck": "tsc --noEmit",
-    "check": "npm run typecheck && npm run test && npm run export:openapi"
+    "check": "npm run typecheck && npm run test && npm run export:openapi",
+
+    "bundle:manifest": "tsx ./scripts/regenerate-bundle.ts",
+    "bundle:sign": "tsx ./scripts/sign-bundle.ts",
+    "bundle:refresh": "npm run bundle:manifest && npm run bundle:sign"
   },
   "keywords": [],
   "author": "",

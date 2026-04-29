@@ -1,21 +1,19 @@
+import fs from "fs";
+
 import crypto from "crypto";
-
-import { canonicalize }
-  from "../../../packages/bundle/src/canonicalize";
-
-import type {
-  BundleManifest,
-} from "../../../packages/bundle/src/types";
 
 import {
   loadPrivateKey,
 } from "./keys";
 
 export function signManifest(
-  manifest: BundleManifest
+  manifestPath: string
 ): string {
-  const canonical =
-    canonicalize(manifest);
+
+  const manifest =
+    fs.readFileSync(
+      manifestPath
+    );
 
   const privateKey =
     loadPrivateKey();
@@ -23,9 +21,11 @@ export function signManifest(
   const signature =
     crypto.sign(
       null,
-      Buffer.from(canonical),
+      manifest,
       privateKey
     );
 
-  return signature.toString("base64");
+  return signature.toString(
+    "base64"
+  );
 }
