@@ -1,12 +1,34 @@
 {
   "name": "@manthan/core",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "type": "module",
+
+  "scripts": {
+    "build": "tsup"
+  },
+
   "exports": {
     ".": {
-      "types": "../../dist/core/src/index.d.mts",
-      "import": "../../dist/core/src/index.mjs"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     }
-  }
+  },
+
+  "files": [
+    "dist"
+  ],
+
+  "sideEffects": false,
+
+  "keywords": [
+    "deterministic",
+    "governance",
+    "policy",
+    "verification",
+    "attestation",
+    "compliance"
+  ],
+
+  "license": "Apache-2.0"
 }
