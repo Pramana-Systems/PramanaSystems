@@ -1,32 +1,22 @@
-import crypto from "crypto";
-
-import {
-  loadPublicKey,
-} from "@manthan/crypto";
-
 import type {
   ExecutionToken,
 } from "./execution-token";
 
+import type {
+  Verifier,
+} from "./verifier-interface";
+
 export function verifyExecutionToken(
   token: ExecutionToken,
-  signature: string
+  signature: string,
+  verifier: Verifier
 ): boolean {
-  const publicKey =
-    loadPublicKey();
 
-  return crypto.verify(
-    null,
-
-    Buffer.from(
-      JSON.stringify(token)
+  return verifier.verify(
+    JSON.stringify(
+      token
     ),
 
-    publicKey,
-
-    Buffer.from(
-      signature,
-      "base64"
-    )
+    signature
   );
 }

@@ -40,3 +40,7 @@ export * from "./redis-replay-store";
 export * from "./async-signer-interface";
 
 export * from "./aws-kms-signer";
+
+export * from "./verifier-interface";
+
+export * from "./local-verifier";

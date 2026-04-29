@@ -1,4 +1,5 @@
 import fs from "fs";
+
 import crypto from "crypto";
 
 const {
@@ -9,23 +10,27 @@ const {
 );
 
 fs.writeFileSync(
-  "./manthan_bundle_key",
+  "./test-keys/manthan_test_key",
+
   privateKey.export({
     format: "pem",
     type: "pkcs8",
   }),
+
   "utf8"
 );
 
 fs.writeFileSync(
-  "./manthan_bundle_key.pub",
+  "./test-keys/manthan_test_key.pub",
+
   publicKey.export({
     format: "pem",
     type: "spki",
   }),
+
   "utf8"
 );
 
 console.log(
-  "Ed25519 PEM keys generated."
+  "Ed25519 PEM test keys generated."
 );

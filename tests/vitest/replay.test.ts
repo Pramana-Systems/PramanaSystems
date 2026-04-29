@@ -14,12 +14,22 @@ import {
   executeDecision,
 
   LocalSigner,
+
+  LocalVerifier,
 } from "@manthan/runtime";
 
 const signer =
   new LocalSigner(
     fs.readFileSync(
-      "./manthan_bundle_key",
+      "./test-keys/manthan_test_key",
+      "utf8"
+    )
+  );
+
+const verifier =
+  new LocalVerifier(
+    fs.readFileSync(
+      "./test-keys/manthan_test_key.pub",
       "utf8"
     )
   );
@@ -48,14 +58,16 @@ describe(
         executeDecision(
           token,
           signature,
-          signer
+          signer,
+          verifier
         );
 
         expect(() =>
           executeDecision(
             token,
             signature,
-            signer
+            signer,
+            verifier
           )
         ).toThrow(
           "Replay attack detected"

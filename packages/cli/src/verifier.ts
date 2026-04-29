@@ -2,6 +2,8 @@ import fs from "fs";
 
 import {
   verifyExecutionResult,
+
+  LocalVerifier,
 } from "@manthan/runtime";
 
 interface ExecutionAttestation {
@@ -10,9 +12,18 @@ interface ExecutionAttestation {
   signature: string;
 }
 
+const verifier =
+  new LocalVerifier(
+    fs.readFileSync(
+      "./test-keys/manthan_test_key.pub",
+      "utf8"
+    )
+  );
+
 export function verifyAttestationFile(
   filePath: string
 ): void {
+
   const raw =
     fs.readFileSync(
       filePath,
@@ -27,7 +38,10 @@ export function verifyAttestationFile(
   const valid =
     verifyExecutionResult(
       attestation.result as never,
-      attestation.signature
+
+      attestation.signature,
+
+      verifier
     );
 
   if (!valid) {

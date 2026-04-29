@@ -1,35 +1,22 @@
-import crypto from "crypto";
-
-import fs from "fs";
-
 import type {
   ExecutionResult,
 } from "./execution-result";
 
-const publicKey =
-  fs.readFileSync(
-    "./manthan_bundle_key.pub",
-    "utf8"
-  );
+import type {
+  Verifier,
+} from "./verifier-interface";
 
 export function verifyExecutionResult(
   result: ExecutionResult,
-  signature: string
+  signature: string,
+  verifier: Verifier
 ): boolean {
-  return crypto.verify(
-    null,
 
-    Buffer.from(
-      JSON.stringify(
-        result
-      )
+  return verifier.verify(
+    JSON.stringify(
+      result
     ),
 
-    publicKey,
-
-    Buffer.from(
-      signature,
-      "base64"
-    )
+    signature
   );
 }

@@ -3,6 +3,10 @@ import type {
 } from "./signer-interface";
 
 import type {
+  Verifier,
+} from "./verifier-interface";
+
+import type {
   ExecutionToken,
 } from "./execution-token";
 
@@ -44,14 +48,17 @@ const defaultReplayStore =
 export function executeDecision(
   token: ExecutionToken,
   signature: string,
-signer: Signer,
+  signer: Signer,
+  verifier: Verifier,
   replayStore: ReplayStore =
     defaultReplayStore
 ): ExecutionAttestation {
+
   const valid =
     verifyExecutionToken(
       token,
-      signature
+      signature,
+      verifier
     );
 
   if (!valid) {

@@ -38,6 +38,10 @@ import {
   LocalSigner,
 } from "./local-signer";
 
+import {
+  LocalVerifier,
+} from "./local-verifier";
+
 declare module "fastify" {
   interface FastifyRequest {
     startTime?: number;
@@ -50,7 +54,15 @@ const server =
 const runtimeSigner =
   new LocalSigner(
     fs.readFileSync(
-      "./manthan_bundle_key",
+      "./test-keys/manthan_test_key",
+      "utf8"
+    )
+  );
+
+const runtimeVerifier =
+  new LocalVerifier(
+    fs.readFileSync(
+      "./test-keys/manthan_test_key.pub",
       "utf8"
     )
   );
@@ -521,7 +533,8 @@ server.post(
         executeDecision(
           body.token,
           body.signature,
-          runtimeSigner
+          runtimeSigner,
+          runtimeVerifier
         ),
     };
   }
@@ -583,7 +596,8 @@ server.post(
     const valid =
       verifyExecutionResult(
         body.result,
-        body.signature
+        body.signature,
+        runtimeVerifier
       );
 
     return {
