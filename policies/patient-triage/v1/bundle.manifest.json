@@ -1,11 +1,11 @@
 {
   "artifacts": [
     {
-      "hash": "f96f447ec8b1f650ddc7afcff9a7b14c9d66d396a4be9c0867d5c0757712765a",
+      "hash": "c69eded2f3f21ef64aea6927def3048c4763386bbfe40013cd7afa87d3ea6287",
       "path": "policy.json"
     }
   ],
-  "bundle_hash": "c3e2c365ee43a2876ebfee09be5629ca0310c5700c1eb94be3436da1834def16",
+  "bundle_hash": "40a37ba80f44ca98eb049eb9a1dd862292705db1d31a9b83b3f3093070911203",
   "manifest_version": "1",
   "policy_id": "patient-triage",
   "policy_version": "v1",
