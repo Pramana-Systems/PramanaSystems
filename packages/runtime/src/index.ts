@@ -30,19 +30,11 @@ export * from "./memory-replay-store";
 
 export * from "./signer-interface";
 
-export * from "./local-signer";
-
 export * from "./async-replay-store-interface";
-
-export * from "./redis-replay-store";
 
 export * from "./async-signer-interface";
 
-export * from "./aws-kms-signer";
-
 export * from "./verifier-interface";
-
-export * from "./local-verifier";
 
 export * from "./runtime-manifest";
 
@@ -51,3 +43,7 @@ export * from "./sign-runtime-manifest";
 export * from "./verify-runtime-manifest";
 
 export * from "./execution-context";
+
+export * from "./local-signer";
+
+export * from "./local-verifier";
