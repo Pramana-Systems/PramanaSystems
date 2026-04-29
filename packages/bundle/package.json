@@ -1,9 +1,33 @@
 {
   "name": "@manthan/bundle",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "type": "module",
+
+  "scripts": {
+    "build": "tsup"
+  },
+
   "exports": {
-    ".": "./src/index.ts"
-  }
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+
+  "files": [
+    "dist"
+  ],
+
+  "sideEffects": false,
+
+  "keywords": [
+    "deterministic",
+    "canonicalization",
+    "hashing",
+    "bundle",
+    "governance"
+  ],
+
+  "license": "Apache-2.0"
 }

@@ -1,6 +1,6 @@
 import type {
   RuntimeRequirements,
-} from "@manthan/governance";
+} from "./runtime-requirements";
 
 export interface BundleArtifact {
   path: string;
