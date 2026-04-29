@@ -1,0 +1,42 @@
+
+> manthan-core@1.0.0 build
+> tsup
+
+[34mCLI[39m Building entry: packages/core/src/index.ts, packages/bundle/src/index.ts, packages/cli/src/index.ts, packages/crypto/src/index.ts, packages/execution/src/index.ts, packages/governance/src/index.ts, packages/verifier/src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.5.1
+[34mCLI[39m Using tsup config: D:\last\manthan-core\tsup.config.ts
+[34mCLI[39m Target: es2022
+[34mCLI[39m Cleaning output folder
+[34mESM[39m Build start
+[32mESM[39m [1mdist\crypto\src\index.mjs         [22m[32m2.72 KB[39m
+[32mESM[39m [1mdist\core\src\index.mjs           [22m[32m28.65 KB[39m
+[32mESM[39m [1mdist\bundle\src\index.mjs         [22m[32m4.73 KB[39m
+[32mESM[39m [1mdist\verifier\src\index.mjs       [22m[32m5.01 KB[39m
+[32mESM[39m [1mdist\cli\src\index.mjs            [22m[32m11.32 KB[39m
+[32mESM[39m [1mdist\execution\src\index.mjs      [22m[32m17.49 KB[39m
+[32mESM[39m [1mdist\governance\src\index.mjs     [22m[32m10.32 KB[39m
+[32mESM[39m [1mdist\core\src\index.mjs.map       [22m[32m103.81 KB[39m
+[32mESM[39m [1mdist\bundle\src\index.mjs.map     [22m[32m10.40 KB[39m
+[32mESM[39m [1mdist\crypto\src\index.mjs.map     [22m[32m12.36 KB[39m
+[32mESM[39m [1mdist\verifier\src\index.mjs.map   [22m[32m59.64 KB[39m
+[32mESM[39m [1mdist\cli\src\index.mjs.map        [22m[32m75.21 KB[39m
+[32mESM[39m [1mdist\governance\src\index.mjs.map [22m[32m29.76 KB[39m
+[32mESM[39m [1mdist\execution\src\index.mjs.map  [22m[32m62.70 KB[39m
+[32mESM[39m ⚡️ Build success in 45ms
+[34mDTS[39m Build start
+[32mDTS[39m ⚡️ Build success in 3383ms
+[32mDTS[39m [1mdist\cli\src\index.d.mts        [22m[32m20.00 B[39m
+[32mDTS[39m [1mdist\core\src\index.d.mts       [22m[32m826.00 B[39m
+[32mDTS[39m [1mdist\crypto\src\index.d.mts     [22m[32m588.00 B[39m
+[32mDTS[39m [1mdist\governance\src\index.d.mts [22m[32m948.00 B[39m
+[32mDTS[39m [1mdist\bundle\src\index.d.mts     [22m[32m1.26 KB[39m
+[32mDTS[39m [1mdist\execution\src\index.d.mts  [22m[32m3.90 KB[39m
+[32mDTS[39m [1mdist\verifier\src\index.d.mts   [22m[32m364.00 B[39m
+[32mDTS[39m [1mdist\index.d-BQ2AtJWc.d.mts     [22m[32m949.00 B[39m
+[32mDTS[39m [1mdist\index-MIyrqK_G.d.mts       [22m[32m4.25 KB[39m
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 11.13.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.13.0
+npm notice To update run: npm install -g npm@11.13.0
+npm notice

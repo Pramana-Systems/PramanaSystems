@@ -34,14 +34,6 @@ import {
   verifyExecutionToken,
 } from "./verify-token";
 
-import {
-  verifyRuntimeCompatibility,
-} from "@manthan/verifier";
-
-import {
-  verifyExecutionRequirements,
-} from "@manthan/verifier";
-
 const defaultReplayStore =
   new MemoryReplayStore();
 
@@ -60,30 +52,6 @@ export function executeDecision(
     runtime_requirements,
     execution_requirements,
   } = context;
-
-  const compatibility =
-    verifyRuntimeCompatibility(
-      runtime_manifest,
-      runtime_requirements
-    );
-
-  if (!compatibility.valid) {
-    throw new Error(
-      "Runtime compatibility validation failed"
-    );
-  }
-
-  const executionValidation =
-    verifyExecutionRequirements(
-      runtime_manifest,
-      execution_requirements
-    );
-
-  if (!executionValidation.valid) {
-    throw new Error(
-      "Execution requirements validation failed"
-    );
-  }
 
   const valid =
     verifyExecutionToken(

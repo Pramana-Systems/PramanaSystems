@@ -1,7 +1,10 @@
 {
   "name": "@manthan/execution",
+
   "version": "1.0.0",
+
   "private": false,
+
   "type": "module",
 
   "scripts": {
@@ -29,6 +32,11 @@
     "runtime",
     "governance"
   ],
+
+  "dependencies": {
+    "@manthan/bundle": "1.0.0",
+  "@manthan/governance": "1.0.0"
+  },
 
   "license": "Apache-2.0"
 }

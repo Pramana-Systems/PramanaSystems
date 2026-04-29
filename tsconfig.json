@@ -26,7 +26,7 @@
       ],
 
       "@manthan/governance": [
-        "./packages/governance/src"
+        "./packages/governance/dist"
       ],
 
       "@manthan/cli": [
@@ -34,7 +34,7 @@
       ],
 
       "@manthan/execution": [
-        "./packages/execution/src"
+        "./packages/execution/dist"
       ],
 
       "@manthan/verifier": [

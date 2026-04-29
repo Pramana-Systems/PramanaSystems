@@ -1,7 +1,10 @@
 {
   "name": "@manthan/core",
+
   "version": "1.0.0",
+
   "private": false,
+
   "type": "module",
 
   "scripts": {
@@ -29,6 +32,14 @@
     "attestation",
     "compliance"
   ],
+
+  "dependencies": {
+    "@manthan/bundle": "1.0.0",
+    "@manthan/crypto": "1.0.0",
+    "@manthan/execution": "1.0.0",
+    "@manthan/governance": "1.0.0",
+    "@manthan/verifier": "1.0.0"
+  },
 
   "license": "Apache-2.0"
 }

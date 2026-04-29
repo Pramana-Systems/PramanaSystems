@@ -1,7 +1,10 @@
 {
   "name": "@manthan/verifier",
+
   "version": "1.0.0",
+
   "private": false,
+
   "type": "module",
 
   "scripts": {
@@ -29,6 +32,12 @@
     "governance",
     "audit"
   ],
+
+  "dependencies": {
+    "@manthan/crypto": "1.0.0",
+    "@manthan/execution": "1.0.0",
+    "@manthan/governance": "1.0.0"
+  },
 
   "license": "Apache-2.0"
 }

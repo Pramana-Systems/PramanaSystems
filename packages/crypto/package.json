@@ -1,7 +1,10 @@
 {
   "name": "@manthan/crypto",
+
   "version": "1.0.0",
+
   "private": false,
+
   "type": "module",
 
   "scripts": {
@@ -22,13 +25,17 @@
   "sideEffects": false,
 
   "keywords": [
-    "cryptography",
-    "signing",
+    "crypto",
+    "signature",
     "verification",
-    "ed25519",
     "deterministic",
-    "governance"
+    "attestation",
+    "trust"
   ],
+
+  "dependencies": {
+    "@manthan/bundle": "1.0.0"
+  },
 
   "license": "Apache-2.0"
 }
