@@ -12,7 +12,7 @@ import {
   executeDecision,
   LocalSigner,
   LocalVerifier,
-} from "@manthan/runtime";
+} from "@manthan/execution";
 
 import {
   verifyAttestation,

@@ -12,7 +12,7 @@ import {
   verifyRuntimeManifest,
   LocalSigner,
   LocalVerifier,
-} from "@manthan/runtime";
+} from "@manthan/execution";
 
 const signer =
   new LocalSigner(

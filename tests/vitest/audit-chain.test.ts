@@ -6,7 +6,7 @@ import {
 
 import {
   verifyAuditChain,
-} from "@manthan/runtime";
+} from "@manthan/execution";
 
 describe(
   "audit chain integrity",

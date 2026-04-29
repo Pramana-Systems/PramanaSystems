@@ -6,7 +6,7 @@ import {
 
 import {
   evaluatePolicy,
-} from "@manthan/runtime";
+} from "@manthan/execution";
 
 describe(
   "deterministic evaluator",

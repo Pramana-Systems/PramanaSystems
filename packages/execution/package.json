@@ -1,5 +1,5 @@
 {
-  "name": "@manthan/runtime",
+  "name": "@manthan/execution",
   "version": "1.0.0",
   "type": "module"
 }

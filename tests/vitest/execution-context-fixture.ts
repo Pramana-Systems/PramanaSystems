@@ -1,6 +1,6 @@
 import {
   getRuntimeManifest,
-} from "@manthan/runtime";
+} from "@manthan/execution";
 
 import type {
   RuntimeRequirements,
