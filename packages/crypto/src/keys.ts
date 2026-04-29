@@ -4,12 +4,12 @@ import path from "path";
 
 const PRIVATE_KEY_PATH =
   path.resolve(
-    "./test-keys/manthan_test_key"
+    "./keys/bundle_signing_key"
   );
 
 const PUBLIC_KEY_PATH =
   path.resolve(
-    "./test-keys/manthan_test_key.pub"
+    "./keys/bundle_signing_key.pub"
   );
 
 export function loadPrivateKey(): string {

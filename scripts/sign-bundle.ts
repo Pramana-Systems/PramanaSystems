@@ -15,7 +15,7 @@ if (!bundlePath) {
 
 const privateKey =
   fs.readFileSync(
-    "./test-keys/manthan_test_key",
+    "./keys/bundle_signing_key",
     "utf8"
   );
 

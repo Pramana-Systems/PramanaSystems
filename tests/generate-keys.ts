@@ -9,8 +9,13 @@ const {
   "ed25519"
 );
 
+fs.mkdirSync(
+  "./keys",
+  { recursive: true }
+);
+
 fs.writeFileSync(
-  "./test-keys/manthan_test_key",
+  "./keys/bundle_signing_key",
 
   privateKey.export({
     format: "pem",
@@ -21,7 +26,7 @@ fs.writeFileSync(
 );
 
 fs.writeFileSync(
-  "./test-keys/manthan_test_key.pub",
+  "./keys/bundle_signing_key.pub",
 
   publicKey.export({
     format: "pem",
@@ -32,5 +37,5 @@ fs.writeFileSync(
 );
 
 console.log(
-  "Ed25519 PEM test keys generated."
+  "Ed25519 governance keys generated."
 );

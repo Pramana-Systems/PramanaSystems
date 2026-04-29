@@ -8,4 +8,8 @@ manthan_bundle_key
 manthan_bundle_key.pub
 
 test-keys/manthan_test_key
-runtime-audit/executions.jsonl
+runtime-audit/*.jsonl
+
+
+*.sig.tmp
+*.audit.tmp
