@@ -9,7 +9,8 @@
   "scripts": {
     "test": "vitest run",
     "prepare": "husky",
-    "export:openapi": "tsx ./scripts/export-openapi.ts"
+    "export:openapi": "tsx ./scripts/export-openapi.ts",
+    "check": "npm run test && npm run export:openapi"
   },
   "keywords": [],
   "author": "",

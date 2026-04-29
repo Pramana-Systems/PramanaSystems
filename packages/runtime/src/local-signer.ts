@@ -1,18 +1,15 @@
 import crypto from "crypto";
 
-import fs from "fs";
-
 import type {
   Signer,
 } from "./signer-interface";
 
 export class LocalSigner
   implements Signer {
-  private readonly privateKey =
-    fs.readFileSync(
-      "./manthan_bundle_key",
-      "utf8"
-    );
+
+  constructor(
+    private readonly privateKey: string
+  ) {}
 
   sign(
     payload: string

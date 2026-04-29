@@ -1,3 +1,5 @@
+import fs from "fs";
+
 import type {
   ExecutionResult,
 } from "./execution-result";
@@ -11,7 +13,12 @@ import {
 } from "./local-signer";
 
 const defaultSigner =
-  new LocalSigner();
+  new LocalSigner(
+    fs.readFileSync(
+      "./manthan_bundle_key",
+      "utf8"
+    )
+  );
 
 export function signExecutionResult(
   result: ExecutionResult,

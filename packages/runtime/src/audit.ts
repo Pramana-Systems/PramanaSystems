@@ -19,8 +19,22 @@ const auditFile =
     "executions.jsonl"
   );
 
+function hashRecord(
+  record: unknown
+): string {
+  return crypto
+    .createHash("sha256")
+    .update(
+      JSON.stringify(
+        record
+      )
+    )
+    .digest("hex");
+}
+
 function getLastRecordHash():
   string {
+
   if (
     !fs.existsSync(
       auditFile
@@ -52,15 +66,20 @@ function getLastRecordHash():
       lines.length - 1
     ];
 
-  return crypto
-    .createHash("sha256")
-    .update(lastLine)
-    .digest("hex");
+  const parsed =
+    JSON.parse(
+      lastLine
+    );
+
+  return hashRecord(
+    parsed
+  );
 }
 
 export function appendAuditRecord(
   token: ExecutionToken
 ): void {
+
   if (
     !fs.existsSync(
       auditDirectory

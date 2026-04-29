@@ -9,8 +9,22 @@ const auditFile =
     "./runtime-audit/executions.jsonl"
   );
 
+function hashRecord(
+  record: unknown
+): string {
+  return crypto
+    .createHash("sha256")
+    .update(
+      JSON.stringify(
+        record
+      )
+    )
+    .digest("hex");
+}
+
 export function verifyAuditChain():
   boolean {
+
   if (
     !fs.existsSync(
       auditFile
@@ -41,6 +55,7 @@ export function verifyAuditChain():
     "GENESIS";
 
   for (const line of lines) {
+
     const record =
       JSON.parse(line);
 
@@ -52,10 +67,9 @@ export function verifyAuditChain():
     }
 
     previousHash =
-      crypto
-        .createHash("sha256")
-        .update(line)
-        .digest("hex");
+      hashRecord(
+        record
+      );
   }
 
   return true;
