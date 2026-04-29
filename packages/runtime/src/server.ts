@@ -2,6 +2,8 @@ import swagger from "@fastify/swagger";
 
 import swaggerUi from "@fastify/swagger-ui";
 
+import Fastify from "fastify";
+
 import {
   resolveTraceId,
 } from "./trace";
@@ -9,8 +11,6 @@ import {
 import {
   logRuntimeEvent,
 } from "./runtime-logger";
-
-import Fastify from "fastify";
 
 import {
   verifyApiKey,
@@ -32,6 +32,12 @@ import {
   verifyExecutionResult,
 } from "./verify-execution-result";
 
+declare module "fastify" {
+  interface FastifyRequest {
+    startTime?: number;
+  }
+}
+
 const server =
   Fastify();
 
@@ -40,9 +46,7 @@ server.addHook(
   async (
     request
   ) => {
-    (
-      request as never
-    ).startTime =
+    request.startTime =
       Date.now();
   }
 );
@@ -61,9 +65,7 @@ server.addHook(
       );
 
     const startTime =
-      (
-        request as never
-      ).startTime ?? 0;
+      request.startTime ?? 0;
 
     const duration =
       Date.now() -
@@ -108,7 +110,8 @@ server.setErrorHandler(
             "RUNTIME_ERROR",
 
           message:
-            error.message,
+            (error as Error)
+              .message,
         },
       });
   }
@@ -217,7 +220,6 @@ server.get(
         "/execute",
         "/verify",
         "/docs",
-        "/documentation/json",
       ],
 
       features: {
@@ -582,6 +584,7 @@ server.post(
 
 async function
 shutdown(): Promise<void> {
+
   console.log(
     "Shutting down Manthan runtime..."
   );
@@ -594,7 +597,9 @@ shutdown(): Promise<void> {
     );
 
     process.exit(0);
+
   } catch (error) {
+
     console.error(
       "Runtime shutdown failed",
       error
@@ -616,6 +621,7 @@ process.on(
 
 async function
 bootstrap(): Promise<void> {
+
   await server.register(
     swagger,
     {
@@ -628,9 +634,6 @@ bootstrap(): Promise<void> {
             "1.0.0",
         },
       },
-
-      exposeRoute:
-        true,
     }
   );
 
@@ -643,6 +646,7 @@ bootstrap(): Promise<void> {
   );
 
   try {
+
     const address =
       await server.listen({
         port: 3000,
@@ -654,7 +658,9 @@ bootstrap(): Promise<void> {
     console.log(
       `Manthan runtime listening at ${address}`
     );
+
   } catch (error) {
+
     console.error(
       error
     );

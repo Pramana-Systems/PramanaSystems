@@ -9,6 +9,7 @@ import type {
 
 export class AwsKmsSigner
   implements AsyncSigner {
+
   private readonly client:
     KMSClient;
 
@@ -16,6 +17,7 @@ export class AwsKmsSigner
     private readonly keyId: string,
     region = "us-east-1"
   ) {
+
     this.client =
       new KMSClient({
         region,
@@ -25,6 +27,7 @@ export class AwsKmsSigner
   async sign(
     payload: string
   ): Promise<string> {
+
     const command =
       new SignCommand({
         KeyId:
@@ -36,7 +39,7 @@ export class AwsKmsSigner
           ),
 
         SigningAlgorithm:
-          "EDDSA",
+          "ECDSA_SHA_256",
 
         MessageType:
           "RAW",

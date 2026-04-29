@@ -1,23 +1,21 @@
-export interface
-ManthanClientConfig {
+export interface ManthanClientConfig {
   baseUrl: string;
 
   apiKey: string;
 }
 
-export class
-ManthanClient {
+export class ManthanClient {
   constructor(
     private config:
       ManthanClientConfig
   ) {}
 
-  private async
-  request(
+  private async request(
     path: string,
     method: string,
     body?: unknown
   ): Promise<unknown> {
+
     const response =
       await fetch(
         `${this.config.baseUrl}${path}`,
@@ -52,6 +50,7 @@ ManthanClient {
 
   async health():
     Promise<unknown> {
+
     return this.request(
       "/health",
       "GET"
@@ -60,6 +59,7 @@ ManthanClient {
 
   async manifest():
     Promise<unknown> {
+
     return this.request(
       "/runtime/manifest",
       "GET"
@@ -68,6 +68,7 @@ ManthanClient {
 
   async capabilities():
     Promise<unknown> {
+
     return this.request(
       "/runtime/capabilities",
       "GET"
@@ -86,6 +87,7 @@ ManthanClient {
       >;
     }
   ): Promise<unknown> {
+
     return this.request(
       "/evaluate",
       "POST",
@@ -105,6 +107,7 @@ ManthanClient {
       >;
     }
   ): Promise<unknown> {
+
     return this.request(
       "/simulate",
       "POST",
@@ -119,6 +122,7 @@ ManthanClient {
       signature: string;
     }
   ): Promise<unknown> {
+
     return this.request(
       "/execute",
       "POST",
@@ -133,6 +137,7 @@ ManthanClient {
       signature: string;
     }
   ): Promise<unknown> {
+
     return this.request(
       "/verify",
       "POST",

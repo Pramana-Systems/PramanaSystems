@@ -10,13 +10,15 @@
     "test": "vitest run",
     "prepare": "husky",
     "export:openapi": "tsx ./scripts/export-openapi.ts",
-    "check": "npm run test && npm run export:openapi"
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm run test && npm run export:openapi"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/node": "^25.6.0",
     "husky": "^9.1.7",
     "openapi-typescript": "^7.13.0",
     "tsx": "^4.21.0",

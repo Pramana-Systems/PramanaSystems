@@ -61,4 +61,27 @@ export const VerifyRequestSchema =
           z.string(),
 
         policy_version:
-          z
+          z.string(),
+
+        schema_version:
+          z.string(),
+
+        runtime_version:
+          z.string(),
+
+        runtime_hash:
+          z.string(),
+
+        decision:
+          z.string(),
+
+        signals_hash:
+          z.string(),
+
+        executed_at:
+          z.string(),
+      }),
+
+    signature:
+      z.string(),
+  });
