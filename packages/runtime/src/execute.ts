@@ -1,4 +1,8 @@
 import type {
+  Signer,
+} from "./signer-interface";
+
+import type {
   ExecutionToken,
 } from "./execution-token";
 
@@ -40,6 +44,7 @@ const defaultReplayStore =
 export function executeDecision(
   token: ExecutionToken,
   signature: string,
+signer: Signer,
   replayStore: ReplayStore =
     defaultReplayStore
 ): ExecutionAttestation {
@@ -122,7 +127,8 @@ export function executeDecision(
 
   const executionSignature =
     signExecutionResult(
-      result
+      result,
+      signer
     );
 
   const attestation: ExecutionAttestation = {

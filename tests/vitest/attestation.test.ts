@@ -1,3 +1,5 @@
+import fs from "fs";
+
 import {
   describe,
   expect,
@@ -12,7 +14,17 @@ import {
   executeDecision,
 
   verifyExecutionResult,
+
+  LocalSigner,
 } from "@manthan/runtime";
+
+const signer =
+  new LocalSigner(
+    fs.readFileSync(
+      "./manthan_bundle_key",
+      "utf8"
+    )
+  );
 
 describe(
   "execution attestation verification",
@@ -20,6 +32,7 @@ describe(
     test(
       "signed execution attestation verifies",
       () => {
+
         const token =
           issueExecutionToken(
             "claims-approval",
@@ -30,13 +43,15 @@ describe(
 
         const tokenSignature =
           signExecutionToken(
-            token
+            token,
+            signer
           );
 
         const attestation =
           executeDecision(
             token,
-            tokenSignature
+            tokenSignature,
+            signer
           );
 
         const valid =

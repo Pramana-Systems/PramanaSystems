@@ -1,3 +1,5 @@
+import fs from "fs";
+
 import {
   describe,
   expect,
@@ -6,9 +8,21 @@ import {
 
 import {
   issueExecutionToken,
+
   signExecutionToken,
+
   executeDecision,
+
+  LocalSigner,
 } from "@manthan/runtime";
+
+const signer =
+  new LocalSigner(
+    fs.readFileSync(
+      "./manthan_bundle_key",
+      "utf8"
+    )
+  );
 
 describe(
   "replay protection",
@@ -16,6 +30,7 @@ describe(
     test(
       "same token cannot execute twice",
       () => {
+
         const token =
           issueExecutionToken(
             "claims-approval",
@@ -26,18 +41,21 @@ describe(
 
         const signature =
           signExecutionToken(
-            token
+            token,
+            signer
           );
 
         executeDecision(
           token,
-          signature
+          signature,
+          signer
         );
 
         expect(() =>
           executeDecision(
             token,
-            signature
+            signature,
+            signer
           )
         ).toThrow(
           "Replay attack detected"

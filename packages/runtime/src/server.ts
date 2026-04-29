@@ -1,3 +1,5 @@
+import fs from "fs";
+
 import swagger from "@fastify/swagger";
 
 import swaggerUi from "@fastify/swagger-ui";
@@ -32,6 +34,10 @@ import {
   verifyExecutionResult,
 } from "./verify-execution-result";
 
+import {
+  LocalSigner,
+} from "./local-signer";
+
 declare module "fastify" {
   interface FastifyRequest {
     startTime?: number;
@@ -40,6 +46,14 @@ declare module "fastify" {
 
 const server =
   Fastify();
+
+const runtimeSigner =
+  new LocalSigner(
+    fs.readFileSync(
+      "./manthan_bundle_key",
+      "utf8"
+    )
+  );
 
 server.addHook(
   "onRequest",
@@ -506,7 +520,8 @@ server.post(
       attestation:
         executeDecision(
           body.token,
-          body.signature
+          body.signature,
+          runtimeSigner
         ),
     };
   }
