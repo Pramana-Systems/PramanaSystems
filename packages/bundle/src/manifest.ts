@@ -34,12 +34,24 @@ export function generateManifest(
           "utf8"
         );
 
+      const canonicalContent =
+        relativePath.endsWith(".json")
+          ? canonicalize(
+              JSON.parse(content)
+            )
+          : content.replace(
+              /\r\n/g,
+              "\n"
+            );
+
       return {
         path:
           relativePath,
 
         hash:
-          sha256(content),
+          sha256(
+            canonicalContent
+          ),
       };
     });
 
