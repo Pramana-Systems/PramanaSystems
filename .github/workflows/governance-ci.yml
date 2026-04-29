@@ -23,8 +23,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Generate deterministic test keys
-        run: npx tsx tests/generate-keys.ts
-
       - name: Run deterministic governance validation
         run: npm run check
