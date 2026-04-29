@@ -24,7 +24,7 @@ jobs:
         run: npm install
 
       - name: Generate deterministic test keys
-        run: node tests/generate-keys.ts
+        run: npx tsx tests/generate-keys.ts
 
       - name: Run deterministic governance validation
         run: npm run check
