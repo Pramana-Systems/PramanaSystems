@@ -4,7 +4,7 @@ import crypto from "crypto";
 
 import {
   canonicalize,
-} from "../../bundle/src/canonicalize";
+} from "@manthan/bundle";
 
 import {
   loadPrivateKey,

@@ -18,7 +18,7 @@
 
     "paths": {
       "@manthan/bundle": [
-        "./packages/bundle/src"
+        "./packages/bundle/dist"
       ],
 
       "@manthan/crypto": [

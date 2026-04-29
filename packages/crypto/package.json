@@ -1,9 +1,34 @@
 {
   "name": "@manthan/crypto",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "type": "module",
+
+  "scripts": {
+    "build": "tsup"
+  },
+
   "exports": {
-    ".": "./src/index.ts"
-  }
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+
+  "files": [
+    "dist"
+  ],
+
+  "sideEffects": false,
+
+  "keywords": [
+    "cryptography",
+    "signing",
+    "verification",
+    "ed25519",
+    "deterministic",
+    "governance"
+  ],
+
+  "license": "Apache-2.0"
 }
