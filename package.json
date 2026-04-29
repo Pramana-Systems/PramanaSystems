@@ -12,10 +12,11 @@
     "export:openapi": "tsx ./scripts/export-openapi.ts",
     "typecheck": "tsc --noEmit",
     "check": "npm run typecheck && npm run test && npm run export:openapi",
-
     "bundle:manifest": "tsx ./scripts/regenerate-bundle.ts",
     "bundle:sign": "tsx ./scripts/sign-bundle.ts",
-    "bundle:refresh": "npm run bundle:manifest && npm run bundle:sign"
+    "bundle:refresh": "npm run bundle:manifest && npm run bundle:sign",
+    "build": "tsup",
+    "build:watch": "tsup --watch"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +26,7 @@
     "@types/node": "^25.6.0",
     "husky": "^9.1.7",
     "openapi-typescript": "^7.13.0",
+    "tsup": "^8.5.1",
     "tsx": "^4.21.0",
     "turbo": "^2.9.6",
     "typescript": "^5.8.3",
