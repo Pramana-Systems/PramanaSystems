@@ -22,7 +22,7 @@
       ],
 
       "@manthan/crypto": [
-        "./packages/crypto/src"
+        "./packages/crypto/dist"
       ],
 
       "@manthan/governance": [
