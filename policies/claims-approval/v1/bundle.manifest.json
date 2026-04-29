@@ -1,11 +1,11 @@
 {
   "artifacts": [
     {
-      "hash": "030d448a7d1da6705aa53a002a3784883fe1e695afc2233e630838a712e51d5d",
+      "hash": "5f9b6a00680f3b4449c509c1a19506833b4b1dc8b0cc9180175d199f2222a249",
       "path": "policy.json"
     }
   ],
-  "bundle_hash": "3e520a49e9b40f96fd46c1bbd1bb126b38f9ffe7bfca6d8615abee31acbfb3ec",
+  "bundle_hash": "a0764ebf8137e18c4a45645902de828db9d3077f89b20dba789d919bc69e6fa8",
   "manifest_version": "1",
   "policy_id": "claims-approval",
   "policy_version": "v1",
