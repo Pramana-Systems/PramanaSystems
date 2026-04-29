@@ -2,7 +2,9 @@ import fs from "fs";
 
 import path from "path";
 
-import crypto from "crypto";
+import {
+  signManifest,
+} from "../packages/crypto/src/sign";
 
 const bundlePath =
   process.argv[2];
@@ -12,12 +14,6 @@ if (!bundlePath) {
     "Bundle path required"
   );
 }
-
-const privateKey =
-  fs.readFileSync(
-    "./keys/bundle_signing_key",
-    "utf8"
-  );
 
 const manifestPath =
   path.join(
@@ -31,23 +27,14 @@ const signaturePath =
     "bundle.sig"
   );
 
-const manifest =
-  fs.readFileSync(
-    manifestPath
-  );
-
 const signature =
-  crypto.sign(
-    null,
-    manifest,
-    privateKey
+  signManifest(
+    manifestPath
   );
 
 fs.writeFileSync(
   signaturePath,
-  signature.toString(
-    "base64"
-  )
+  signature
 );
 
 console.log(

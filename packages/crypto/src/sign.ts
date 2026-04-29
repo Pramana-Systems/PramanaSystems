@@ -3,6 +3,10 @@ import fs from "fs";
 import crypto from "crypto";
 
 import {
+  canonicalize,
+} from "../../bundle/src/canonicalize";
+
+import {
   loadPrivateKey,
 } from "./keys";
 
@@ -11,8 +15,16 @@ export function signManifest(
 ): string {
 
   const manifest =
-    fs.readFileSync(
-      manifestPath
+    JSON.parse(
+      fs.readFileSync(
+        manifestPath,
+        "utf8"
+      )
+    );
+
+  const canonical =
+    canonicalize(
+      manifest
     );
 
   const privateKey =
@@ -21,7 +33,12 @@ export function signManifest(
   const signature =
     crypto.sign(
       null,
-      manifest,
+
+      Buffer.from(
+        canonical,
+        "utf8"
+      ),
+
       privateKey
     );
 

@@ -3,6 +3,10 @@ import fs from "fs";
 import crypto from "crypto";
 
 import {
+  canonicalize,
+} from "../../bundle/src/canonicalize";
+
+import {
   loadPublicKey,
 } from "./keys";
 
@@ -12,8 +16,16 @@ export function verifySignature(
 ): boolean {
 
   const manifest =
-    fs.readFileSync(
-      manifestPath
+    JSON.parse(
+      fs.readFileSync(
+        manifestPath,
+        "utf8"
+      )
+    );
+
+  const canonical =
+    canonicalize(
+      manifest
     );
 
   const publicKey =
@@ -21,8 +33,14 @@ export function verifySignature(
 
   return crypto.verify(
     null,
-    manifest,
+
+    Buffer.from(
+      canonical,
+      "utf8"
+    ),
+
     publicKey,
+
     Buffer.from(
       signature,
       "base64"
