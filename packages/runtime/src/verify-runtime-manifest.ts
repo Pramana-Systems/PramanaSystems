@@ -1,3 +1,7 @@
+import {
+  canonicalizeForSigning
+} from "./canonical-signing";
+
 import type {
   RuntimeManifest,
 } from "./runtime-manifest";
@@ -13,9 +17,7 @@ export function verifyRuntimeManifest(
 ): boolean {
 
   return verifier.verify(
-    JSON.stringify(
-      manifest
-    ),
+    canonicalizeForSigning(manifest),
     signature
   );
 }

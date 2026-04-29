@@ -1,3 +1,7 @@
+import {
+  canonicalizeForSigning
+} from "./canonical-signing";
+
 import type {
   ExecutionToken,
 } from "./execution-token";
@@ -12,8 +16,6 @@ export function signExecutionToken(
 ): string {
 
   return signer.sign(
-    JSON.stringify(
-      token
-    )
+    canonicalizeForSigning(token)
   );
 }

@@ -1,3 +1,7 @@
+import {
+  canonicalizeForSigning
+} from "./canonical-signing";
+
 import type {
   ExecutionResult,
 } from "./execution-result";
@@ -13,10 +17,7 @@ export function verifyExecutionResult(
 ): boolean {
 
   return verifier.verify(
-    JSON.stringify(
-      result
-    ),
-
+    canonicalizeForSigning(result),
     signature
   );
 }

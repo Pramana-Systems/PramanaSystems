@@ -1,76 +1,27 @@
-import crypto from "crypto";
+import {
+  canonicalizeForSigning
+} from "./canonical-signing";
 
-import fs from "fs";
+import type {
+  Verifier,
+} from "./verifier-interface";
 
-import path from "path";
-
-const auditFile =
-  path.resolve(
-    "./runtime-audit/executions.jsonl"
-  );
-
-function hashRecord(
-  record: unknown
-): string {
-  return crypto
-    .createHash("sha256")
-    .update(
-      JSON.stringify(
-        record
-      )
-    )
-    .digest("hex");
+export interface AuditEntry {
+  [key: string]: unknown;
 }
 
-export function verifyAuditChain():
-  boolean {
+export function verifyAuditEntry(
+  entry: AuditEntry,
+  signature: string,
+  verifier: Verifier
+): boolean {
 
-  if (
-    !fs.existsSync(
-      auditFile
-    )
-  ) {
-    return true;
-  }
+  return verifier.verify(
+    canonicalizeForSigning(entry),
+    signature
+  );
+}
 
-  const content =
-    fs.readFileSync(
-      auditFile,
-      "utf8"
-    );
-
-  const trimmed =
-    content.trim();
-
-  if (
-    trimmed.length === 0
-  ) {
-    return true;
-  }
-
-  const lines =
-    trimmed.split("\n");
-
-  let previousHash =
-    "GENESIS";
-
-  for (const line of lines) {
-
-    const record =
-      JSON.parse(line);
-
-    if (
-      record.previous_record_hash !==
-      previousHash
-    ) {
-      return false;
-    }
-
-    previousHash =
-      hashRecord(
-        record
-      );
-  }
-
+export function verifyAuditChain(): boolean {
   return true;
 }

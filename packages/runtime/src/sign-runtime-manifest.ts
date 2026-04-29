@@ -1,3 +1,6 @@
+import { canonicalize }
+  from "../../bundle/src/canonicalize";
+
 import type {
   RuntimeManifest,
 } from "./runtime-manifest";
@@ -12,8 +15,6 @@ export function signRuntimeManifest(
 ): string {
 
   return signer.sign(
-    JSON.stringify(
-      manifest
-    )
+    canonicalize(manifest)
   );
 }
