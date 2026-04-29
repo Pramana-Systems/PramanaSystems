@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "types": "../../dist/core/src/index.d.mts",
+      "import": "../../dist/core/src/index.mjs"
+    }
   }
 }

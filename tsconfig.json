@@ -39,6 +39,10 @@
 
       "@manthan/verifier": [
         "./packages/verifier/src"
+      ],
+
+      "@manthan/core": [
+        "./packages/core/src"
       ]
     }
   }
