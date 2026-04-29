@@ -14,14 +14,19 @@ export class LocalSigner
   sign(
     payload: string
   ): string {
+
     return crypto
       .sign(
         null,
+
         Buffer.from(
-          payload
+          payload,
+          "utf8"
         ),
+
         this.privateKey
       )
+
       .toString(
         "base64"
       );

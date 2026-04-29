@@ -20,7 +20,8 @@ export class LocalVerifier
       null,
 
       Buffer.from(
-        payload
+        payload,
+        "utf8"
       ),
 
       this.publicKey,
