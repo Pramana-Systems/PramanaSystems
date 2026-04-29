@@ -23,10 +23,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Generate test signing keys
-        run: |
-          openssl genpkey -algorithm Ed25519 -out manthan_bundle_key
-          openssl pkey -in manthan_bundle_key -pubout -out manthan_bundle_key.pub
+      - name: Generate deterministic test keys
+        run: node tests/generate-keys.ts
 
-      - name: Run governance validation
+      - name: Run deterministic governance validation
         run: npm run check

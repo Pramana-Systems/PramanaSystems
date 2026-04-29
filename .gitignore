@@ -5,3 +5,6 @@ coverage/
 .env
 
 manthan_bundle_key
+manthan_bundle_key.pub
+
+test-keys/manthan_test_key
