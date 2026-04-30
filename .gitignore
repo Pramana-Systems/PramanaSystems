@@ -9,7 +9,7 @@ manthan_bundle_key.pub
 
 test-keys/manthan_test_key
 runtime-audit/*.jsonl
-
+trust/*.key
 
 *.sig.tmp
 *.audit.tmp
