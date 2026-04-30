@@ -1,17 +1,27 @@
 import {
   createPolicy,
   generateBundle,
+} from "@manthan/governance";
+
+import {
   executeDecision,
+  getRuntimeManifest,
+} from "@manthan/execution";
+
+import {
   verifyAttestation,
+} from "@manthan/verifier";
+
+import {
   canonicalize,
-  sha256,
-  signManifest,
+} from "@manthan/bundle";
+
+import {
   verifySignature,
-  getRuntimeManifest
-} from "@manthan/core";
+} from "@manthan/crypto";
 
 console.log(
-  "Manthan core SDK loaded successfully"
+  "Manthan SDK packages loaded successfully"
 );
 
 console.log({
@@ -20,8 +30,6 @@ console.log({
   executeDecision,
   verifyAttestation,
   canonicalize,
-  sha256,
-  signManifest,
   verifySignature,
-  getRuntimeManifest
+  getRuntimeManifest,
 });

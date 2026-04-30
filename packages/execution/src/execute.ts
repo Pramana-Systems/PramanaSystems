@@ -53,6 +53,45 @@ export function executeDecision(
     execution_requirements,
   } = context;
 
+  if (
+    !runtime_requirements
+      .supported_runtime_versions
+      .includes(
+        runtime_manifest.runtime_version
+      )
+  ) {
+    throw new Error(
+      "Unsupported runtime version"
+    );
+  }
+
+  if (
+    !runtime_requirements
+      .supported_schema_versions
+      .includes(
+        "1.0.0"
+      )
+  ) {
+    throw new Error(
+      "Unsupported schema version"
+    );
+  }
+
+  for (
+    const capability of
+    runtime_requirements
+      .required_capabilities
+  ) {
+    if (
+      !runtime_manifest.capabilities
+        .includes(capability)
+    ) {
+      throw new Error(
+        `Missing runtime capability: ${capability}`
+      );
+    }
+  }
+
   const valid =
     verifyExecutionToken(
       token,
@@ -143,10 +182,6 @@ export function executeDecision(
     signature:
       executionSignature,
   };
-
-  console.log(
-    attestation
-  );
 
   return attestation;
 }

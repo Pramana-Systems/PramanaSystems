@@ -19,16 +19,10 @@ jobs:
           node-version: 20
 
       - name: Install
-        run: npm install
+        run: npm ci
 
-      - name: Validate Types
-        run: npm run typecheck
-
-      - name: Run Tests
-        run: npm run test
-
-      - name: Export OpenAPI
-        run: npm run export:openapi
+      - name: Run Release Validation
+        run: npm run release:validate
 
       - name: Build Workspace Packages
         run: npm run build:packages

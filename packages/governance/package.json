@@ -1,42 +1,44 @@
 {
-  "name": "@manthan/governance",
-
-  "version": "1.0.0",
-
-  "private": false,
-
-  "type": "module",
-
-  "scripts": {
-    "build": "tsup"
-  },
-
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
-  },
-
-  "files": [
-    "dist"
-  ],
-
-  "sideEffects": false,
-
-  "keywords": [
-    "governance",
-    "policy",
-    "deterministic",
-    "compliance",
-    "verification",
-    "lineage"
-  ],
-
-  "dependencies": {
-    "@manthan/crypto": "1.0.0",
-    "@manthan/bundle": "1.0.0"
-  },
-
-  "license": "Apache-2.0"
+    "name": "@pramanasystems/governance",
+    "version": "1.0.0",
+    "private": false,
+    "type": "module",
+    "scripts": {
+        "build": "tsup"
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "sideEffects": false,
+    "dependencies": {
+        "@manthan/bundle": "1.0.0",
+        "@manthan/crypto": "1.0.0"
+    },
+    "description": "Deterministic governance lifecycle and policy infrastructure for Manthan.",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/YOUR_ORG/manthan-core.git"
+    },
+    "homepage": "https://github.com/YOUR_ORG/manthan-core",
+    "bugs": {
+        "url": "https://github.com/YOUR_ORG/manthan-core/issues"
+    },
+    "engines": {
+        "node": ">=20"
+    },
+    "keywords": [
+        "governance",
+        "policy",
+        "deterministic",
+        "compliance",
+        "runtime",
+        "workflow"
+    ]
 }

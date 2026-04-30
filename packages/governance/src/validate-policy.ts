@@ -61,12 +61,6 @@ export function validatePolicy(
         versionDirectory
       );
 
-    console.log(
-      "MANIFEST",
-      version,
-      manifestResult
-    );
-
     if (
       !manifestResult.valid
     ) {
@@ -89,12 +83,6 @@ export function validatePolicy(
         manifestPath,
         signature
       );
-
-    console.log(
-      "SIGNATURE",
-      version,
-      signatureValid
-    );
 
     if (
       !signatureValid

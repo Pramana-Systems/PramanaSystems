@@ -3,18 +3,18 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.mjs"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "description": "",
-  "dependencies": {
-    "@manthan/bundle": "file:../packages/bundle/manthan-bundle-1.0.0.tgz",
-    "@manthan/core": "file:../packages/core/manthan-core-1.0.0.tgz",
-    "@manthan/crypto": "file:../packages/crypto/manthan-crypto-1.0.0.tgz",
-    "@manthan/execution": "file:../packages/execution/manthan-execution-1.0.0.tgz",
-    "@manthan/governance": "file:../packages/governance/manthan-governance-1.0.0.tgz",
-    "@manthan/verifier": "file:../packages/verifier/manthan-verifier-1.0.0.tgz"
-  }
+ "dependencies": {
+  "@manthan/bundle": "1.0.0",
+  "@manthan/core": "1.0.0",
+  "@manthan/crypto": "1.0.0",
+  "@manthan/execution": "1.0.0",
+  "@manthan/governance": "1.0.0",
+  "@manthan/verifier": "1.0.0"
+}
 }

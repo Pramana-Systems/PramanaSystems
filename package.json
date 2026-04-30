@@ -1,95 +1,84 @@
 {
   "name": "manthan-core",
-
   "version": "1.0.0",
-
   "private": true,
-
   "packageManager": "npm@10.9.0",
-
   "workspaces": [
     "packages/*"
   ],
-
   "main": "index.js",
-
+  "description": "Deterministic governance infrastructure for enforceable decisions requiring independently verifiable trust.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YOUR_ORG/manthan-core.git"
+  },
+  "homepage": "https://github.com/YOUR_ORG/manthan-core",
+  "bugs": {
+    "url": "https://github.com/YOUR_ORG/manthan-core/issues"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "directories": {
     "doc": "docs",
     "test": "tests"
   },
-
   "scripts": {
     "test": "vitest run",
-
     "prepare": "husky",
-
     "export:openapi": "tsx ./scripts/export-openapi.ts",
-
     "typecheck": "tsc --noEmit",
-
     "check": "npm run typecheck && npm run test && npm run export:openapi",
-
     "bundle:manifest": "tsx ./scripts/regenerate-bundle.ts",
-
     "bundle:sign": "tsx ./scripts/sign-bundle.ts",
-
     "bundle:refresh": "npm run bundle:manifest && npm run bundle:sign",
-
     "build": "tsup",
-
     "build:watch": "tsup --watch",
-
     "build:packages": "turbo run build",
-
     "release:manifest": "tsx ./scripts/generate-release-manifest.ts",
     "release:sign": "tsx ./scripts/sign-release-manifest.ts",
-     "release:verify": "tsx ./scripts/verify-release.ts",
-     "release:reproducibility": "tsx ./scripts/verify-reproducibility.ts",
-     "release:attest": "tsx ./scripts/generate-rebuild-attestation.ts",
-     "workflow:release": "tsx ./scripts/execute-governance-workflow.ts",
-     "workflow:dag": "tsx ./scripts/execute-governance-dag.ts",
-     "trust:generate": "tsx ./scripts/generate-trust-root.ts",
-     "trust:verify": "tsx ./scripts/verify-release-with-trust-root.ts",
-     "trust:rotate": "tsx ./scripts/sign-trust-rotation.ts"
+    "release:verify": "tsx ./scripts/verify-release.ts",
+    "release:reproducibility": "tsx ./scripts/verify-reproducibility.ts",
+    "release:attest": "tsx ./scripts/generate-rebuild-attestation.ts",
+    "workflow:release": "tsx ./scripts/execute-governance-workflow.ts",
+    "workflow:dag": "tsx ./scripts/execute-governance-dag.ts",
+    "trust:generate": "tsx ./scripts/generate-trust-root.ts",
+    "trust:verify": "tsx ./scripts/verify-release-with-trust-root.ts",
+    "trust:rotate": "tsx ./scripts/sign-trust-rotation.ts",
+    "pack:packages": "npm pack --workspace packages/bundle && npm pack --workspace packages/crypto && npm pack --workspace packages/governance && npm pack --workspace packages/execution && npm pack --workspace packages/verifier && npm pack --workspace packages/core",
+    "release:validate": "npm run build && npm run check && npm run pack:packages && node ./manthan-consumer-test/test.mjs",
+    "publish:packages": "npm run release:validate && npm publish --workspace packages/bundle --access public && npm publish --workspace packages/crypto --access public && npm publish --workspace packages/governance --access public && npm publish --workspace packages/execution --access public && npm publish --workspace packages/verifier --access public && npm publish --workspace packages/core --access public"
   },
-
-  "keywords": [],
-
+  "keywords": [
+    "governance",
+    "deterministic",
+    "verification",
+    "attestation",
+    "provenance",
+    "runtime",
+    "compliance",
+    "trust",
+    "auditability"
+  ],
   "author": "",
-
-  "license": "ISC",
-
-  "description": "",
-
   "devDependencies": {
     "@types/node": "^25.6.0",
-
     "husky": "^9.1.7",
-
     "openapi-typescript": "^7.13.0",
-
     "tsup": "^8.5.1",
-
     "tsx": "^4.21.0",
-
     "turbo": "^2.9.6",
-
     "typescript": "^5.8.3",
-
     "vitest": "^4.1.5"
   },
-
   "dependencies": {
     "@aws-sdk/client-kms": "^3.1038.0",
-
     "@fastify/swagger": "^9.7.0",
-
     "@fastify/swagger-ui": "^5.2.6",
-
+    "@pramanasystems/execution": "^1.0.0",
     "fastify": "^5.8.5",
-
     "redis": "^5.12.1",
-
     "zod": "^4.3.6"
   }
 }

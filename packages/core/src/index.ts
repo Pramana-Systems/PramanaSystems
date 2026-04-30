@@ -6,7 +6,7 @@ export {
   generateBundle
 } from "@manthan/governance";
 
-// Execution
+// Deterministic Execution
 export {
   executeDecision,
   issueExecutionToken,
@@ -15,10 +15,13 @@ export {
   verifyExecutionResult,
   getRuntimeManifest,
   signRuntimeManifest,
-  verifyRuntimeManifest
+  verifyRuntimeManifest,
+  LocalSigner,
+  LocalVerifier,
+  MemoryReplayStore
 } from "@manthan/execution";
 
-// Verification
+// Portable Verification
 export {
   verifyAttestation,
   verifyBundle,
@@ -27,17 +30,19 @@ export {
   verifyExecutionRequirements
 } from "@manthan/verifier";
 
-// Canonical primitives
-export {
-  canonicalize,
-  sha256
-} from "@manthan/bundle";
+// Canonical Governance Types
+export type {
+  ExecutionContext,
+  ExecutionResult,
+  ExecutionAttestation,
+  ExecutionToken,
+  RuntimeManifest,
+  Signer,
+  Verifier,
+  ReplayStore
+} from "@manthan/execution";
 
-// Cryptographic primitives
-export {
-  signManifest
-} from "@manthan/crypto";
-
-export {
-  verifySignature
-} from "@manthan/crypto";
+export type {
+  RuntimeRequirements,
+  ExecutionRequirements
+} from "@manthan/governance";

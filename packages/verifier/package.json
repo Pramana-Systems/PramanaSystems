@@ -1,43 +1,45 @@
 {
-  "name": "@manthan/verifier",
-
-  "version": "1.0.0",
-
-  "private": false,
-
-  "type": "module",
-
-  "scripts": {
-    "build": "tsup"
-  },
-
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
-  },
-
-  "files": [
-    "dist"
-  ],
-
-  "sideEffects": false,
-
-  "keywords": [
-    "verification",
-    "attestation",
-    "compliance",
-    "deterministic",
-    "governance",
-    "audit"
-  ],
-
-  "dependencies": {
-    "@manthan/crypto": "1.0.0",
-    "@manthan/execution": "1.0.0",
-    "@manthan/governance": "1.0.0"
-  },
-
-  "license": "Apache-2.0"
+    "name": "@pramanasystems/verifier",
+    "version": "1.0.0",
+    "private": false,
+    "type": "module",
+    "scripts": {
+        "build": "tsup"
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "sideEffects": false,
+    "dependencies": {
+        "@manthan/crypto": "1.0.0",
+        "@manthan/execution": "1.0.0",
+        "@manthan/governance": "1.0.0"
+    },
+    "description": "Independent governance verification infrastructure for deterministic Manthan workflows.",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/YOUR_ORG/manthan-core.git"
+    },
+    "homepage": "https://github.com/YOUR_ORG/manthan-core",
+    "bugs": {
+        "url": "https://github.com/YOUR_ORG/manthan-core/issues"
+    },
+    "engines": {
+        "node": ">=20"
+    },
+    "keywords": [
+        "verification",
+        "attestation",
+        "provenance",
+        "trust",
+        "auditability",
+        "governance"
+    ]
 }

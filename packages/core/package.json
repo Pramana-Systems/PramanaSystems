@@ -1,45 +1,47 @@
 {
-  "name": "@manthan/core",
-
-  "version": "1.0.0",
-
-  "private": false,
-
-  "type": "module",
-
-  "scripts": {
-    "build": "tsup"
-  },
-
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
-  },
-
-  "files": [
-    "dist"
-  ],
-
-  "sideEffects": false,
-
-  "keywords": [
-    "deterministic",
-    "governance",
-    "policy",
-    "verification",
-    "attestation",
-    "compliance"
-  ],
-
-  "dependencies": {
-    "@manthan/bundle": "1.0.0",
-    "@manthan/crypto": "1.0.0",
-    "@manthan/execution": "1.0.0",
-    "@manthan/governance": "1.0.0",
-    "@manthan/verifier": "1.0.0"
-  },
-
-  "license": "Apache-2.0"
+    "name": "@pramanasystems/core",
+    "version": "1.0.0",
+    "private": false,
+    "type": "module",
+    "scripts": {
+        "build": "tsup"
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "sideEffects": false,
+    "dependencies": {
+        "@manthan/bundle": "1.0.0",
+        "@manthan/crypto": "1.0.0",
+        "@manthan/execution": "1.0.0",
+        "@manthan/governance": "1.0.0",
+        "@manthan/verifier": "1.0.0"
+    },
+    "description": "Public orchestration and SDK surface for Manthan deterministic governance infrastructure.",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/YOUR_ORG/manthan-core.git"
+    },
+    "homepage": "https://github.com/YOUR_ORG/manthan-core",
+    "bugs": {
+        "url": "https://github.com/YOUR_ORG/manthan-core/issues"
+    },
+    "engines": {
+        "node": ">=20"
+    },
+    "keywords": [
+        "sdk",
+        "governance",
+        "orchestration",
+        "deterministic",
+        "runtime",
+        "verification"
+    ]
 }
