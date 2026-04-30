@@ -1,0 +1,33 @@
+{
+  "policy_version": "1.0.0",
+
+  "policy_id": "trust-governance-policy",
+
+  "operations": {
+    "trust_root_rotation": {
+      "required_quorum": 2,
+
+      "required_roles": [
+        "core-governance",
+        "security-governance"
+      ]
+    },
+
+    "release_approval": {
+      "required_quorum": 2,
+
+      "required_roles": [
+        "core-governance",
+        "compliance-governance"
+      ]
+    },
+
+    "runtime_certification": {
+      "required_quorum": 1,
+
+      "required_roles": [
+        "security-governance"
+      ]
+    }
+  }
+}
