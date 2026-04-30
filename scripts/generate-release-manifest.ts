@@ -4,6 +4,8 @@ import path from "path";
 
 import crypto from "crypto";
 
+import child_process from "child_process";
+
 function sha256(
   filePath: string
 ): string {
@@ -74,6 +76,21 @@ const artifacts =
     }
   );
 
+const gitCommit =
+  child_process
+    .execSync(
+      "git rev-parse HEAD"
+    )
+    .toString()
+    .trim();
+
+const gitTag =
+  process.env.GITHUB_REF_NAME ??
+  "development";
+
+const generatedBy =
+  "manthan-release-pipeline";
+
 const manifest = {
   manifest_version:
     "1.0.0",
@@ -81,6 +98,18 @@ const manifest = {
   generated_at:
     new Date()
       .toISOString(),
+
+  git_commit:
+    gitCommit,
+
+  git_tag:
+    gitTag,
+
+  generated_by:
+    generatedBy,
+
+  node_version:
+    process.version,
 
   artifacts,
 };
