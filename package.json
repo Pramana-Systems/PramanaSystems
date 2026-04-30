@@ -47,6 +47,7 @@
      "release:reproducibility": "tsx ./scripts/verify-reproducibility.ts",
      "release:attest": "tsx ./scripts/generate-rebuild-attestation.ts",
      "workflow:release": "tsx ./scripts/execute-governance-workflow.ts",
+     "workflow:dag": "tsx ./scripts/execute-governance-dag.ts",
      "trust:generate": "tsx ./scripts/generate-trust-root.ts",
      "trust:verify": "tsx ./scripts/verify-release-with-trust-root.ts",
      "trust:rotate": "tsx ./scripts/sign-trust-rotation.ts"

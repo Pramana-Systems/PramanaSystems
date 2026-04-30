@@ -1,0 +1,74 @@
+{
+  "workflow_id": "release-governance-dag",
+
+  "workflow_version": "1.0.0",
+
+  "nodes": [
+    {
+      "node_id": "typecheck",
+
+      "operation": "typecheck",
+
+      "depends_on": []
+    },
+
+    {
+      "node_id": "tests",
+
+      "operation": "test",
+
+      "depends_on": []
+    },
+
+    {
+      "node_id": "openapi",
+
+      "operation": "export-openapi",
+
+      "depends_on": [
+        "typecheck"
+      ]
+    },
+
+    {
+      "node_id": "build",
+
+      "operation": "build-packages",
+
+      "depends_on": [
+        "typecheck",
+        "tests"
+      ]
+    },
+
+    {
+      "node_id": "manifest",
+
+      "operation": "release-manifest",
+
+      "depends_on": [
+        "build"
+      ]
+    },
+
+    {
+      "node_id": "sign",
+
+      "operation": "release-sign",
+
+      "depends_on": [
+        "manifest"
+      ]
+    },
+
+    {
+      "node_id": "verify",
+
+      "operation": "release-verify",
+
+      "depends_on": [
+        "sign"
+      ]
+    }
+  ]
+}
