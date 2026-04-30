@@ -1,0 +1,31 @@
+{
+  "version": "1.0.0",
+
+  "quorum": 2,
+
+  "authorities": [
+    {
+      "authority_id": "authority-a",
+
+      "role": "core-governance",
+
+      "public_key_file": "authority-a.pub"
+    },
+
+    {
+      "authority_id": "authority-b",
+
+      "role": "security-governance",
+
+      "public_key_file": "authority-b.pub"
+    },
+
+    {
+      "authority_id": "authority-c",
+
+      "role": "compliance-governance",
+
+      "public_key_file": "authority-c.pub"
+    }
+  ]
+}
