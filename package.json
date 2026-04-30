@@ -39,7 +39,11 @@
 
     "build:watch": "tsup --watch",
 
-    "build:packages": "turbo run build"
+    "build:packages": "turbo run build",
+
+    "release:manifest": "tsx ./scripts/generate-release-manifest.ts",
+    "release:sign": "tsx ./scripts/sign-release-manifest.ts",
+     "release:verify": "tsx ./scripts/verify-release.ts"
   },
 
   "keywords": [],
