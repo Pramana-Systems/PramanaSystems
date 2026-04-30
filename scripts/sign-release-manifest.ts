@@ -1,25 +1,31 @@
 import fs from "fs";
 
-import path from "path";
+import crypto from "crypto";
 
-import {
-  signManifest,
-} from "@manthan/crypto";
-
-const manifestPath =
-  path.resolve(
+const manifest =
+  fs.readFileSync(
     "release-manifest.json"
   );
 
+const privateKey =
+  fs.readFileSync(
+    "trust/manthan-root.key",
+    "utf8"
+  );
+
 const signature =
-  signManifest(
-    manifestPath
+  crypto.sign(
+    null,
+    manifest,
+    privateKey
   );
 
 fs.writeFileSync(
   "release-manifest.sig",
 
-  signature
+  signature.toString(
+    "base64"
+  )
 );
 
 console.log(
