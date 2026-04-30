@@ -1,7 +1,7 @@
 {
   "manifest_version": "1.0.0",
-  "generated_at": "2026-04-30T02:50:34.480Z",
-  "git_commit": "f924e15dcebe92231dd14628018275bbbfd2ce22",
+  "generated_at": "2026-04-30T03:00:16.059Z",
+  "git_commit": "0914b5a1979e197e130072d5ef5c38dc84962059",
   "git_tag": "development",
   "generated_by": "manthan-release-pipeline",
   "node_version": "v20.20.2",
