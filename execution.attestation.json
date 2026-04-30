@@ -1,14 +1,14 @@
 {
   "result": {
-    "execution_id": "024c0047-4e5a-43a6-96bd-0bf27889303c",
-    "policy_id": "claims-approval",
-    "policy_version": "v1",
+    "execution_id": "portable-attestation-1",
+    "policy_id": "policy-1",
+    "policy_version": "1.0.0",
     "schema_version": "1.0.0",
     "runtime_version": "1.0.0",
-    "runtime_hash": "fd612badb26392e7bc53ad5e556dccdb9be61044a9055e6a4b72f1b8498431ee",
-    "decision": "approve-claim",
-    "signals_hash": "signals-hash-example",
-    "executed_at": "2026-04-28T14:02:42.688Z"
+    "runtime_hash": "runtime-hash",
+    "decision": "approve",
+    "signals_hash": "signals-hash",
+    "executed_at": "2026-04-30T07:02:56.679Z"
   },
-  "signature": "7No0l+KbNmeTphkLkloidrKX5OmJdAusL5jvCmYZrljSpgIBuB5BVWjyxIn75yuliGalxDED5tIrNXKRwmUZCw=="
+  "signature": "LOMa2lfLbxj4h7RXv01b1BtoEXTpD/ovDFlkNiMwdLqTXPCSKqp08niUo/vJXMhHGMptitYhscWt3A8O1G41BQ=="
 }

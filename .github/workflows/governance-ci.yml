@@ -23,5 +23,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      # Enforces deterministic governance invariants,
+      # replay-safe execution guarantees,
+      # portable verification semantics,
+      # and conformance validation.
       - name: Run deterministic governance validation
         run: npm run check
