@@ -1,0 +1,13 @@
+{
+  "rotation_version": "1.0.0",
+
+  "previous_key_id": "manthan-root-2026",
+
+  "next_key_id": "manthan-root-2027",
+
+  "rotated_at": "2026-04-30T00:00:00Z",
+
+  "reason": "scheduled-rotation",
+
+  "next_public_key_file": "manthan-root-next.pub"
+}
