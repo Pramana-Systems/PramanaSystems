@@ -1,240 +1,114 @@
-\# Manthan Roadmap
+# Manthan Roadmap
 
-
-
-\## Purpose
-
-
+## Purpose
 
 This roadmap describes the intended evolution of Manthan deterministic governance infrastructure.
 
-
-
 Future evolution must preserve:
 
-
-
-\- deterministic execution
-
-\- replay-safe enforcement
-
-\- fail-closed behavior
-
-\- immutable provenance
-
-\- portable verification
-
-\- independently reproducible governance evidence
-
-
+- deterministic execution
+- replay-safe enforcement
+- fail-closed behavior
+- immutable provenance
+- portable verification
+- independently reproducible governance evidence
 
 Governance invariants take priority over feature expansion.
 
+---
 
-
-\---
-
-
-
-\# Current Foundation
-
-
+# Current Foundation
 
 Manthan currently provides:
 
+- deterministic governance execution
+- runtime compatibility enforcement
+- execution attestations
+- release provenance verification
+- portable independent verification
+- trust continuity semantics
+- deterministic governance workflows
+- governance conformance validation
 
+---
 
-\- deterministic governance execution
+# Near-Term Priorities
 
-\- runtime compatibility enforcement
-
-\- execution attestations
-
-\- release provenance verification
-
-\- portable independent verification
-
-\- trust continuity semantics
-
-\- deterministic governance workflows
-
-\- governance conformance validation
-
-
-
-\---
-
-
-
-\# Near-Term Priorities
-
-
-
-\## Independent Verifier Packaging
-
-
+## Independent Verifier Packaging
 
 Goals:
 
+- publishable verifier tooling
+- portable verifier installation
+- operational verifier ergonomics
+- standalone verification workflows
 
+---
 
-\- publishable verifier tooling
-
-\- portable verifier installation
-
-\- operational verifier ergonomics
-
-\- standalone verification workflows
-
-
-
-\---
-
-
-
-\## Runtime Packaging
-
-
+## Runtime Packaging
 
 Goals:
 
+- portable runtime deployment
+- deterministic runtime distribution
+- runtime certification workflows
+- reproducible runtime builds
 
+---
 
-\- portable runtime deployment
-
-\- deterministic runtime distribution
-
-\- runtime certification workflows
-
-\- reproducible runtime builds
-
-
-
-\---
-
-
-
-\## Compatibility Automation
-
-
+## Compatibility Automation
 
 Goals:
 
+- compatibility regression detection
+- semantic compatibility validation
+- governance contract enforcement
+- deterministic upgrade discipline
 
+---
 
-\- compatibility regression detection
-
-\- semantic compatibility validation
-
-\- governance contract enforcement
-
-\- deterministic upgrade discipline
-
-
-
-\---
-
-
-
-\## Deployment Examples
-
-
+## Deployment Examples
 
 Goals:
 
+- healthcare governance reference deployments
+- portable runtime examples
+- verifier integration examples
+- governance lifecycle examples
 
+---
 
-\- healthcare governance reference deployments
-
-\- portable runtime examples
-
-\- verifier integration examples
-
-\- governance lifecycle examples
-
-
-
-\---
-
-
-
-\# Long-Term Direction
-
-
+# Long-Term Direction
 
 Potential long-term evolution includes:
 
-
-
-\- distributed governance federation
-
-\- deterministic workflow-state orchestration
-
-\- programmable governance execution
-
-\- advanced trust governance
-
-\- portable governance execution infrastructure
-
-
+- distributed governance federation
+- deterministic workflow-state orchestration
+- programmable governance execution
+- advanced trust governance
+- portable governance execution infrastructure
 
 Future evolution MUST preserve deterministic reproducibility and portable verification guarantees.
 
+---
 
-
-\---
-
-
-
-\# Explicit Non-Goals
-
-
+# Explicit Non-Goals
 
 Manthan intentionally avoids:
 
+- opaque governance execution
+- probabilistic enforcement semantics
+- centralized verification dependency
+- hidden trust assumptions
+- infrastructure-coupled governance correctness
+- AI systems directly determining governance outcomes
 
+---
 
-\- opaque governance execution
-
-\- probabilistic enforcement semantics
-
-\- centralized verification dependency
-
-\- hidden trust assumptions
-
-\- infrastructure-coupled governance correctness
-
-\- AI systems directly determining governance outcomes
-
-
-
-\---
-
-
-
-\# Governance Principle
-
-
+# Governance Principle
 
 Manthan exists to preserve deterministic governance trust independently of infrastructure ownership.
 
-``` id="6v3nwr"
-
-
-
-\---
-
-
-
-\# Then Validate
-
-
-
-Run:
-
-
-
-```powershell id="2q7xzp"
-
-npm run release:validate
-
+```text
+Impact + obligation to prove = deterministic enforcement
+```
