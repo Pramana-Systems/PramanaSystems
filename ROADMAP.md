@@ -1,8 +1,8 @@
-# Manthan Roadmap
+# PramanaSystems Roadmap
 
 ## Purpose
 
-This roadmap describes the intended evolution of Manthan deterministic governance infrastructure.
+This roadmap describes the intended evolution of PramanaSystems deterministic governance infrastructure.
 
 Future evolution must preserve:
 
@@ -19,7 +19,7 @@ Governance invariants take priority over feature expansion.
 
 # Current Foundation
 
-Manthan currently provides:
+PramanaSystems currently provides:
 
 - deterministic governance execution
 - runtime compatibility enforcement
@@ -94,7 +94,7 @@ Future evolution MUST preserve deterministic reproducibility and portable verifi
 
 # Explicit Non-Goals
 
-Manthan intentionally avoids:
+PramanaSystems intentionally avoids:
 
 - opaque governance execution
 - probabilistic enforcement semantics
@@ -107,7 +107,7 @@ Manthan intentionally avoids:
 
 # Governance Principle
 
-Manthan exists to preserve deterministic governance trust independently of infrastructure ownership.
+PramanaSystems exists to preserve deterministic governance trust independently of infrastructure ownership.
 
 ```text
 Impact + obligation to prove = deterministic enforcement

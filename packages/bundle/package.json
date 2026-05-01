@@ -16,15 +16,15 @@
         "dist"
     ],
     "sideEffects": false,
-    "description": "Deterministic governance artifact packaging and manifest infrastructure for Manthan.",
+    "description": "Deterministic governance artifact packaging and manifest infrastructure for PramanaSystems.",
     "license": "Apache-2.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/YOUR_ORG/manthan-core.git"
+        "url": "https://github.com/YOUR_ORG/PramanaSystems-core.git"
     },
-    "homepage": "https://github.com/YOUR_ORG/manthan-core",
+    "homepage": "https://github.com/YOUR_ORG/PramanaSystems-core",
     "bugs": {
-        "url": "https://github.com/YOUR_ORG/manthan-core/issues"
+        "url": "https://github.com/YOUR_ORG/PramanaSystems-core/issues"
     },
     "engines": {
         "node": ">=20"
@@ -38,6 +38,7 @@
         "artifacts"
     ]
 }
+
 
 
 

@@ -1,4 +1,4 @@
-\# Manthan Portability Guarantees
+\# PramanaSystems Portability Guarantees
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-Manthan is designed as portable deterministic governance infrastructure.
+PramanaSystems is designed as portable deterministic governance infrastructure.
 
 
 
@@ -278,7 +278,7 @@ SDK consumers must be able to integrate governance functionality independently o
 
 
 
-Manthan intentionally avoids dependence on:
+PramanaSystems intentionally avoids dependence on:
 
 
 
@@ -322,7 +322,7 @@ Governance integrity depends on deterministic verification rather than infrastru
 
 
 
-Manthan guarantees deterministic reproducibility for governed operations.
+PramanaSystems guarantees deterministic reproducibility for governed operations.
 
 
 
@@ -454,7 +454,7 @@ Distributed governance portability reduces dependence on centralized trust infra
 
 
 
-Manthan intentionally does not guarantee:
+PramanaSystems intentionally does not guarantee:
 
 
 
@@ -581,4 +581,5 @@ Future portability evolution includes:
 
 
 Future evolution must preserve deterministic reproducibility and independent verification guarantees.
+
 

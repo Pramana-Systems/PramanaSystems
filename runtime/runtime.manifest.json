@@ -1,9 +1,10 @@
 {
   "runtime_version": "1.0.0",
 
-  "runtime_name": "manthan-runtime",
+  "runtime_name": "PramanaSystems-runtime",
 
   "build_type": "deterministic",
 
   "schema_version": "1.0.0"
 }
+

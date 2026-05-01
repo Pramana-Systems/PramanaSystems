@@ -2,7 +2,7 @@
 
 
 
-Manthan is a deterministic governance infrastructure designed for systems where decisions must be:
+PramanaSystems is a deterministic governance infrastructure designed for systems where decisions must be:
 
 
 
@@ -16,7 +16,7 @@ Manthan is a deterministic governance infrastructure designed for systems where 
 
 
 
-Manthan separates AI-assisted evaluation from deterministic enforcement.
+PramanaSystems separates AI-assisted evaluation from deterministic enforcement.
 
 
 
@@ -368,7 +368,7 @@ Trust Model Summary
 
 
 
-Manthan uses explicit cryptographic trust infrastructure.
+PramanaSystems uses explicit cryptographic trust infrastructure.
 
 
 
@@ -436,7 +436,7 @@ Failure Semantics
 
 
 
-Manthan fails closed by design.
+PramanaSystems fails closed by design.
 
 
 
@@ -472,7 +472,7 @@ Portability Philosophy
 
 
 
-Manthan is designed for portable governance execution.
+PramanaSystems is designed for portable governance execution.
 
 
 
@@ -490,7 +490,7 @@ their own AI systems
 
 
 
-Manthan governs deterministic enforcement semantics independently of infrastructure ownership.
+PramanaSystems governs deterministic enforcement semantics independently of infrastructure ownership.
 
 
 
@@ -597,4 +597,5 @@ deterministic trust governance infrastructure
 
 
 Future evolution must preserve deterministic reproducibility and independent verifiability.
+
 

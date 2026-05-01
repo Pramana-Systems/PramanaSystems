@@ -82,7 +82,7 @@ Inputs:
 
 \- execution.attestation.json
 
-\- trust/manthan-root.pub
+\- trust/PramanaSystems-root.pub
 
 
 
@@ -110,7 +110,7 @@ Inputs:
 
 
 
-\- trust/manthan-root.key
+\- trust/PramanaSystems-root.key
 
 
 
@@ -137,4 +137,5 @@ Generate attestation:
 ```bash
 
 node .\\tools\\independent-verifier\\generate-attestation.mjs
+
 

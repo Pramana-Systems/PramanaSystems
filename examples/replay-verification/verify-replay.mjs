@@ -48,7 +48,7 @@ const context = {
 
   runtime_manifest: {
     runtime_name:
-      "manthan-runtime",
+      "PramanaSystems-runtime",
 
     runtime_version:
       "1.0.0",
@@ -56,7 +56,7 @@ const context = {
 
   runtime_requirements: {
     runtime_name:
-      "manthan-runtime",
+      "PramanaSystems-runtime",
 
     minimum_version:
       "1.0.0",
@@ -110,3 +110,4 @@ try {
     error.message
   );
 }
+

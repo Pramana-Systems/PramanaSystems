@@ -89,7 +89,7 @@ const gitTag =
   "development";
 
 const generatedBy =
-  "manthan-release-pipeline";
+  "PramanaSystems-release-pipeline";
 
 const manifest = {
   manifest_version:
@@ -127,3 +127,4 @@ fs.writeFileSync(
 console.log(
   "Release manifest generated"
 );
+

@@ -14,7 +14,7 @@ describe(
 
         const runtimeRequirements = {
           runtime_name:
-            "manthan-runtime",
+            "PramanaSystems-runtime",
 
           minimum_version:
             "1.0.0",
@@ -22,7 +22,7 @@ describe(
 
         const runtimeManifest = {
           runtime_name:
-            "manthan-runtime",
+            "PramanaSystems-runtime",
 
           runtime_version:
             "1.0.0",
@@ -45,3 +45,4 @@ describe(
     );
   }
 );
+

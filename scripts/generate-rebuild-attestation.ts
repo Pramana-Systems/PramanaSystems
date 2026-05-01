@@ -58,3 +58,4 @@ fs.writeFileSync(
 console.log(
   "Rebuild attestation generated"
 );
+

@@ -29,15 +29,16 @@ fs.mkdirSync(
 );
 
 fs.writeFileSync(
-  "trust/manthan-root.pub",
+  "trust/PramanaSystems-root.pub",
   publicPem
 );
 
 fs.writeFileSync(
-  "trust/manthan-root.key",
+  "trust/PramanaSystems-root.key",
   privatePem
 );
 
 console.log(
   "Trust root generated"
 );
+

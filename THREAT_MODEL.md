@@ -1,4 +1,4 @@
-\# Manthan Threat Model
+\# PramanaSystems Threat Model
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-Manthan is designed as a deterministic governance infrastructure with explicit trust and failure semantics.
+PramanaSystems is designed as a deterministic governance infrastructure with explicit trust and failure semantics.
 
 
 
@@ -562,7 +562,7 @@ Deterministic governance DAG execution mitigates orchestration ambiguity.
 
 
 
-Manthan intentionally does not guarantee:
+PramanaSystems intentionally does not guarantee:
 
 
 
@@ -582,7 +582,7 @@ Manthan intentionally does not guarantee:
 
 
 
-Manthan governs deterministic enforcement and verification semantics.
+PramanaSystems governs deterministic enforcement and verification semantics.
 
 
 
@@ -634,7 +634,7 @@ Compromise recovery must preserve explicit lineage and auditability.
 
 
 
-Manthan assumes infrastructure may be:
+PramanaSystems assumes infrastructure may be:
 
 
 
@@ -690,7 +690,7 @@ The following invariants are mandatory:
 
 
 
-These invariants are foundational to Manthan governance integrity.
+These invariants are foundational to PramanaSystems governance integrity.
 
 
 
@@ -721,4 +721,5 @@ Future threat-model evolution includes:
 
 
 Future evolution must preserve deterministic reproducibility and portable verification guarantees.
+
 

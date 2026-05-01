@@ -1,4 +1,4 @@
-\# Manthan Release Verification
+\# PramanaSystems Release Verification
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-Manthan release verification is designed around:
+PramanaSystems release verification is designed around:
 
 
 
@@ -66,7 +66,7 @@ Trust is established through deterministic cryptographic verification.
 
 | `release-manifest.sig` | Cryptographic release authenticity |
 
-| `trust/manthan-root.pub` | Portable trust-root verification anchor |
+| `trust/PramanaSystems-root.pub` | Portable trust-root verification anchor |
 
 | `trust/trust-root.json` | Trust-root metadata |
 
@@ -585,4 +585,5 @@ distributed trust-governance validation
 
 
 Future evolution must preserve deterministic reproducibility and independent verification guarantees.
+
 

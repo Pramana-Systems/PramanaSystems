@@ -1,7 +1,7 @@
-Manthan
+PramanaSystems
 Deterministic governance infrastructure for enforceable decisions requiring independently verifiable trust.
 
-Copyright 2026 Manthan Contributors
+Copyright 2026 PramanaSystems Contributors
 
 Licensed under the Apache License, Version 2.0.
 You may obtain a copy of the License at:
@@ -12,7 +12,7 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 
-Manthan preserves deterministic governance semantics including:
+PramanaSystems preserves deterministic governance semantics including:
 
 - deterministic execution
 - replay-safe enforcement
@@ -28,4 +28,4 @@ Manthan preserves deterministic governance semantics including:
 Open:
 
 ```text id="8m4vqp"
-D:\last\manthan-core\README.md
+D:\last\PramanaSystems-core\README.md

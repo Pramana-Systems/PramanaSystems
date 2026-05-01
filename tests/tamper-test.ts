@@ -122,3 +122,4 @@ fs.writeFileSync(
   originalContent,
   "utf8"
 );
+

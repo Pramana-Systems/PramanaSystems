@@ -15,7 +15,7 @@ interface ExecutionAttestation {
 const verifier =
   new LocalVerifier(
     fs.readFileSync(
-      "./test-keys/manthan_test_key.pub",
+      "./test-keys/PramanaSystems_test_key.pub",
       "utf8"
     )
   );
@@ -56,4 +56,5 @@ export function verifyAttestationFile(
     "VALID ATTESTATION"
   );
 }
+
 

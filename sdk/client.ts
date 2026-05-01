@@ -1,13 +1,13 @@
-export interface ManthanClientConfig {
+export interface PramanaSystemsClientConfig {
   baseUrl: string;
 
   apiKey: string;
 }
 
-export class ManthanClient {
+export class PramanaSystemsClient {
   constructor(
     private config:
-      ManthanClientConfig
+      PramanaSystemsClientConfig
   ) {}
 
   private async request(
@@ -145,3 +145,4 @@ export class ManthanClient {
     );
   }
 }
+

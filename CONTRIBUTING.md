@@ -1,4 +1,4 @@
-\# Contributing to Manthan
+\# Contributing to PramanaSystems
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-Manthan is deterministic governance infrastructure.
+PramanaSystems is deterministic governance infrastructure.
 
 
 
@@ -42,7 +42,7 @@ Governance correctness is prioritized over feature velocity.
 
 
 
-Manthan is not a generic workflow engine.
+PramanaSystems is not a generic workflow engine.
 
 
 
@@ -175,4 +175,5 @@ Governance infrastructure must remain independently verifiable without centraliz
 
 
 Operational simplicity is preferred over unnecessary abstraction complexity.
+
 

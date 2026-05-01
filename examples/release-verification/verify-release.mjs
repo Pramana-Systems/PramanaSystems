@@ -49,7 +49,7 @@ fs.readFileSync(
 path.join(
 root,
 "trust",
-"manthan-root.pub"
+"PramanaSystems-root.pub"
 ),
 "utf8"
 );
@@ -66,4 +66,5 @@ console.log(
 "RELEASE VERIFIED:",
 valid
 );
+
 

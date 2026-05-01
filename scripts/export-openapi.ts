@@ -15,7 +15,7 @@ generateSpec(): Promise<void> {
       openapi: {
         info: {
           title:
-            "Manthan Runtime API",
+            "PramanaSystems Runtime API",
 
           version:
             "1.0.0",
@@ -53,3 +53,4 @@ generateSpec(): Promise<void> {
 }
 
 generateSpec();
+

@@ -42,7 +42,7 @@ const publicKeyPem =
   fs.readFileSync(
     path.resolve(
       __dirname,
-      "../../trust/manthan-root.pub"
+      "../../trust/PramanaSystems-root.pub"
     ),
     "utf8"
   );
@@ -67,3 +67,4 @@ console.log(
   "RUNTIME VERIFIED:",
   verified
 );
+

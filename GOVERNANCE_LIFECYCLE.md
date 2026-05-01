@@ -1,4 +1,4 @@
-\# Manthan Governance Lifecycle
+\# PramanaSystems Governance Lifecycle
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-Manthan implements a deterministic governance lifecycle designed to preserve:
+PramanaSystems implements a deterministic governance lifecycle designed to preserve:
 
 
 
@@ -564,7 +564,7 @@ Failure Semantics
 
 
 
-Manthan governance fails closed.
+PramanaSystems governance fails closed.
 
 
 
@@ -685,4 +685,5 @@ deterministic trust-governance execution
 
 
 Future evolution must preserve deterministic reproducibility and portable verification guarantees.
+
 

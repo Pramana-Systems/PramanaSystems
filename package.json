@@ -1,5 +1,5 @@
 {
-  "name": "manthan-core",
+  "name": "PramanaSystems-core",
   "version": "1.0.2",
   "private": true,
   "packageManager": "npm@10.9.0",
@@ -16,13 +16,13 @@
 
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pavancharak/manthan-core.git"
+    "url": "git+https://github.com/pavancharak/PramanaSystems-core.git"
   },
 
-  "homepage": "https://github.com/pavancharak/manthan-core",
+  "homepage": "https://github.com/pavancharak/PramanaSystems-core",
 
   "bugs": {
-    "url": "https://github.com/pavancharak/manthan-core/issues"
+    "url": "https://github.com/pavancharak/PramanaSystems-core/issues"
   },
 
   "engines": {
@@ -79,7 +79,7 @@
 
     "pack:packages": "npm pack --workspace packages/bundle && npm pack --workspace packages/crypto && npm pack --workspace packages/governance && npm pack --workspace packages/execution && npm pack --workspace packages/verifier && npm pack --workspace packages/core",
 
-    "release:validate": "npm run build && npm run check && npm run pack:packages && node ./manthan-consumer-test/test.mjs",
+    "release:validate": "npm run build && npm run check && npm run pack:packages && node ./PramanaSystems-consumer-test/test.mjs",
 
     "publish:packages": "npm run release:validate && npm publish --workspace packages/bundle --access public && npm publish --workspace packages/crypto --access public && npm publish --workspace packages/governance --access public && npm publish --workspace packages/execution --access public && npm publish --workspace packages/verifier --access public && npm publish --workspace packages/core --access public"
   },

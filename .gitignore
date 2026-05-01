@@ -4,10 +4,10 @@ coverage/
 .vscode/
 .env
 
-manthan_bundle_key
-manthan_bundle_key.pub
+PramanaSystems_bundle_key
+PramanaSystems_bundle_key.pub
 
-test-keys/manthan_test_key
+test-keys/PramanaSystems_test_key
 runtime-audit/*.jsonl
 trust/*.key               
 

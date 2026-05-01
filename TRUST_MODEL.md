@@ -1,4 +1,4 @@
-\# Manthan Trust Model
+\# PramanaSystems Trust Model
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-Manthan is designed around explicit, portable, and cryptographically verifiable trust.
+PramanaSystems is designed around explicit, portable, and cryptographically verifiable trust.
 
 
 
@@ -92,7 +92,7 @@ Trust is established through deterministic verification rather than infrastructu
 
 
 
-Manthan uses explicit cryptographic trust roots.
+PramanaSystems uses explicit cryptographic trust roots.
 
 
 
@@ -140,7 +140,7 @@ Private trust material must never be distributed publicly.
 
 
 
-Manthan uses deterministic signing semantics.
+PramanaSystems uses deterministic signing semantics.
 
 
 
@@ -180,7 +180,7 @@ Unsigned or unverifiable artifacts are treated as invalid.
 
 
 
-Manthan supports distributed governance authority models.
+PramanaSystems supports distributed governance authority models.
 
 
 
@@ -284,7 +284,7 @@ without requiring trust in:
 
 
 
-\- Manthan infrastructure
+\- PramanaSystems infrastructure
 
 \- deployment environments
 
@@ -306,7 +306,7 @@ Verification must remain executable using only distributed governance artifacts 
 
 
 
-Manthan intentionally does not inherently trust:
+PramanaSystems intentionally does not inherently trust:
 
 
 
@@ -342,7 +342,7 @@ All critical governance operations require explicit verification.
 
 
 
-Manthan assumes compromise scenarios must remain survivable through deterministic governance controls.
+PramanaSystems assumes compromise scenarios must remain survivable through deterministic governance controls.
 
 
 
@@ -530,7 +530,7 @@ The following invariants are mandatory:
 
 
 
-These invariants are foundational to Manthan governance integrity.
+These invariants are foundational to PramanaSystems governance integrity.
 
 
 
@@ -542,7 +542,7 @@ These invariants are foundational to Manthan governance integrity.
 
 
 
-Trust in Manthan is intentionally portable.
+Trust in PramanaSystems is intentionally portable.
 
 
 
@@ -593,4 +593,5 @@ Future trust infrastructure evolution includes:
 
 
 Future evolution must preserve deterministic reproducibility and independent verifiability.
+
 

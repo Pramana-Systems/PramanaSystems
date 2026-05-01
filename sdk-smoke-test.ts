@@ -21,7 +21,7 @@ import {
 } from "@pramanasystems/crypto";
 
 console.log(
-  "Manthan SDK packages loaded successfully"
+  "PramanaSystems SDK packages loaded successfully"
 );
 
 console.log({
@@ -33,3 +33,4 @@ console.log({
   verifySignature,
   getRuntimeManifest,
 });
+

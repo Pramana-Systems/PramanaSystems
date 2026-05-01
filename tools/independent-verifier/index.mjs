@@ -25,7 +25,7 @@ switch (command) {
 
   default:
     console.log(`
-Manthan Independent Verifier
+PramanaSystems Independent Verifier
 
 Commands:
 
@@ -34,3 +34,4 @@ Commands:
   verify-runtime
 `);
 }
+

@@ -8,3 +8,4 @@ export function canonicalizeForSigning(
   return canonicalize(value);
 }
 
+

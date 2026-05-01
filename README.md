@@ -1,12 +1,12 @@
-# Manthan Core
+# PramanaSystems Core
 
 Deterministic governance infrastructure for enforceable, auditable, and independently verifiable AI-driven decisions.
 
 ---
 
-## What is Manthan?
+## What is PramanaSystems?
 
-Manthan separates:
+PramanaSystems separates:
 
 - AI systems (probabilistic signal generation)
 - Governance systems (deterministic enforcement)
@@ -131,4 +131,5 @@ npm run release:validate
 ## License
 
 Apache-2.0
+
 

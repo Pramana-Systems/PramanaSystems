@@ -15,7 +15,7 @@ const attestation =
 
 const publicKeyPem =
   fs.readFileSync(
-    "./trust/manthan-root.pub",
+    "./trust/PramanaSystems-root.pub",
     "utf8"
   );
 
@@ -47,3 +47,4 @@ console.log(
   "ATTESTATION VERIFIED:",
   verified
 );
+

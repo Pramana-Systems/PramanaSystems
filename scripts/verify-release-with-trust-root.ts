@@ -16,7 +16,7 @@ const signature =
 
 const publicKey =
   fs.readFileSync(
-    "trust/manthan-root.pub",
+    "trust/PramanaSystems-root.pub",
     "utf8"
   );
 
@@ -46,3 +46,4 @@ if (!verified) {
 console.log(
   "Trust-root verification passed"
 );
+

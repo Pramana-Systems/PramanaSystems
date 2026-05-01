@@ -1,5 +1,5 @@
 {
-  "runtime_name": "manthan-runtime",
+  "runtime_name": "PramanaSystems-runtime",
 
   "runtime_version": "1.0.0",
 
@@ -18,5 +18,6 @@
 
   "certified_at": "2026-04-30T00:00:00Z",
 
-  "certification_authority": "manthan-root-2026"
+  "certification_authority": "PramanaSystems-root-2026"
 }
+

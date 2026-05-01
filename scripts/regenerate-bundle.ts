@@ -47,3 +47,4 @@ writeManifest(
 console.log(
   `Updated bundle hash for ${bundlePath}`
 );
+

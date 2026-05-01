@@ -6,7 +6,7 @@
 
 
 
-Manthan is deterministic governance infrastructure for enforceable decisions requiring independently verifiable trust.
+PramanaSystems is deterministic governance infrastructure for enforceable decisions requiring independently verifiable trust.
 
 
 
@@ -40,7 +40,7 @@ Security correctness is treated as governance correctness.
 
 
 
-Manthan prioritizes:
+PramanaSystems prioritizes:
 
 
 
@@ -132,7 +132,7 @@ Avoid public disclosure before remediation coordination when possible.
 
 
 
-Manthan assumes:
+PramanaSystems assumes:
 
 
 
@@ -146,7 +146,7 @@ Manthan assumes:
 
 
 
-Manthan intentionally avoids:
+PramanaSystems intentionally avoids:
 
 
 
@@ -195,4 +195,5 @@ Run:
 ```powershell id="2q7xzp"
 
 npm run release:validate
+
 

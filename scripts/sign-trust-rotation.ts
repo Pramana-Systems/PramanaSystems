@@ -10,7 +10,7 @@ const rotation =
 
 const privateKey =
   fs.readFileSync(
-    "trust/manthan-root.key",
+    "trust/PramanaSystems-root.key",
     "utf8"
   );
 
@@ -37,3 +37,4 @@ fs.writeFileSync(
 console.log(
   "Trust rotation signed"
 );
+

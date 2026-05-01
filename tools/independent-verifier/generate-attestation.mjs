@@ -7,7 +7,7 @@ import {
 
 const privateKeyPem =
   fs.readFileSync(
-    "./trust/manthan-root.key",
+    "./trust/PramanaSystems-root.key",
     "utf8"
   );
 
@@ -76,3 +76,4 @@ fs.writeFileSync(
 console.log(
   "ATTESTATION GENERATED"
 );
+

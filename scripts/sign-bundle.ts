@@ -40,3 +40,4 @@ fs.writeFileSync(
 console.log(
   `Signed bundle: ${bundlePath}`
 );
+
