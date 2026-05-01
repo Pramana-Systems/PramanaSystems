@@ -1,4 +1,4 @@
-\# Manthan Quickstart Example
+\# pramanasystems Quickstart Example
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-This example demonstrates a minimal deterministic governance workflow using Manthan.
+This example demonstrates a minimal deterministic governance workflow using pramanasystems.
 
 
 
@@ -140,7 +140,7 @@ Governance Principle
 
 
 
-Manthan exists to preserve deterministic governance trust independently of infrastructure ownership.
+pramanasystems exists to preserve deterministic governance trust independently of infrastructure ownership.
 
 
 
@@ -160,7 +160,7 @@ Open:
 
 ```text id="5t1xwr"
 
-D:\\last\\manthan-core\\README.md
+D:\\last\\pramanasystems-core\\README.md
 
 
 
@@ -181,4 +181,5 @@ Minimal runnable example:
 
 
 \- `examples/quickstart/README.md`
+
 

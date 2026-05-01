@@ -1,4 +1,4 @@
-\# Manthan Terminology Standards
+\# pramanasystems Terminology Standards
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-This document defines the canonical terminology used throughout the Manthan governance ecosystem.
+This document defines the canonical terminology used throughout the pramanasystems governance ecosystem.
 
 
 
@@ -504,7 +504,7 @@ AI systems never directly determine deterministic governance enforcement outcome
 
 
 
-This statement defines a foundational Manthan architectural invariant.
+This statement defines a foundational pramanasystems architectural invariant.
 
 
 
@@ -579,4 +579,5 @@ governance invariants
 
 
 New terminology should be introduced conservatively and only when semantically necessary.
+
 

@@ -1,4 +1,4 @@
-\# Proposed @manthan/core Export Surface
+\# Proposed @pramanasystems/core Export Surface
 
 
 
@@ -129,6 +129,7 @@ Public exports must represent stable deterministic governance semantics.
 
 
 Internal execution plumbing must remain replaceable without ecosystem breakage.
+
 
 
 

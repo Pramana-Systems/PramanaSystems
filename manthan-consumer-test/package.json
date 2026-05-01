@@ -1,5 +1,5 @@
 {
-  "name": "manthan-consumer-test",
+  "name": "pramanasystems-consumer-test",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -18,3 +18,4 @@
   "@pramanasystems/verifier": "1.0.0"
 }
 }
+

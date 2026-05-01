@@ -6,7 +6,7 @@
 
 
 
-This document defines deterministic verifier and signer adapter semantics within the Manthan governance ecosystem.
+This document defines deterministic verifier and signer adapter semantics within the pramanasystems governance ecosystem.
 
 
 
@@ -695,4 +695,5 @@ Future evolution must preserve:
 \- trust continuity
 
 \- portable verification behavior
+
 

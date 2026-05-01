@@ -6,7 +6,7 @@
 
 
 
-This document defines deterministic compatibility guarantees across the Manthan governance ecosystem.
+This document defines deterministic compatibility guarantees across the pramanasystems governance ecosystem.
 
 
 
@@ -46,7 +46,7 @@ Versioning exists to preserve governance trust continuity.
 
 
 
-Manthan prioritizes:
+pramanasystems prioritizes:
 
 
 
@@ -84,7 +84,7 @@ Semantic Versioning Model
 
 
 
-Manthan follows:
+pramanasystems follows:
 
 
 
@@ -579,4 +579,5 @@ trust-lineage continuity
 
 
 Governance evolution must remain explicitly versioned and independently verifiable.
+
 

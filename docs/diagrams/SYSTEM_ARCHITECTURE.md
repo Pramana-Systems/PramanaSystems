@@ -1,4 +1,4 @@
-\# Manthan System Architecture## PurposeThis diagram describes the high-level deterministic governance architecture of Manthan.Manthan separates:- probabilistic AI evaluation- deterministic governance enforcement- portable verification- trust infrastructureThe system preserves independently reproducible governance evidence.---# High-Level Governance Flow```text┌──────────────────────┐│      AI Systems      ││----------------------││ Classification       ││ Recommendation       ││ Signal Extraction    ││ Risk Assessment      │└──────────┬───────────┘           │           ▼┌──────────────────────┐│   Governed Signals   ││----------------------││ Typed Inputs         ││ Schema Validation    ││ Deterministic Inputs │└──────────┬───────────┘           │           ▼┌──────────────────────┐│ Policy Governance    ││----------------------││ Governance Rules     ││ Compatibility Rules  ││ Runtime Requirements │└──────────┬───────────┘           │           ▼┌──────────────────────┐│ Deterministic        ││ Execution Runtime    ││----------------------││ Replay Protection    ││ Fail-Closed Behavior ││ Runtime Validation   │└──────────┬───────────┘           │           ▼┌──────────────────────┐│ Execution            ││ Attestation          ││----------------------││ Signed Evidence      ││ Immutable Provenance ││ Governance Lineage   │└──────────┬───────────┘           │           ▼┌──────────────────────┐│ Independent          ││ Verification         ││----------------------││ Release Verification ││ Runtime Verification ││ Attestation Verify   │└──────────────────────┘
+\# pramanasystems System Architecture## PurposeThis diagram describes the high-level deterministic governance architecture of pramanasystems.pramanasystems separates:- probabilistic AI evaluation- deterministic governance enforcement- portable verification- trust infrastructureThe system preserves independently reproducible governance evidence.---# High-Level Governance Flow```text┌──────────────────────┐│      AI Systems      ││----------------------││ Classification       ││ Recommendation       ││ Signal Extraction    ││ Risk Assessment      │└──────────┬───────────┘           │           ▼┌──────────────────────┐│   Governed Signals   ││----------------------││ Typed Inputs         ││ Schema Validation    ││ Deterministic Inputs │└──────────┬───────────┘           │           ▼┌──────────────────────┐│ Policy Governance    ││----------------------││ Governance Rules     ││ Compatibility Rules  ││ Runtime Requirements │└──────────┬───────────┘           │           ▼┌──────────────────────┐│ Deterministic        ││ Execution Runtime    ││----------------------││ Replay Protection    ││ Fail-Closed Behavior ││ Runtime Validation   │└──────────┬───────────┘           │           ▼┌──────────────────────┐│ Execution            ││ Attestation          ││----------------------││ Signed Evidence      ││ Immutable Provenance ││ Governance Lineage   │└──────────┬───────────┘           │           ▼┌──────────────────────┐│ Independent          ││ Verification         ││----------------------││ Release Verification ││ Runtime Verification ││ Attestation Verify   │└──────────────────────┘
 
 
 
@@ -140,9 +140,9 @@ without centralized trust dependency.
 
 Operational Principle
 
-Manthan exists to preserve deterministic governance trust independently of infrastructure ownership.
+pramanasystems exists to preserve deterministic governance trust independently of infrastructure ownership.
 
-Then update your root README.Open:```text id="9t1xqm"D:\\last\\manthan-core\\README.md
+Then update your root README.Open:```text id="9t1xqm"D:\\last\\pramanasystems-core\\README.md
 
 Find:
 
@@ -155,4 +155,5 @@ Add this line underneath:
 Then validate:
 
 npm run release:validate
+
 

@@ -1,4 +1,4 @@
-\# Manthan SDK Release Process
+\# pramanasystems SDK Release Process
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-This document defines the deterministic governance release process for Manthan SDKs and runtime artifacts.
+This document defines the deterministic governance release process for pramanasystems SDKs and runtime artifacts.
 
 
 
@@ -194,7 +194,7 @@ Governance Philosophy
 
 
 
-Manthan provides:
+pramanasystems provides:
 
 
 
@@ -206,7 +206,7 @@ AI systems generate signals.
 
 
 
-Manthan governs enforcement deterministically.
+pramanasystems governs enforcement deterministically.
 
 
 
@@ -215,4 +215,5 @@ Operational Principle
 
 
 Governance verification must remain independently executable without centralized trust dependency.
+
 

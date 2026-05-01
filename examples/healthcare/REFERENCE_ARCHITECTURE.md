@@ -6,7 +6,7 @@
 
 
 
-This document demonstrates how Manthan deterministic governance infrastructure may be used in healthcare AI workflows.
+This document demonstrates how pramanasystems deterministic governance infrastructure may be used in healthcare AI workflows.
 
 
 
@@ -30,7 +30,7 @@ AI systems generate signals.
 
 
 
-Manthan governs deterministic enforcement.
+pramanasystems governs deterministic enforcement.
 
 
 
@@ -152,7 +152,7 @@ Deterministic Enforcement Layer
 
 
 
-Manthan may deterministically enforce:
+pramanasystems may deterministically enforce:
 
 
 
@@ -224,7 +224,7 @@ Governance Principle
 
 
 
-Manthan does NOT determine medical truth.
+pramanasystems does NOT determine medical truth.
 
 
 
@@ -256,7 +256,7 @@ Open:
 
 ```text id="8m4vqp"
 
-D:\\last\\manthan-core\\README.md
+D:\\last\\pramanasystems-core\\README.md
 
 
 
@@ -294,11 +294,12 @@ Paste:
 
 
 
-This is strategically powerful because it transforms Manthan from:
+This is strategically powerful because it transforms pramanasystems from:
 
 
 
 ```text id="9m5vwr"
 
 abstract governance infrastructure
+
 

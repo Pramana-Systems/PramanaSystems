@@ -6,7 +6,7 @@
 
 
 
-This example demonstrates deterministic rebuild verification of Manthan release artifacts.
+This example demonstrates deterministic rebuild verification of pramanasystems release artifacts.
 
 
 
@@ -119,4 +119,5 @@ Validated capabilities include:
 
 
 The verification flow successfully demonstrated deterministic equivalence of rebuilt governance artifacts using reproducible release provenance semantics.
+
 

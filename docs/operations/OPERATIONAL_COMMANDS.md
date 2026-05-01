@@ -1,4 +1,4 @@
-\# Manthan Operational Commands
+\# pramanasystems Operational Commands
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-This document defines the canonical operational command surface for Manthan deterministic governance infrastructure.
+This document defines the canonical operational command surface for pramanasystems deterministic governance infrastructure.
 
 
 
@@ -245,4 +245,5 @@ governance lifecycle expectations
 trust assumptions
 
 compatibility procedures
+
 

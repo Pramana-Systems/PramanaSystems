@@ -1,4 +1,4 @@
-\# Manthan Public API Policy
+\# pramanasystems Public API Policy
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-This document defines the public compatibility surface for Manthan deterministic governance infrastructure.
+This document defines the public compatibility surface for pramanasystems deterministic governance infrastructure.
 
 
 
@@ -64,7 +64,7 @@ Changes affecting these contracts require compatibility review.
 
 
 
-Manthan prioritizes:
+pramanasystems prioritizes:
 
 
 
@@ -186,7 +186,7 @@ Verification MUST NOT require:
 
 
 
-Manthan provides deterministic governance infrastructure for enforceable decisions requiring independently verifiable trust.
+pramanasystems provides deterministic governance infrastructure for enforceable decisions requiring independently verifiable trust.
 
 
 
@@ -194,7 +194,7 @@ AI systems generate signals.
 
 
 
-Manthan governs enforcement deterministically.
+pramanasystems governs enforcement deterministically.
 
 ``` id="wpy3vn"
 
@@ -215,4 +215,5 @@ Run:
 ```powershell id="6v3nwr"
 
 npm run release:validate
+
 

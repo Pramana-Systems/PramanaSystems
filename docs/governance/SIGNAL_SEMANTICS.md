@@ -6,7 +6,7 @@
 
 
 
-This document defines deterministic governance signal semantics within the Manthan governance ecosystem.
+This document defines deterministic governance signal semantics within the pramanasystems governance ecosystem.
 
 
 
@@ -98,7 +98,7 @@ AI systems may generate candidate signals.
 
 
 
-Manthan deterministically governs execution using governed signals.
+pramanasystems deterministically governs execution using governed signals.
 
 
 
@@ -795,4 +795,5 @@ Future evolution must preserve:
 \- trust continuity
 
 \- portable verification semantics
+
 

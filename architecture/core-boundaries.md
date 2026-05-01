@@ -1,4 +1,4 @@
-\# Manthan Core Boundary Specification
+\# pramanasystems Core Boundary Specification
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-`@manthan/core` is the deterministic governance kernel of Manthan.
+`@pramanasystems/core` is the deterministic governance kernel of pramanasystems.
 
 
 
@@ -281,6 +281,7 @@ must not depend on runtime ownership
 governance ambiguity
 
 must fail closed
+
 
 
 

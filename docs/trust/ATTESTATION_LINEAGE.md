@@ -6,7 +6,7 @@
 
 
 
-This document defines deterministic attestation lineage semantics within the Manthan governance ecosystem.
+This document defines deterministic attestation lineage semantics within the pramanasystems governance ecosystem.
 
 
 
@@ -679,4 +679,5 @@ Future evolution must preserve:
 \- trust continuity
 
 \- portable verification semantics
+
 

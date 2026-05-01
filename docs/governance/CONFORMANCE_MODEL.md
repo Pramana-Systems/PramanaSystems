@@ -14,7 +14,7 @@ The next step is to explicitly document:
 
 
 
-> what conformance means in Manthan.
+> what conformance means in pramanasystems.
 
 
 
@@ -36,7 +36,7 @@ From:
 
 ```text id="4q8vwr"
 
-D:\\last\\manthan-core
+D:\\last\\pramanasystems-core
 
 ```
 
@@ -64,7 +64,7 @@ notepad .\\docs\\CONFORMANCE\_MODEL.md
 
 ````md id="7m2xqp"
 
-\# Manthan Conformance Model
+\# pramanasystems Conformance Model
 
 
 
@@ -72,7 +72,7 @@ notepad .\\docs\\CONFORMANCE\_MODEL.md
 
 
 
-Manthan conformance validation exists to prove deterministic governance invariants.
+pramanasystems conformance validation exists to prove deterministic governance invariants.
 
 
 
@@ -359,6 +359,7 @@ You are now formally defining:
 
 
 That is exactly what mature deterministic governance systems require.
+
 
 
 

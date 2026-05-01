@@ -1,4 +1,4 @@
-\# Manthan Runtime Certification
+\# pramanasystems Runtime Certification
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-This document defines runtime certification semantics for Manthan deterministic governance infrastructure.
+This document defines runtime certification semantics for pramanasystems deterministic governance infrastructure.
 
 
 
@@ -223,4 +223,5 @@ Run:
 ```powershell id="6v3nwr"
 
 npm run release:validate
+
 

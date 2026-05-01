@@ -66,7 +66,7 @@ jobs:
       - name: Upload Release Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: manthan-release-artifacts
+          name: pramanasystems-release-artifacts
 
           path: |
             packages/bundle/*.tgz

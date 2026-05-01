@@ -6,7 +6,7 @@
 
 
 
-This document demonstrates portable deterministic governance verification using Manthan independent verifier tooling.
+This document demonstrates portable deterministic governance verification using pramanasystems independent verifier tooling.
 
 
 
@@ -49,4 +49,5 @@ Execution Attestation
 &#x20;   ↓
 
 Governance Evidence Integrity
+
 

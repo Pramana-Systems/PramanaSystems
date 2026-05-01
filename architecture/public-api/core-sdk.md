@@ -1,4 +1,4 @@
-\# Manthan Core SDK Philosophy
+\# pramanasystems Core SDK Philosophy
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-`@manthan/core` provides the stable public deterministic governance API.
+`@pramanasystems/core` provides the stable public deterministic governance API.
 
 
 
@@ -26,15 +26,15 @@ Internal packages remain modular:
 
 
 
-\* @manthan/bundle
+\* @pramanasystems/bundle
 
-\* @manthan/crypto
+\* @pramanasystems/crypto
 
-\* @manthan/governance
+\* @pramanasystems/governance
 
-\* @manthan/execution
+\* @pramanasystems/execution
 
-\* @manthan/verifier
+\* @pramanasystems/verifier
 
 
 
@@ -54,7 +54,7 @@ External systems consume:
 
 
 
-\* @manthan/core
+\* @pramanasystems/core
 
 
 
@@ -130,7 +130,7 @@ import {
 
 &#x20; canonicalize
 
-} from "@manthan/core";
+} from "@pramanasystems/core";
 
 ```
 
@@ -160,7 +160,7 @@ They must not depend on internal package structure.
 
 
 
-Manthan becomes:
+pramanasystems becomes:
 
 
 
@@ -169,6 +169,7 @@ a portable deterministic governance standard layer
 
 
 not merely a runtime framework
+
 
 
 

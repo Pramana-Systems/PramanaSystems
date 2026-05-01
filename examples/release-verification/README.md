@@ -6,7 +6,7 @@
 
 
 
-This example demonstrates independent cryptographic verification of Manthan release artifacts.
+This example demonstrates independent cryptographic verification of pramanasystems release artifacts.
 
 
 
@@ -116,7 +116,7 @@ release-manifest.json	Deterministic provenance
 
 release-manifest.sig	Cryptographic authenticity
 
-trust/manthan-root.pub	Portable trust anchor
+trust/pramanasystems-root.pub	Portable trust anchor
 
 
 
@@ -145,4 +145,5 @@ Validated capabilities include:
 
 
 The verification flow successfully demonstrated infrastructure-independent cryptographic release validation using portable trust roots and deterministic provenance artifacts.
+
 

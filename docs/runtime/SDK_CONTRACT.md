@@ -2,7 +2,7 @@
 
 
 
-The Manthan SDK exposes stable deterministic governance interfaces for:
+The pramanasystems SDK exposes stable deterministic governance interfaces for:
 
 
 
@@ -281,4 +281,5 @@ implementation flexibility
 deterministic compatibility guarantees
 
 governance portability stability
+
 

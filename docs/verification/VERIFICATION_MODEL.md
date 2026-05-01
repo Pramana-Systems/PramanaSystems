@@ -6,7 +6,7 @@
 
 
 
-This document defines deterministic governance verification semantics within the Manthan governance ecosystem.
+This document defines deterministic governance verification semantics within the pramanasystems governance ecosystem.
 
 
 
@@ -775,4 +775,5 @@ Future evolution must preserve:
 \- trust continuity
 
 \- portable verification semantics
+
 

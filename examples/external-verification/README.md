@@ -6,7 +6,7 @@
 
 
 
-This example demonstrates portable independent verification of Manthan governance artifacts outside the originating repository environment.
+This example demonstrates portable independent verification of pramanasystems governance artifacts outside the originating repository environment.
 
 
 
@@ -89,4 +89,5 @@ Verify Attestation
 &#x20;   ↓
 
 Validate Portable Verification Semantics
+
 

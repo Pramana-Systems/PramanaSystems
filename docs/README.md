@@ -1,18 +1,18 @@
-# Manthan
+# pramanasystems
 
 Deterministic governance infrastructure for enforceable decisions requiring independently verifiable trust.
 
-Manthan separates probabilistic AI evaluation from deterministic governance enforcement.
+pramanasystems separates probabilistic AI evaluation from deterministic governance enforcement.
 
 AI systems generate signals.
 
-Manthan governs enforcement deterministically.
+pramanasystems governs enforcement deterministically.
 
 ---
 
 # Core Principles
 
-Manthan is built around the following governance invariants:
+pramanasystems is built around the following governance invariants:
 
 - deterministic execution
 - replay-safe enforcement
@@ -29,7 +29,7 @@ These invariants preserve governance integrity independently of infrastructure o
 
 # Governance Philosophy
 
-Manthan separates:
+pramanasystems separates:
 
 ```text
 AI Evaluation
@@ -87,15 +87,15 @@ SDK portability
 independently reproducible governance evidence
 Package Overview
 Package	Responsibility
-@manthan/bundle	Deterministic governance artifacts
-@manthan/crypto	Signing and verification primitives
-@manthan/governance	Governance lifecycle semantics
-@manthan/execution	Deterministic runtime execution
-@manthan/verifier	Independent governance verification
-@manthan/core	Public SDK orchestration surface
+@pramanasystems/bundle	Deterministic governance artifacts
+@pramanasystems/crypto	Signing and verification primitives
+@pramanasystems/governance	Governance lifecycle semantics
+@pramanasystems/execution	Deterministic runtime execution
+@pramanasystems/verifier	Independent governance verification
+@pramanasystems/core	Public SDK orchestration surface
 Deterministic Governance Guarantees
 
-Manthan preserves:
+pramanasystems preserves:
 
 deterministic execution semantics
 replay-safe governance behavior
@@ -121,7 +121,7 @@ without requiring centralized infrastructure trust.
 
 Independent Verification
 
-Manthan includes portable independent verifier tooling:
+pramanasystems includes portable independent verifier tooling:
 
 tools/independent-verifier/
 
@@ -153,13 +153,13 @@ Expected output:
 
 RUNTIME VERIFIED: true
 
-The verifier operationalizes one of Manthan’s core guarantees:
+The verifier operationalizes one of pramanasystems’s core guarantees:
 
 governance verification without centralized trust dependency.
 
 Portability Philosophy
 
-Manthan is designed for portable governance execution.
+pramanasystems is designed for portable governance execution.
 
 Organizations may operate:
 
@@ -221,4 +221,4 @@ Run authoritative release governance validation:
 npm run release:validate
 Governance Principle
 
-Manthan provides deterministic governance infrastructure for enforceable decisions requiring independently verifiable trust.
+pramanasystems provides deterministic governance infrastructure for enforceable decisions requiring independently verifiable trust.

@@ -6,7 +6,7 @@
 
 
 
-This document provides the canonical semantic index for the Manthan governance specification ecosystem.
+This document provides the canonical semantic index for the pramanasystems governance specification ecosystem.
 
 
 
@@ -38,15 +38,15 @@ This index is treated as part of the governance architecture itself.
 
 
 
-\# Manthan System Definition
+\# pramanasystems System Definition
 
 
 
-Manthan is deterministic governance infrastructure.
+pramanasystems is deterministic governance infrastructure.
 
 
 
-Manthan is not:
+pramanasystems is not:
 
 
 
@@ -62,7 +62,7 @@ Manthan is not:
 
 
 
-Manthan provides:
+pramanasystems provides:
 
 
 
@@ -96,7 +96,7 @@ AI systems never directly determine deterministic governance enforcement outcome
 
 
 
-The Manthan governance ecosystem is organized into deterministic semantic layers.
+The pramanasystems governance ecosystem is organized into deterministic semantic layers.
 
 
 
@@ -532,7 +532,7 @@ Governance Scope Boundaries
 
 
 
-Manthan intentionally excludes:
+pramanasystems intentionally excludes:
 
 
 
@@ -548,7 +548,7 @@ cloud infrastructure management
 
 
 
-Manthan governs deterministic enforcement semantics around governed systems.
+pramanasystems governs deterministic enforcement semantics around governed systems.
 
 
 
@@ -637,4 +637,5 @@ The specification ecosystem is treated as deterministic governance infrastructur
 
 
 Semantic consistency, invariant preservation, and explicit governance interpretation are considered architectural requirements rather than documentation preferences.
+
 

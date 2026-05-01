@@ -1,4 +1,4 @@
-\# Manthan Versioning Policy
+\# pramanasystems Versioning Policy
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-This document defines compatibility and versioning expectations for Manthan deterministic governance infrastructure.
+This document defines compatibility and versioning expectations for pramanasystems deterministic governance infrastructure.
 
 
 
@@ -22,7 +22,7 @@ Versioning is treated as a governance compatibility contract.
 
 
 
-Manthan prioritizes:
+pramanasystems prioritizes:
 
 
 
@@ -50,7 +50,7 @@ Compatibility preservation is preferred over rapid interface expansion.
 
 
 
-Manthan follows semantic versioning:
+pramanasystems follows semantic versioning:
 
 
 
@@ -207,4 +207,5 @@ Run:
 ```powershell id="6v3nwr"
 
 npm run release:validate
+
 
