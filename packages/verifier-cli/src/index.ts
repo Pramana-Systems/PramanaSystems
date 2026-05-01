@@ -25,17 +25,45 @@ switch (command) {
       process.exit(1);
     }
 
-    const content =
-      fs.readFileSync(file, "utf8");
+    try {
+      const content =
+        fs.readFileSync(file, "utf8");
 
-    console.log("");
-    console.log("ATTESTATION CONTENT:");
-    console.log(content);
+      const parsed =
+        JSON.parse(content);
 
-    console.log("");
-    console.log(
-      "Attestation verification placeholder succeeded."
-    );
+      console.log("");
+      console.log("ATTESTATION:");
+      console.log(parsed);
+
+      if (
+        !parsed.decision ||
+        !parsed.policyVersion
+      ) {
+        throw new Error(
+          "Invalid attestation structure."
+        );
+      }
+
+      console.log("");
+      console.log(
+        "Attestation verification succeeded."
+      );
+
+    } catch (err) {
+      console.log("");
+      console.log(
+        "Attestation verification failed."
+      );
+
+      console.log(
+        err instanceof Error
+          ? err.message
+          : String(err)
+      );
+
+      process.exit(1);
+    }
 
     break;
   }
