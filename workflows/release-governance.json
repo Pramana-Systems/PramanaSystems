@@ -1,0 +1,50 @@
+{
+  "workflow_id": "release-governance",
+
+  "workflow_version": "1.0.0",
+
+  "steps": [
+    {
+      "step_id": "validate-types",
+
+      "operation": "typecheck"
+    },
+
+    {
+      "step_id": "run-tests",
+
+      "operation": "test"
+    },
+
+    {
+      "step_id": "export-openapi",
+
+      "operation": "export-openapi"
+    },
+
+    {
+      "step_id": "build-packages",
+
+      "operation": "build-packages"
+    },
+
+    {
+      "step_id": "generate-release-manifest",
+
+      "operation": "release-manifest"
+    },
+
+    {
+      "step_id": "sign-release-manifest",
+
+      "operation": "release-sign"
+    },
+
+    {
+      "step_id": "verify-release",
+
+      "operation": "release-verify"
+    }
+  ]
+}
+

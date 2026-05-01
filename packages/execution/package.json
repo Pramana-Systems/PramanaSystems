@@ -1,0 +1,53 @@
+{
+    "name": "@pramanasystems/execution",
+    "version": "1.0.3",
+    "private": false,
+    "type": "module",
+    "scripts": {
+        "build": "tsup"
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "sideEffects": false,
+    "dependencies": {
+        "@pramanasystems/bundle": "^1.0.3",
+        "@pramanasystems/governance": "^1.0.3"
+    },
+    "description": "Deterministic runtime execution and governance attestation infrastructure for PramanaSystems.",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pavancharak/PramanaSystems-core.git"
+    },
+    "homepage": "https://github.com/pavancharak/PramanaSystems-core",
+    "bugs": {
+        "url": "https://github.com/pavancharak/PramanaSystems-core/issues"
+    },
+    "engines": {
+        "node": ">=20"
+    },
+    "keywords": [
+        "execution",
+        "runtime",
+        "attestation",
+        "replay-protection",
+        "deterministic",
+        "governance",
+        "verification",
+        "auditability"
+    ]
+}
+
+
+
+
+
+
+

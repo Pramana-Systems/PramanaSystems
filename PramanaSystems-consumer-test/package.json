@@ -1,0 +1,24 @@
+{
+  "name": "pramanasystems-consumer-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "description": "",
+ "dependencies": {
+  "@pramanasystems/bundle": "1.0.0",
+  "@pramanasystems/core": "1.0.0",
+  "@pramanasystems/crypto": "1.0.0",
+  "@pramanasystems/execution": "1.0.0",
+  "@pramanasystems/governance": "1.0.0",
+  "@pramanasystems/verifier": "1.0.0"
+}
+}
+
+
+
+

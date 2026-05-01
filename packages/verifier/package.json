@@ -1,0 +1,52 @@
+{
+    "name": "@pramanasystems/verifier",
+    "version": "1.0.3",
+    "private": false,
+    "type": "module",
+    "scripts": {
+        "build": "tsup"
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "sideEffects": false,
+    "dependencies": {
+        "@pramanasystems/crypto": "^1.0.3",
+        "@pramanasystems/execution": "^1.0.3",
+        "@pramanasystems/governance": "^1.0.3"
+    },
+    "description": "Independent governance verification infrastructure for deterministic PramanaSystems workflows.",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pavancharak/PramanaSystems-core.git"
+    },
+    "homepage": "https://github.com/pavancharak/PramanaSystems-core",
+    "bugs": {
+        "url": "https://github.com/pavancharak/PramanaSystems-core/issues"
+    },
+    "engines": {
+        "node": ">=20"
+    },
+    "keywords": [
+        "verification",
+        "attestation",
+        "provenance",
+        "trust",
+        "auditability",
+        "governance"
+    ]
+}
+
+
+
+
+
+
+

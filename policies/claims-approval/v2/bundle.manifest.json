@@ -1,0 +1,26 @@
+{
+  "artifacts": [
+    {
+      "hash": "f9a8b4612fe761da839aba8bf7b08c3a01b62cf2a6bc32bec81aadc54e81a8aa",
+      "path": "policy.json"
+    }
+  ],
+  "bundle_hash": "b3155b686e313cc9afdd9bb098c223b7cf672c922713b51115da64ab578a6c78",
+  "manifest_version": "1",
+  "policy_id": "claims-approval",
+  "policy_version": "v2",
+  "runtime_requirements": {
+    "required_capabilities": [
+      "replay-protection",
+      "attestation-signing",
+      "bundle-verification"
+    ],
+    "supported_runtime_versions": [
+      "1.0.0"
+    ],
+    "supported_schema_versions": [
+      "1.0.0"
+    ]
+  }
+}
+

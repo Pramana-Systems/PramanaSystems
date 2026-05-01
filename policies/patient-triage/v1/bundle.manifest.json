@@ -1,0 +1,26 @@
+{
+  "artifacts": [
+    {
+      "hash": "c69eded2f3f21ef64aea6927def3048c4763386bbfe40013cd7afa87d3ea6287",
+      "path": "policy.json"
+    }
+  ],
+  "bundle_hash": "40a37ba80f44ca98eb049eb9a1dd862292705db1d31a9b83b3f3093070911203",
+  "manifest_version": "1",
+  "policy_id": "patient-triage",
+  "policy_version": "v1",
+  "runtime_requirements": {
+    "required_capabilities": [
+      "replay-protection",
+      "attestation-signing",
+      "bundle-verification"
+    ],
+    "supported_runtime_versions": [
+      "1.0.0"
+    ],
+    "supported_schema_versions": [
+      "1.0.0"
+    ]
+  }
+}
+

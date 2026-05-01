@@ -1,0 +1,41 @@
+{
+  "manifest_version": "1.0.0",
+  "generated_at": "2026-04-30T03:00:16.059Z",
+  "git_commit": "0914b5a1979e197e130072d5ef5c38dc84962059",
+  "git_tag": "development",
+  "generated_by": "PramanaSystems-release-pipeline",
+  "node_version": "v20.20.2",
+  "artifacts": [
+    {
+      "package": "bundle",
+      "artifact": "PramanaSystems-bundle-1.0.0.tgz",
+      "sha256": "8764fa084a582321c6e895c81941ee034bbaf52c55d66f7ca52861a66a165581"
+    },
+    {
+      "package": "crypto",
+      "artifact": "PramanaSystems-crypto-1.0.0.tgz",
+      "sha256": "bb8ea101d935bf1c411a83d3c1e485fe41ba84216045ae07a05629894a5fb3de"
+    },
+    {
+      "package": "governance",
+      "artifact": "PramanaSystems-governance-1.0.0.tgz",
+      "sha256": "56866951a32d2ff069636b951c28eeb584515669386bb9ef92a2a21f827cb5e2"
+    },
+    {
+      "package": "execution",
+      "artifact": "PramanaSystems-execution-1.0.0.tgz",
+      "sha256": "b34f93c5b7b998ad7d3c6eb1efdea1f00eb154cb40c081133d7e78606acb2ccd"
+    },
+    {
+      "package": "verifier",
+      "artifact": "PramanaSystems-verifier-1.0.0.tgz",
+      "sha256": "49997f8e33e807e1c989d21cdacbbf89cdb654c86fd7e10afa2f9f6deb038714"
+    },
+    {
+      "package": "core",
+      "artifact": "PramanaSystems-core-1.0.0.tgz",
+      "sha256": "e20ffea424db91be4e7666122d83d696090d07b2d51390742b730006412d42dc"
+    }
+  ]
+}
+

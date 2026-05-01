@@ -1,0 +1,23 @@
+{
+  "runtime_name": "PramanaSystems-runtime",
+
+  "runtime_version": "1.0.0",
+
+  "runtime_hash": "fd612badb26392e7bc53ad5e556dccdb9be61044a9055e6a4b72f1b8498431ee",
+
+  "supported_schema_versions": [
+    "1.0.0"
+  ],
+
+  "capabilities": [
+    "deterministic-execution",
+    "replay-protection",
+    "attestation-signing",
+    "portable-verification"
+  ],
+
+  "certified_at": "2026-04-30T00:00:00Z",
+
+  "certification_authority": "PramanaSystems-root-2026"
+}
+

@@ -1,0 +1,20 @@
+{
+  "trust_root_version": "1.0.0",
+
+  "algorithm": "ed25519",
+
+  "key_id": "PramanaSystems-root-2026",
+
+  "public_key_file": "PramanaSystems-root.pub",
+
+  "created_at": "2026-04-30T00:00:00Z",
+
+  "purpose": [
+    "release-verification",
+    "manifest-signing",
+    "attestation-verification"
+  ],
+
+  "immutable": true
+}
+

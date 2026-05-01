@@ -1,0 +1,81 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install
+        run: npm ci
+
+      - name: Run Release Validation
+        run: npm run release:validate
+
+      - name: Build Workspace Packages
+        run: npm run build:packages
+
+      - name: Pack Bundle
+        run: |
+          cd packages/bundle
+          npm pack
+
+      - name: Pack Crypto
+        run: |
+          cd packages/crypto
+          npm pack
+
+      - name: Pack Governance
+        run: |
+          cd packages/governance
+          npm pack
+
+      - name: Pack Execution
+        run: |
+          cd packages/execution
+          npm pack
+
+      - name: Pack Verifier
+        run: |
+          cd packages/verifier
+          npm pack
+
+      - name: Pack Core
+        run: |
+          cd packages/core
+          npm pack
+
+      - name: Generate Release Manifest
+        run: npm run release:manifest
+
+      - name: Sign Release Manifest
+        run: npm run release:sign
+
+      - name: Upload Release Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: pramanasystems-release-artifacts
+
+          path: |
+            packages/bundle/*.tgz
+            packages/crypto/*.tgz
+            packages/governance/*.tgz
+            packages/execution/*.tgz
+            packages/verifier/*.tgz
+            packages/core/*.tgz
+            release-manifest.json
+            release-manifest.sig
+
+

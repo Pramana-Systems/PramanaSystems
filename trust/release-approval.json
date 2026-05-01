@@ -1,0 +1,20 @@
+{
+  "release": "v1.0.0",
+
+  "approved_by": [
+    {
+      "authority_id": "authority-a",
+
+      "signature_file": "authority-a.sig"
+    },
+
+    {
+      "authority_id": "authority-b",
+
+      "signature_file": "authority-b.sig"
+    }
+  ],
+
+  "quorum_satisfied": true
+}
+
