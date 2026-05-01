@@ -1,0 +1,14 @@
+{
+  "name": "@pramanasystems/verifier-cli",
+  "version": "1.0.3",
+  "type": "module",
+  "bin": {
+    "pramanasystems-verifier": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts"
+  },
+  "dependencies": {
+    "@pramanasystems/core": "^1.0.3"
+  }
+}
