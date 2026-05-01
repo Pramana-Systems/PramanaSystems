@@ -18,7 +18,10 @@ workflows/
 
 node_modules/
 
+coverage/
+
 *.log
+*.tgz
 *.tsbuildinfo
 
 vitest.config.ts
@@ -27,3 +30,5 @@ turbo.json
 pnpm-lock.yaml
 
 Dockerfile
+
+manthan-consumer-test/
