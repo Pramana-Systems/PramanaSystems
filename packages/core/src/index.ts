@@ -4,7 +4,7 @@ export {
   upgradePolicy,
   validatePolicy,
   generateBundle
-} from "@manthan/governance";
+} from "@pramanasystems/governance";
 
 // Deterministic Execution
 export {
@@ -19,7 +19,7 @@ export {
   LocalSigner,
   LocalVerifier,
   MemoryReplayStore
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 // Portable Verification
 export {
@@ -28,7 +28,7 @@ export {
   verifyRuntime,
   verifyRuntimeCompatibility,
   verifyExecutionRequirements
-} from "@manthan/verifier";
+} from "@pramanasystems/verifier";
 
 // Canonical Governance Types
 export type {
@@ -40,9 +40,9 @@ export type {
   Signer,
   Verifier,
   ReplayStore
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 export type {
   RuntimeRequirements,
   ExecutionRequirements
-} from "@manthan/governance";
+} from "@pramanasystems/governance";

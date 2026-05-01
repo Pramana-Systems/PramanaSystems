@@ -4,11 +4,11 @@ import path from "path";
 
 import {
   readManifest,
-} from "@manthan/bundle";
+} from "@pramanasystems/bundle";
 
 import {
   validatePolicy,
-} from "@manthan/governance";
+} from "@pramanasystems/governance";
 
 import type {
   ExecutionToken,

@@ -1,18 +1,18 @@
 import type {
   ExecutionAttestation,
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 import type {
   Verifier,
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 import {
   verifyExecutionResult,
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 import {
   hashRuntime,
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 import type {
   VerificationResult,

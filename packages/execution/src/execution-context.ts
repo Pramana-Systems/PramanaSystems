@@ -16,11 +16,11 @@ import type {
 
 import type {
   RuntimeRequirements,
-} from "@manthan/governance";
+} from "@pramanasystems/governance";
 
 import type {
   ExecutionRequirements,
-} from "@manthan/governance";
+} from "@pramanasystems/governance";
 
 export interface ExecutionContext {
 

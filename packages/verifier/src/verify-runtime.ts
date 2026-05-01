@@ -1,6 +1,6 @@
 import type {
   RuntimeManifest,
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 export interface RuntimeVerificationResult {
   valid: boolean;

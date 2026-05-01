@@ -4,7 +4,7 @@ import crypto from "crypto";
 
 import {
   canonicalize,
-} from "@manthan/bundle";
+} from "@pramanasystems/bundle";
 
 import {
   loadPublicKey,

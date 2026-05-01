@@ -9,9 +9,9 @@
 [34mCLI[39m Target: es2022
 [34mCLI[39m Cleaning output folder
 [34mESM[39m Build start
-[32mESM[39m [1mdist\index.js     [22m[32m3.88 KB[39m
-[32mESM[39m [1mdist\index.js.map [22m[32m7.94 KB[39m
-[32mESM[39m ⚡️ Build success in 326ms
+[32mESM[39m [1mdist\index.js     [22m[32m3.91 KB[39m
+[32mESM[39m [1mdist\index.js.map [22m[32m7.98 KB[39m
+[32mESM[39m ⚡️ Build success in 33ms
 [34mDTS[39m Build start
-[32mDTS[39m ⚡️ Build success in 5641ms
+[32mDTS[39m ⚡️ Build success in 1187ms
 [32mDTS[39m [1mdist\index.d.ts [22m[32m948.00 B[39m

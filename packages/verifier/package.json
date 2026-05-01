@@ -17,9 +17,9 @@
     ],
     "sideEffects": false,
     "dependencies": {
-        "@manthan/crypto": "1.0.0",
-        "@manthan/execution": "1.0.0",
-        "@manthan/governance": "1.0.0"
+        "@pramanasystems/crypto": "1.0.0",
+        "@pramanasystems/execution": "1.0.0",
+        "@pramanasystems/governance": "1.0.0"
     },
     "description": "Independent governance verification infrastructure for deterministic Manthan workflows.",
     "license": "Apache-2.0",

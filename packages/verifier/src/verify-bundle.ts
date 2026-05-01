@@ -2,7 +2,7 @@ import fs from "fs";
 
 import {
   verifyManifestSignature,
-} from "@manthan/crypto";
+} from "@pramanasystems/crypto";
 
 export interface BundleVerificationResult {
   valid: boolean;

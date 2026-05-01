@@ -1,6 +1,6 @@
 import type {
   RuntimeRequirements,
-} from "@manthan/governance";
+} from "@pramanasystems/governance";
 
 export interface BundleArtifact {
   hash: string;

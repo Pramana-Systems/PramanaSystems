@@ -10,11 +10,11 @@
   "license": "Apache-2.0",
   "description": "",
  "dependencies": {
-  "@manthan/bundle": "1.0.0",
-  "@manthan/core": "1.0.0",
-  "@manthan/crypto": "1.0.0",
-  "@manthan/execution": "1.0.0",
-  "@manthan/governance": "1.0.0",
-  "@manthan/verifier": "1.0.0"
+  "@pramanasystems/bundle": "1.0.0",
+  "@pramanasystems/core": "1.0.0",
+  "@pramanasystems/crypto": "1.0.0",
+  "@pramanasystems/execution": "1.0.0",
+  "@pramanasystems/governance": "1.0.0",
+  "@pramanasystems/verifier": "1.0.0"
 }
 }

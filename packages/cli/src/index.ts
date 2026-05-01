@@ -8,7 +8,7 @@ import {
   createPolicy,
   upgradePolicy,
   validatePolicy,
-} from "@manthan/governance";
+} from "@pramanasystems/governance";
 
 function main(): void {
   try {

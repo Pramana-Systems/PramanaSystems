@@ -17,8 +17,8 @@
     ],
     "sideEffects": false,
     "dependencies": {
-        "@manthan/bundle": "1.0.0",
-        "@manthan/crypto": "1.0.0"
+        "@pramanasystems/bundle": "1.0.0",
+        "@pramanasystems/crypto": "1.0.0"
     },
     "description": "Deterministic governance lifecycle and policy infrastructure for Manthan.",
     "license": "Apache-2.0",

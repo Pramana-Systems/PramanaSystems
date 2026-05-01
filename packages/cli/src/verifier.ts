@@ -4,7 +4,7 @@ import {
   verifyExecutionResult,
 
   LocalVerifier,
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 interface ExecutionAttestation {
   result: unknown;

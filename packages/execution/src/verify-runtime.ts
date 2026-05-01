@@ -1,6 +1,6 @@
 import {
   validatePolicy,
-} from "@manthan/governance";
+} from "@pramanasystems/governance";
 
 export function verifyRuntimePolicy(
   policyId: string

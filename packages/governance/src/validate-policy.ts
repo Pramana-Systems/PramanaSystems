@@ -4,12 +4,12 @@ import path from "path";
 import {
   readManifest,
   verifyManifest,
-} from "@manthan/bundle";
+} from "@pramanasystems/bundle";
 
 import {
   readSignature,
   verifySignature,
-} from "@manthan/crypto";
+} from "@pramanasystems/crypto";
 
 export function validatePolicy(
   policyId: string

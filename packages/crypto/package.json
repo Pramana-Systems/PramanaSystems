@@ -17,7 +17,7 @@
     ],
     "sideEffects": false,
     "dependencies": {
-        "@manthan/bundle": "1.0.0"
+        "@pramanasystems/bundle": "1.0.0"
     },
     "description": "Signing and verification primitives for deterministic governance infrastructure.",
     "license": "Apache-2.0",

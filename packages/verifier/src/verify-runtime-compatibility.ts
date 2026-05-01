@@ -1,10 +1,10 @@
 import type {
   RuntimeManifest,
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 import type {
   RuntimeRequirements,
-} from "@manthan/governance";
+} from "@pramanasystems/governance";
 
 export interface RuntimeCompatibilityResult {
 

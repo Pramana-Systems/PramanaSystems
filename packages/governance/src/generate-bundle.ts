@@ -3,12 +3,12 @@ import path from "path";
 import {
   generateManifest,
   writeManifest,
-} from "@manthan/bundle";
+} from "@pramanasystems/bundle";
 
 import {
   signManifest,
   writeSignature,
-} from "@manthan/crypto";
+} from "@pramanasystems/crypto";
 
 import type {
   BundleGenerationResult,

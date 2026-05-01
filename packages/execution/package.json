@@ -17,8 +17,8 @@
     ],
     "sideEffects": false,
     "dependencies": {
-        "@manthan/bundle": "1.0.0",
-        "@manthan/governance": "1.0.0"
+        "@pramanasystems/bundle": "1.0.0",
+        "@pramanasystems/governance": "1.0.0"
     },
     "description": "Deterministic runtime execution and governance attestation infrastructure for Manthan.",
     "license": "Apache-2.0",
