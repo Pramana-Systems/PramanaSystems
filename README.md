@@ -1,180 +1,117 @@
-\# Manthan Core
-
-
+# Manthan Core
 
 Deterministic governance infrastructure for enforceable, auditable, and independently verifiable AI-driven decisions.
 
+---
 
-
-\## What is Manthan?
-
-
+## What is Manthan?
 
 Manthan separates:
 
-\- AI systems (probabilistic signal generation)
-
-\- Governance systems (deterministic enforcement)
-
-
+- AI systems (probabilistic signal generation)
+- Governance systems (deterministic enforcement)
 
 It ensures that decisions are:
 
-\- reproducible
+- reproducible
+- verifiable
+- replay-safe
+- cryptographically attestable
 
-\- verifiable
+---
 
-\- replay-safe
+## Core Principle
 
-\- cryptographically attestable
-
-
-
-\---
-
-
-
-\## Core Principle
-
-
-
+```text
 AI → Signals → Deterministic Governance → Attested Decision
-
-
+```
 
 AI never directly enforces outcomes.
 
+---
 
+## Quickstart
 
-\---
-
-
-
-\## Packages
-
-
-
-| Package | Responsibility |
-
-|--------|------|
-
-| @pramanasystems/bundle | Governance artifacts \& manifests |
-
-| @pramanasystems/crypto | Signing \& verification primitives |
-
-| @pramanasystems/governance | Policy lifecycle engine |
-
-| @pramanasystems/execution | Deterministic runtime execution |
-
-| @pramanasystems/verifier | Independent verification layer |
-
-| @pramanasystems/core | SDK orchestration layer |
-
-
-
-\---
-
-
-
-\## Install (local dev)
-
-
+Install the portable runtime SDK:
 
 ```bash
+npm install @pramanasystems/core
+```
 
+Example:
+
+```js
+import {
+  LocalSigner,
+  verifyExecutionResult
+} from "@pramanasystems/core";
+
+const signer = new LocalSigner();
+
+console.log(signer);
+console.log(typeof verifyExecutionResult);
+```
+
+Run:
+
+```bash
+node verify.mjs
+```
+
+---
+
+## Package Ecosystem
+
+| Package | Responsibility |
+|---|---|
+| `@pramanasystems/core` | Portable runtime SDK and orchestration surface |
+| `@pramanasystems/execution` | Deterministic execution runtime |
+| `@pramanasystems/verifier` | Independent verification and compatibility validation |
+| `@pramanasystems/governance` | Policy lifecycle and governance tooling |
+| `@pramanasystems/bundle` | Deterministic artifact generation and canonicalization |
+| `@pramanasystems/crypto` | Signing and verification primitives |
+
+---
+
+## Local Development
+
+Install dependencies:
+
+```bash
 npm install
+```
 
-Build
+Build workspace packages:
 
+```bash
 npm run build
+```
 
-Test
+Run tests:
 
+```bash
 npm run test
+```
 
-Validate full system
+Run full deterministic validation pipeline:
 
+```bash
 npm run release:validate
+```
 
-Key Properties
+---
 
-Deterministic execution
+## Key Properties
 
-Replay protection
+- Deterministic execution
+- Replay protection
+- Fail-closed enforcement
+- Immutable provenance
+- Independent verification
+- Portable governance runtime
 
-Fail-closed enforcement
+---
 
-Immutable provenance
-
-Independent verification
-
-Portable governance runtime
-
-License
-
-
+## License
 
 Apache-2.0
-
-
-
-
-
-\---
-
-
-
-\# 2. Add `.npmignore` safety check
-
-
-
-Run:
-
-
-
-```powershell id="9t1xqm"
-
-notepad .\\.npmignore
-
-
-
-Add:
-
-
-
-node\_modules
-
-dist
-
-tests
-
-examples
-
-manthan-consumer-test
-
-\*.tgz
-
-.git
-
-.github
-
-3\. Ensure clean publish boundary
-
-
-
-Run:
-
-
-
-npm run pack:packages
-
-
-
-Check only intended files exist.
-
-
-
-4\. Final system validation
-
-npm run release:validate
-
