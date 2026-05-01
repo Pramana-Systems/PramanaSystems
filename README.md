@@ -1,3 +1,7 @@
+![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
+![License](https://img.shields.io/badge/license-Apache--2.0-blue)
+![npm](https://img.shields.io/npm/v/@pramanasystems/core)
+
 # PramanaSystems Core
 
 Deterministic governance infrastructure for enforceable, auditable, and independently verifiable AI-driven decisions.
