@@ -30,6 +30,14 @@ AI never directly enforces outcomes.
 
 ---
 
+## Documentation
+
+- Architecture → `docs/architecture/`
+- Governance → `docs/governance/`
+- Trust Model → `docs/trust/`
+- Verification → `docs/verification/`
+- Examples → `examples/`
+- 
 ## Quickstart
 
 Install the portable runtime SDK:
