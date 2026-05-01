@@ -1,24 +1,24 @@
 import {
   createPolicy,
   generateBundle,
-} from "@manthan/governance";
+} from "@pramanasystems/governance";
 
 import {
   executeDecision,
   getRuntimeManifest,
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 import {
   verifyAttestation,
-} from "@manthan/verifier";
+} from "@pramanasystems/verifier";
 
 import {
   canonicalize,
-} from "@manthan/bundle";
+} from "@pramanasystems/bundle";
 
 import {
   verifySignature,
-} from "@manthan/crypto";
+} from "@pramanasystems/crypto";
 
 console.log(
   "Manthan SDK packages loaded successfully"

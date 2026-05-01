@@ -1,5 +1,5 @@
 
-> @pramanasystems/governance@1.0.1 build
+> @pramanasystems/governance@1.0.2 build
 > tsup
 
 [34mCLI[39m Building entry: src/index.ts
@@ -10,8 +10,8 @@
 [34mCLI[39m Cleaning output folder
 [34mESM[39m Build start
 [32mESM[39m [1mdist\index.js     [22m[32m3.91 KB[39m
-[32mESM[39m [1mdist\index.js.map [22m[32m7.98 KB[39m
-[32mESM[39m ⚡️ Build success in 34ms
+[32mESM[39m [1mdist\index.js.map [22m[32m7.41 KB[39m
+[32mESM[39m ⚡️ Build success in 31ms
 [34mDTS[39m Build start
-[32mDTS[39m ⚡️ Build success in 2452ms
+[32mDTS[39m ⚡️ Build success in 1326ms
 [32mDTS[39m [1mdist\index.d.ts [22m[32m948.00 B[39m

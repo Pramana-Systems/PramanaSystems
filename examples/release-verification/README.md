@@ -147,3 +147,4 @@ Validated capabilities include:
 The verification flow successfully demonstrated infrastructure-independent cryptographic release validation using portable trust roots and deterministic provenance artifacts.
 
 
+

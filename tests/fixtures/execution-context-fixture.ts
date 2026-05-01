@@ -1,11 +1,11 @@
 import {
   getRuntimeManifest,
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 import type {
   RuntimeRequirements,
   ExecutionRequirements,
-} from "@manthan/governance";
+} from "@pramanasystems/governance";
 
 export const runtimeManifest =
   getRuntimeManifest();

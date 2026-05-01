@@ -17,31 +17,31 @@
     "baseUrl": ".",
 
     "paths": {
-      "@manthan/bundle": [
+      "@pramanasystems/bundle": [
         "./packages/bundle/dist"
       ],
 
-      "@manthan/crypto": [
+      "@pramanasystems/crypto": [
         "./packages/crypto/dist"
       ],
 
-      "@manthan/governance": [
+      "@pramanasystems/governance": [
         "./packages/governance/dist"
       ],
 
-      "@manthan/cli": [
+      "@pramanasystems/cli": [
         "./packages/cli/src"
       ],
 
-      "@manthan/execution": [
+      "@pramanasystems/execution": [
         "./packages/execution/dist"
       ],
 
-      "@manthan/verifier": [
+      "@pramanasystems/verifier": [
         "./packages/verifier/src"
       ],
 
-      "@manthan/core": [
+      "@pramanasystems/core": [
         "./packages/core/src"
       ]
     }

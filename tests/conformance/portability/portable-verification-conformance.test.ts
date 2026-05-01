@@ -7,7 +7,7 @@ import {
 import {
   executeDecision,
   verifyExecutionResult,
-} from "@manthan/core";
+} from "@pramanasystems/core";
 
 import {
   executionContext,

@@ -22,3 +22,4 @@ export interface BundleManifest {
   runtime_requirements:
     RuntimeRequirements;
 }
+

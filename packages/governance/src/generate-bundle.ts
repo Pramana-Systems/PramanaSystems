@@ -69,3 +69,4 @@ export function generateBundle(
       manifest.bundle_hash,
   };
 }
+

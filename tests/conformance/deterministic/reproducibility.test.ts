@@ -6,7 +6,7 @@ import {
 
 import {
   readManifest,
-} from "@manthan/bundle";
+} from "@pramanasystems/bundle";
 
 describe(
   "deterministic reproducibility",

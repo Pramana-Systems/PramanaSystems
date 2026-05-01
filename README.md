@@ -58,17 +58,17 @@ AI never directly enforces outcomes.
 
 |--------|------|
 
-| @manthan/bundle | Governance artifacts \& manifests |
+| @pramanasystems/bundle | Governance artifacts \& manifests |
 
-| @manthan/crypto | Signing \& verification primitives |
+| @pramanasystems/crypto | Signing \& verification primitives |
 
-| @manthan/governance | Policy lifecycle engine |
+| @pramanasystems/governance | Policy lifecycle engine |
 
-| @manthan/execution | Deterministic runtime execution |
+| @pramanasystems/execution | Deterministic runtime execution |
 
-| @manthan/verifier | Independent verification layer |
+| @pramanasystems/verifier | Independent verification layer |
 
-| @manthan/core | SDK orchestration layer |
+| @pramanasystems/core | SDK orchestration layer |
 
 
 

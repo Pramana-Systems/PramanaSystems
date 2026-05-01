@@ -1,6 +1,6 @@
 import {
   executeDecision,
-} from "@manthan/core";
+} from "@pramanasystems/core";
 
 const token = {
   execution_id:

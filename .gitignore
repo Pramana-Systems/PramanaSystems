@@ -14,3 +14,6 @@ trust/*.key
 *.sig.tmp
 *.audit.tmp
 *.tgz
+.turbo/
+dist/
+node_modules/

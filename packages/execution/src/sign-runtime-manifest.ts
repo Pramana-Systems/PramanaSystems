@@ -18,3 +18,4 @@ export function signRuntimeManifest(
     canonicalize(manifest)
   );
 }
+

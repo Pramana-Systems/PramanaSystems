@@ -11,7 +11,7 @@ import {
 
 import {
   validatePolicy,
-} from "@manthan/governance";
+} from "@pramanasystems/governance";
 
 const policyFile =
   path.resolve(

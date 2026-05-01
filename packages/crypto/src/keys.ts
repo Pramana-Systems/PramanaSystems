@@ -27,3 +27,4 @@ export function loadPublicKey(): string {
     "utf8"
   );
 }
+

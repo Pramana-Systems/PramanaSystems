@@ -32,3 +32,4 @@ jobs:
       # and conformance validation.
       - name: Run deterministic governance validation
         run: npm run check
+

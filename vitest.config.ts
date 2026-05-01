@@ -7,37 +7,37 @@ import path from "node:path";
 export default defineConfig({
   resolve: {
     alias: {
-      "@manthan/bundle":
+      "@pramanasystems/bundle":
         path.resolve(
           __dirname,
           "packages/bundle/src"
         ),
 
-      "@manthan/crypto":
+      "@pramanasystems/crypto":
         path.resolve(
           __dirname,
           "packages/crypto/src"
         ),
 
-      "@manthan/governance":
+      "@pramanasystems/governance":
         path.resolve(
           __dirname,
           "packages/governance/src"
         ),
 
-      "@manthan/execution":
+      "@pramanasystems/execution":
         path.resolve(
           __dirname,
           "packages/execution/src"
         ),
 
-      "@manthan/verifier":
+      "@pramanasystems/verifier":
         path.resolve(
           __dirname,
           "packages/verifier/src"
         ),
 
-      "@manthan/core":
+      "@pramanasystems/core":
         path.resolve(
           __dirname,
           "packages/core/src"

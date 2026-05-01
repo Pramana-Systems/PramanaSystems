@@ -18,7 +18,7 @@ import {
   LocalSigner,
 
   LocalVerifier,
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 import {
   runtimeManifest,

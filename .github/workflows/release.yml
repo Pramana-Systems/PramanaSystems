@@ -77,3 +77,4 @@ jobs:
             packages/core/*.tgz
             release-manifest.json
             release-manifest.sig
+

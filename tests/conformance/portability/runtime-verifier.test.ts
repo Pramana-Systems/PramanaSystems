@@ -6,11 +6,11 @@ import {
 
 import {
   getRuntimeManifest,
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 import {
   verifyRuntime,
-} from "@manthan/verifier";
+} from "@pramanasystems/verifier";
 
 describe(
   "runtime verifier",

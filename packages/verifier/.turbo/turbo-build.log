@@ -1,5 +1,5 @@
 
-> @pramanasystems/verifier@1.0.1 build
+> @pramanasystems/verifier@1.0.2 build
 > tsup
 
 [34mCLI[39m Building entry: src/index.ts
@@ -10,8 +10,8 @@
 [34mCLI[39m Cleaning output folder
 [34mESM[39m Build start
 [32mESM[39m [1mdist\index.js     [22m[32m2.99 KB[39m
-[32mESM[39m [1mdist\index.js.map [22m[32m6.92 KB[39m
-[32mESM[39m ⚡️ Build success in 49ms
+[32mESM[39m [1mdist\index.js.map [22m[32m6.45 KB[39m
+[32mESM[39m ⚡️ Build success in 42ms
 [34mDTS[39m Build start
-[32mDTS[39m ⚡️ Build success in 2350ms
+[32mDTS[39m ⚡️ Build success in 1080ms
 [32mDTS[39m [1mdist\index.d.ts [22m[32m1.67 KB[39m

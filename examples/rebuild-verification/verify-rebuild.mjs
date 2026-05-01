@@ -50,3 +50,4 @@ artifact.sha256
 console.log(
 "REBUILD VERIFICATION COMPLETE"
 );
+

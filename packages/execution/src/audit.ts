@@ -136,3 +136,4 @@ export function appendAuditRecord(
     "utf8"
   );
 }
+

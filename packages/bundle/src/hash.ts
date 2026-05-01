@@ -6,3 +6,4 @@ export function sha256(content: string): string {
     .update(content, "utf8")
     .digest("hex");
 }
+

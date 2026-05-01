@@ -12,11 +12,11 @@ import {
   executeDecision,
   LocalSigner,
   LocalVerifier,
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 import {
   verifyAttestation,
-} from "@manthan/verifier";
+} from "@pramanasystems/verifier";
 
 import {
   runtimeManifest,

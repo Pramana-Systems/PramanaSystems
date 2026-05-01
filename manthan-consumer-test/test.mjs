@@ -3,7 +3,7 @@ import {
   verifyExecutionResult,
   getRuntimeManifest,
   MemoryReplayStore,
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 const replayStore =
   new MemoryReplayStore();
@@ -138,3 +138,4 @@ console.log(
 console.log(
   "RUNTIME MANIFEST VERIFIED"
 );
+

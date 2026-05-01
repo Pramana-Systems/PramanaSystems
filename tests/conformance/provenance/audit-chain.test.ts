@@ -6,7 +6,7 @@ import {
 
 import {
   verifyAuditChain,
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 describe(
   "audit chain integrity",

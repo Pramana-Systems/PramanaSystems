@@ -4,3 +4,4 @@ export interface Verifier {
     signature: string
   ): boolean;
 }
+

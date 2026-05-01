@@ -25,3 +25,4 @@ export function writeManifest(
     "utf8"
   );
 }
+

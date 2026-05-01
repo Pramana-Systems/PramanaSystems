@@ -7,15 +7,15 @@ import {
 
 import {
   getRuntimeManifest,
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 import type {
   RuntimeRequirements,
-} from "@manthan/governance";
+} from "@pramanasystems/governance";
 
 import {
   verifyRuntimeCompatibility,
-} from "@manthan/verifier";
+} from "@pramanasystems/verifier";
 
 describe(
   "runtime compatibility verification",

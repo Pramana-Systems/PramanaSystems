@@ -6,7 +6,7 @@ import {
 
 import {
   createPolicy,
-} from "@manthan/governance";
+} from "@pramanasystems/governance";
 
 describe(
   "immutable version enforcement",

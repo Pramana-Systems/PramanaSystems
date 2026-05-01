@@ -7,7 +7,7 @@ import {
 import {
   executeDecision,
   MemoryReplayStore,
-} from "@manthan/execution";
+} from "@pramanasystems/execution";
 
 import {
   executionContext,

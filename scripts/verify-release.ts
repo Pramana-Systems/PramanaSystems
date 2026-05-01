@@ -4,7 +4,7 @@ import crypto from "crypto";
 
 import {
   verifySignature,
-} from "@manthan/crypto";
+} from "@pramanasystems/crypto";
 
 const manifestPath =
   "release-manifest.json";

@@ -30,3 +30,4 @@ export function readSignature(
     "utf8"
   );
 }
+

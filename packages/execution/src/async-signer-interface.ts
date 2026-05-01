@@ -3,3 +3,4 @@ export interface AsyncSigner {
     payload: string
   ): Promise<string>;
 }
+

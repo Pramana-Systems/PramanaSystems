@@ -296,17 +296,17 @@ Package Responsibilities
 
 Package	Responsibility
 
-@manthan/bundle	Deterministic governance artifacts and canonicalization
+@pramanasystems/bundle	Deterministic governance artifacts and canonicalization
 
-@manthan/crypto	Signing, verification, and trust primitives
+@pramanasystems/crypto	Signing, verification, and trust primitives
 
-@manthan/governance	Policy lifecycle and governance artifact generation
+@pramanasystems/governance	Policy lifecycle and governance artifact generation
 
-@manthan/execution	Deterministic runtime enforcement and attestation generation
+@pramanasystems/execution	Deterministic runtime enforcement and attestation generation
 
-@manthan/verifier	Independent verification and compatibility validation
+@pramanasystems/verifier	Independent verification and compatibility validation
 
-@manthan/core	Public orchestration and external SDK surface
+@pramanasystems/core	Public orchestration and external SDK surface
 
 
 

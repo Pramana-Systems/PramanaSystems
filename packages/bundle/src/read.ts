@@ -21,3 +21,4 @@ export function readManifest(
 
   return JSON.parse(content);
 }
+

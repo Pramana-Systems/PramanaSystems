@@ -6,7 +6,7 @@ import {
 
 import {
   executeDecision,
-} from "@manthan/core";
+} from "@pramanasystems/core";
 
 import {
   executionContext,

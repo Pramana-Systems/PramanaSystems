@@ -9,3 +9,4 @@ export interface VerificationResult {
     schema_compatible: boolean;
   };
 }
+

@@ -1,6 +1,6 @@
 {
     "name": "@pramanasystems/execution",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "private": false,
     "type": "module",
     "scripts": {
@@ -17,8 +17,8 @@
     ],
     "sideEffects": false,
     "dependencies": {
-        "@pramanasystems/bundle": "1.0.0",
-        "@pramanasystems/governance": "1.0.0"
+        "@pramanasystems/bundle": "1.0.2",
+        "@pramanasystems/governance": "1.0.2"
     },
     "description": "Deterministic runtime execution and governance attestation infrastructure for Manthan.",
     "license": "Apache-2.0",
@@ -44,4 +44,6 @@
         "auditability"
     ]
 }
+
+
 

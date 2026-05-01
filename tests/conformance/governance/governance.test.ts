@@ -6,7 +6,7 @@ import {
 
 import {
   validatePolicy,
-} from "@manthan/governance";
+} from "@pramanasystems/governance";
 
 describe(
   "governance validation",

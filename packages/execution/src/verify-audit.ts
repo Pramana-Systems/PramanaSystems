@@ -25,3 +25,4 @@ export function verifyAuditEntry(
 export function verifyAuditChain(): boolean {
   return true;
 }
+

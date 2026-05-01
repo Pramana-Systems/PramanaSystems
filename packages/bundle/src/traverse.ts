@@ -64,3 +64,4 @@ function normalizePath(
 ): string {
   return value.replace(/\\\\/g, "/");
 }
+

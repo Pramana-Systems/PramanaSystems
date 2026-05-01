@@ -222,3 +222,4 @@ npm run release:validate
 Governance Principle
 
 pramanasystems provides deterministic governance infrastructure for enforceable decisions requiring independently verifiable trust.
+
