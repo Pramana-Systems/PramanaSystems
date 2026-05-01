@@ -1,6 +1,6 @@
 {
   "name": "PramanaSystems-core",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "packageManager": "npm@10.9.0",
 
@@ -119,3 +119,4 @@
     "zod": "^4.3.6"
   }
 }
+

@@ -1,5 +1,5 @@
 
-> @pramanasystems/bundle@1.0.2 build
+> @pramanasystems/bundle@1.0.3 build
 > tsup
 
 [34mCLI[39m Building entry: src/index.ts
@@ -11,7 +11,7 @@
 [34mESM[39m Build start
 [32mESM[39m [1mdist\index.js     [22m[32m4.60 KB[39m
 [32mESM[39m [1mdist\index.js.map [22m[32m9.64 KB[39m
-[32mESM[39m ⚡️ Build success in 34ms
+[32mESM[39m ⚡️ Build success in 31ms
 [34mDTS[39m Build start
-[32mDTS[39m ⚡️ Build success in 1724ms
+[32mDTS[39m ⚡️ Build success in 1507ms
 [32mDTS[39m [1mdist\index.d.ts [22m[32m1.26 KB[39m

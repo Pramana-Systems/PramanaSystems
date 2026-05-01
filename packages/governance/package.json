@@ -1,6 +1,6 @@
 {
     "name": "@pramanasystems/governance",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "private": false,
     "type": "module",
     "scripts": {
@@ -17,8 +17,8 @@
     ],
     "sideEffects": false,
     "dependencies": {
-        "@pramanasystems/bundle": "1.0.2",
-        "@pramanasystems/crypto": "1.0.2"
+        "@pramanasystems/bundle": "^1.0.3",
+        "@pramanasystems/crypto": "^1.0.3"
     },
     "description": "Deterministic governance lifecycle and policy infrastructure for PramanaSystems.",
     "license": "Apache-2.0",
@@ -42,6 +42,8 @@
         "workflow"
     ]
 }
+
+
 
 
 

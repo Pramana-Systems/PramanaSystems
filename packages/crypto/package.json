@@ -1,6 +1,6 @@
 {
     "name": "@pramanasystems/crypto",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "private": false,
     "type": "module",
     "scripts": {
@@ -17,7 +17,7 @@
     ],
     "sideEffects": false,
     "dependencies": {
-        "@pramanasystems/bundle": "1.0.2"
+        "@pramanasystems/bundle": "^1.0.3"
     },
     "description": "Signing and verification primitives for deterministic governance infrastructure.",
     "license": "Apache-2.0",
@@ -41,6 +41,8 @@
         "governance"
     ]
 }
+
+
 
 
 
