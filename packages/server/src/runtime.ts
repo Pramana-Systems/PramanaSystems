@@ -1,0 +1,43 @@
+import crypto from "crypto";
+
+import {
+  LocalSigner,
+  LocalVerifier,
+  getRuntimeManifest,
+} from "@pramanasystems/execution";
+
+import {
+  loadPrivateKey,
+  loadPublicKey,
+} from "@pramanasystems/crypto";
+
+function resolveKeyPair(): { privateKey: string; publicKey: string } {
+  if (process.env.PRAMANA_PRIVATE_KEY && process.env.PRAMANA_PUBLIC_KEY) {
+    return {
+      privateKey: process.env.PRAMANA_PRIVATE_KEY,
+      publicKey: process.env.PRAMANA_PUBLIC_KEY,
+    };
+  }
+
+  try {
+    return {
+      privateKey: loadPrivateKey(),
+      publicKey: loadPublicKey(),
+    };
+  } catch {
+    // no dev keys on disk — fall through to ephemeral
+  }
+
+  const { privateKey, publicKey } = crypto.generateKeyPairSync("ed25519", {
+    privateKeyEncoding: { type: "pkcs8", format: "pem" },
+    publicKeyEncoding: { type: "spki", format: "pem" },
+  });
+
+  return { privateKey, publicKey };
+}
+
+const keys = resolveKeyPair();
+
+export const signer = new LocalSigner(keys.privateKey);
+export const verifier = new LocalVerifier(keys.publicKey);
+export const runtimeManifest = getRuntimeManifest();

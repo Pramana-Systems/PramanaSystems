@@ -1,0 +1,40 @@
+{
+  "name": "@pramanasystems/server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Fastify REST API server for PramanaSystems governance runtime.",
+  "scripts": {
+    "build": "tsup",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "@pramanasystems/crypto": "^1.0.4",
+    "@pramanasystems/execution": "^1.0.4",
+    "@pramanasystems/verifier": "^1.0.4",
+    "fastify": "^5.8.5"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pavancharak/PramanaSystems-core.git"
+  },
+  "homepage": "https://github.com/pavancharak/PramanaSystems-core",
+  "bugs": {
+    "url": "https://github.com/pavancharak/PramanaSystems-core/issues"
+  }
+}
