@@ -47,6 +47,10 @@
 
       "@pramanasystems/server": [
         "./packages/server/src"
+      ],
+
+      "@pramanasystems/sdk-client": [
+        "./packages/sdk-client/src"
       ]
     }
   }
