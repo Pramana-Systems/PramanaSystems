@@ -1,7 +1,7 @@
 {
   "name": "@pramanasystems/server",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "type": "module",
   "description": "Fastify REST API server for PramanaSystems governance runtime.",
   "scripts": {
@@ -24,6 +24,9 @@
     "@pramanasystems/execution": "^1.0.4",
     "@pramanasystems/verifier": "^1.0.4",
     "fastify": "^5.8.5"
+  },
+  "devDependencies": {
+    "@fastify/swagger": "^9.7.0"
   },
   "engines": {
     "node": ">=20"

@@ -43,6 +43,10 @@
 
       "@pramanasystems/core": [
         "./packages/core/src"
+      ],
+
+      "@pramanasystems/server": [
+        "./packages/server/src"
       ]
     }
   }

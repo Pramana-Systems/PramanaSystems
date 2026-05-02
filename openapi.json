@@ -2,20 +2,573 @@
   "openapi": "3.0.3",
   "info": {
     "title": "PramanaSystems Runtime API",
-    "version": "1.0.0"
+    "description": "Deterministic governance runtime — execute and independently verify signed policy decisions with full auditability.",
+    "version": "1.0.0",
+    "license": {
+      "name": "Apache-2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0"
+    },
+    "contact": {
+      "url": "https://github.com/Pramana-Systems/PramanaSystems"
+    }
   },
   "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "API key passed as a Bearer token. Only enforced when the PRAMANA_API_KEY environment variable is set; omit in dev mode."
+      }
+    },
     "schemas": {}
   },
   "paths": {
     "/health": {
       "get": {
+        "summary": "Health check",
+        "tags": [
+          "Runtime"
+        ],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Server is healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Server is healthy",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "ok"
+                      ]
+                    },
+                    "version": {
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "version",
+                    "timestamp"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/execute": {
+      "post": {
+        "summary": "Execute a governance decision",
+        "tags": [
+          "Execution"
+        ],
+        "description": "Issues an execution token, runs the deterministic governance runtime, and returns a signed ExecutionAttestation.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "policy_id": {
+                    "type": "string",
+                    "description": "Policy identifier"
+                  },
+                  "policy_version": {
+                    "type": "string",
+                    "description": "Semantic version of the policy"
+                  },
+                  "decision_type": {
+                    "type": "string",
+                    "description": "Decision type to execute (e.g. approve, deny)"
+                  },
+                  "signals_hash": {
+                    "type": "string",
+                    "description": "SHA-256 hex digest of the input signals payload"
+                  }
+                },
+                "required": [
+                  "policy_id",
+                  "policy_version",
+                  "decision_type",
+                  "signals_hash"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Signed execution attestation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Signed execution attestation",
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "execution_id": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "policy_id": {
+                          "type": "string"
+                        },
+                        "policy_version": {
+                          "type": "string"
+                        },
+                        "schema_version": {
+                          "type": "string"
+                        },
+                        "runtime_version": {
+                          "type": "string"
+                        },
+                        "runtime_hash": {
+                          "type": "string"
+                        },
+                        "decision": {
+                          "type": "string"
+                        },
+                        "signals_hash": {
+                          "type": "string"
+                        },
+                        "executed_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      },
+                      "required": [
+                        "execution_id",
+                        "policy_id",
+                        "policy_version",
+                        "schema_version",
+                        "runtime_version",
+                        "runtime_hash",
+                        "decision",
+                        "signals_hash",
+                        "executed_at"
+                      ]
+                    },
+                    "signature": {
+                      "type": "string",
+                      "description": "Base64 Ed25519 signature over the result"
+                    }
+                  },
+                  "required": [
+                    "result",
+                    "signature"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing or invalid request fields",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Missing or invalid request fields",
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Execution failed (policy not found, token expired, replay detected)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Execution failed (policy not found, token expired, replay detected)",
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/verify": {
+      "post": {
+        "summary": "Verify an execution attestation",
+        "tags": [
+          "Verification"
+        ],
+        "description": "Checks the cryptographic signature, runtime hash, and schema version of an attestation produced by POST /execute.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "object",
+                    "properties": {
+                      "execution_id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "policy_id": {
+                        "type": "string"
+                      },
+                      "policy_version": {
+                        "type": "string"
+                      },
+                      "schema_version": {
+                        "type": "string"
+                      },
+                      "runtime_version": {
+                        "type": "string"
+                      },
+                      "runtime_hash": {
+                        "type": "string"
+                      },
+                      "decision": {
+                        "type": "string"
+                      },
+                      "signals_hash": {
+                        "type": "string"
+                      },
+                      "executed_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      }
+                    },
+                    "required": [
+                      "execution_id",
+                      "policy_id",
+                      "policy_version",
+                      "schema_version",
+                      "runtime_version",
+                      "runtime_hash",
+                      "decision",
+                      "signals_hash",
+                      "executed_at"
+                    ]
+                  },
+                  "signature": {
+                    "type": "string",
+                    "description": "Base64 Ed25519 signature over the result"
+                  }
+                },
+                "required": [
+                  "result",
+                  "signature"
+                ],
+                "description": "An ExecutionAttestation as returned by POST /execute"
+              }
+            }
+          },
+          "description": "An ExecutionAttestation as returned by POST /execute"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verification result with per-check breakdown",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Verification result with per-check breakdown",
+                  "type": "object",
+                  "properties": {
+                    "valid": {
+                      "type": "boolean"
+                    },
+                    "checks": {
+                      "type": "object",
+                      "properties": {
+                        "signature_verified": {
+                          "type": "boolean"
+                        },
+                        "runtime_verified": {
+                          "type": "boolean"
+                        },
+                        "schema_compatible": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "signature_verified",
+                        "runtime_verified",
+                        "schema_compatible"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "valid",
+                    "checks"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Malformed attestation body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Malformed attestation body",
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Verification threw an unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Verification threw an unexpected error",
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runtime/manifest": {
+      "get": {
+        "summary": "Runtime bundle manifest",
+        "tags": [
+          "Runtime"
+        ],
+        "description": "Returns the signed bundle manifest for the active governance runtime.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "501": {
+            "description": "Not yet implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Not yet implemented",
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "Not implemented"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runtime/capabilities": {
+      "get": {
+        "summary": "Runtime capability declarations",
+        "tags": [
+          "Runtime"
+        ],
+        "description": "Lists the capabilities supported by this runtime instance.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "501": {
+            "description": "Not yet implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Not yet implemented",
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "Not implemented"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/evaluate": {
+      "post": {
+        "summary": "Evaluate a policy without executing",
+        "tags": [
+          "Execution"
+        ],
+        "description": "Dry-run policy evaluation — computes a decision without issuing an attestation or consuming a replay slot.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "501": {
+            "description": "Not yet implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Not yet implemented",
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "Not implemented"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/simulate": {
+      "post": {
+        "summary": "Simulate a governance decision dry-run",
+        "tags": [
+          "Execution"
+        ],
+        "description": "Runs the full execution pipeline in simulation mode — no side effects, no attestation produced.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "501": {
+            "description": "Not yet implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Not yet implemented",
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "Not implemented"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
           }
         }
       }
     }
-  }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local development"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Runtime",
+      "description": "Runtime metadata and health"
+    },
+    {
+      "name": "Execution",
+      "description": "Governance decision execution"
+    },
+    {
+      "name": "Verification",
+      "description": "Independent attestation verification"
+    }
+  ]
 }
