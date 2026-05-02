@@ -9,7 +9,12 @@ import {
 } from "@pramanasystems/core";
 
 import {
+  signExecutionToken,
+} from "@pramanasystems/execution";
+
+import {
   executionContext,
+  signer,
 } from "../../fixtures/execution-context-fixture";
 
 describe(
@@ -41,15 +46,23 @@ describe(
           },
         };
 
+        const token = {
+          ...executionContext.token,
+
+          execution_id:
+            "conformance-replay-1",
+        };
+
         const context = {
           ...executionContext,
 
-          token: {
-            ...executionContext.token,
+          token,
 
-            execution_id:
-              "conformance-replay-1",
-          },
+          token_signature:
+            signExecutionToken(
+              token,
+              signer
+            ),
         };
 
         const first =

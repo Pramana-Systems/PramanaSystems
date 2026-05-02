@@ -1,5 +1,6 @@
 import type {
   ExecutionAttestation,
+  RuntimeManifest,
 } from "@pramanasystems/execution";
 
 import type {
@@ -10,17 +11,14 @@ import {
   verifyExecutionResult,
 } from "@pramanasystems/execution";
 
-import {
-  hashRuntime,
-} from "@pramanasystems/execution";
-
 import type {
   VerificationResult,
 } from "./types";
 
 export function verifyAttestation(
   attestation: ExecutionAttestation,
-  verifier: Verifier
+  verifier: Verifier,
+  runtimeManifest: RuntimeManifest
 ): VerificationResult {
 
   const signatureVerified =
@@ -32,11 +30,16 @@ export function verifyAttestation(
 
   const runtimeVerified =
     attestation.result.runtime_hash ===
-    hashRuntime();
+      runtimeManifest.runtime_hash &&
+    attestation.result.runtime_version ===
+      runtimeManifest.runtime_version;
 
   const schemaCompatible =
-    attestation.result.schema_version ===
-    "1.0.0";
+    runtimeManifest
+      .supported_schema_versions
+      .includes(
+        attestation.result.schema_version
+      );
 
   return {
     valid:

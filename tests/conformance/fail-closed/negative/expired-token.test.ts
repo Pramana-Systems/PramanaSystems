@@ -7,10 +7,12 @@ import {
 import {
   executeDecision,
   MemoryReplayStore,
+  signExecutionToken,
 } from "@pramanasystems/execution";
 
 import {
   executionContext,
+  signer,
 } from "../../../fixtures/execution-context-fixture";
 
 describe(
@@ -23,17 +25,25 @@ describe(
         const replayStore =
           new MemoryReplayStore();
 
+        const token = {
+          ...executionContext.token,
+
+          expires_at:
+            new Date(
+              Date.now() - 60000
+            ).toISOString(),
+        };
+
         const context = {
           ...executionContext,
 
-          token: {
-            ...executionContext.token,
+          token,
 
-            expires_at:
-              new Date(
-                Date.now() - 60000
-              ).toISOString(),
-          },
+          token_signature:
+            signExecutionToken(
+              token,
+              signer
+            ),
         };
 
         expect(() =>

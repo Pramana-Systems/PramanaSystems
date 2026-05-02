@@ -9,7 +9,12 @@ import {
 } from "@pramanasystems/core";
 
 import {
+  signExecutionToken,
+} from "@pramanasystems/execution";
+
+import {
   executionContext,
+  signer,
 } from "../../fixtures/execution-context-fixture";
 
 describe(
@@ -20,16 +25,24 @@ describe(
       "execution attestations preserve governance lineage",
       () => {
 
+        const token = {
+          ...executionContext.token,
+
+          execution_id:
+            "attestation-lineage-1",
+        };
+
         const execution =
           executeDecision({
             ...executionContext,
 
-            token: {
-              ...executionContext.token,
+            token,
 
-              execution_id:
-                "attestation-lineage-1",
-            },
+            token_signature:
+              signExecutionToken(
+                token,
+                signer
+              ),
           });
 
         expect(

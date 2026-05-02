@@ -1,5 +1,6 @@
-import { canonicalize }
-  from "../../bundle/src/canonicalize";
+import {
+  canonicalize,
+} from "@pramanasystems/bundle";
 
 import type {
   RuntimeManifest,

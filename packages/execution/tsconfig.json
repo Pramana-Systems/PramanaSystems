@@ -3,7 +3,15 @@
 
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "src",
+    "paths": {
+      "@pramanasystems/bundle": [
+        "../bundle/dist"
+      ],
+      "@pramanasystems/governance": [
+        "../governance/dist"
+      ]
+    }
   },
 
   "include": [

@@ -9,7 +9,12 @@ import {
 } from "@pramanasystems/core";
 
 import {
+  signExecutionToken,
+} from "@pramanasystems/execution";
+
+import {
   executionContext,
+  signer,
 } from "../../fixtures/execution-context-fixture";
 
 describe(
@@ -20,28 +25,46 @@ describe(
       "equivalent governed inputs produce equivalent deterministic outcomes",
       () => {
 
+        const firstToken = {
+          ...executionContext.token,
+
+          execution_id:
+            "deterministic-a",
+        };
+
         const first =
           executeDecision({
             ...executionContext,
 
-            token: {
-              ...executionContext.token,
+            token:
+              firstToken,
 
-              execution_id:
-                "deterministic-a",
-            },
+            token_signature:
+              signExecutionToken(
+                firstToken,
+                signer
+              ),
           });
+
+        const secondToken = {
+          ...executionContext.token,
+
+          execution_id:
+            "deterministic-b",
+        };
 
         const second =
           executeDecision({
             ...executionContext,
 
-            token: {
-              ...executionContext.token,
+            token:
+              secondToken,
 
-              execution_id:
-                "deterministic-b",
-            },
+            token_signature:
+              signExecutionToken(
+                secondToken,
+                signer
+              ),
           });
 
         expect(

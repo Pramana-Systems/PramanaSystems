@@ -1,13 +1,23 @@
 import fs from "fs";
+import path from "path";
 
 import {
-  verifyManifestSignature,
+  readManifest,
+  verifyManifest,
+} from "@pramanasystems/bundle";
+
+import {
+  verifySignature,
 } from "@pramanasystems/crypto";
 
 export interface BundleVerificationResult {
   valid: boolean;
 
   manifest_verified: boolean;
+
+  signature_verified: boolean;
+
+  bundle_verified: boolean;
 }
 
 export function verifyBundle(
@@ -15,30 +25,46 @@ export function verifyBundle(
   signaturePath: string
 ): BundleVerificationResult {
 
-  const manifest =
-    fs.readFileSync(
-      manifestPath,
-      "utf8"
-    );
-
   const signature =
     fs.readFileSync(
       signaturePath,
       "utf8"
     );
 
-  const verified =
-    verifyManifestSignature(
-      manifest,
+  const directory =
+    path.dirname(
+      manifestPath
+    );
+
+  const parsedManifest =
+    readManifest(directory);
+
+  const bundleVerified =
+    verifyManifest(
+      parsedManifest,
+      directory
+    ).valid;
+
+  const signatureVerified =
+    verifySignature(
+      manifestPath,
       signature
     );
 
   return {
     valid:
-      verified,
+      bundleVerified &&
+      signatureVerified,
 
     manifest_verified:
-      verified,
+      bundleVerified &&
+      signatureVerified,
+
+    signature_verified:
+      signatureVerified,
+
+    bundle_verified:
+      bundleVerified,
   };
 }
 

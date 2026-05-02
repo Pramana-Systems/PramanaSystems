@@ -36,8 +36,13 @@ export function verifyRuntimeCompatibility(
     );
 
   const unsupportedSchema =
-    !requirements.supported_schema_versions.includes(
-      "1.0.0"
+    requirements.supported_schema_versions.every(
+      (
+        schemaVersion
+      ) =>
+        !manifest.supported_schema_versions.includes(
+          schemaVersion
+        )
     );
 
   return {

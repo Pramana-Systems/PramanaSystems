@@ -43,7 +43,7 @@
 
     "typecheck": "tsc --noEmit",
 
-    "check": "npm run typecheck && npm run test && npm run export:openapi",
+    "check": "npm run typecheck && npm run check:boundaries:core && npm run test && npm run export:openapi",
 
     "bundle:manifest": "tsx ./scripts/regenerate-bundle.ts",
 
@@ -80,7 +80,7 @@
 
     "pack:packages": "npm pack --workspace packages/bundle && npm pack --workspace packages/crypto && npm pack --workspace packages/governance && npm pack --workspace packages/execution && npm pack --workspace packages/verifier && npm pack --workspace packages/core && npm pack --workspace packages/verifier-cli",
 
-    "release:validate": "npm run build && npm run check && npm run pack:packages && node ./PramanaSystems-consumer-test/test.mjs",
+    "release:validate": "npm run build && npm run check && npm run pack:packages && npm run release:manifest && npm run release:attest && npm run release:reproducibility && node ./PramanaSystems-consumer-test/test.mjs",
 
     "publish:packages": "npm run release:validate && npm publish --workspace packages/bundle --access public && npm publish --workspace packages/crypto --access public && npm publish --workspace packages/governance --access public && npm publish --workspace packages/execution --access public && npm publish --workspace packages/verifier --access public && npm publish --workspace packages/core --access public && npm publish --workspace packages/verifier-cli --access public"
   },

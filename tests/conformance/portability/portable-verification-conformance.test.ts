@@ -10,7 +10,12 @@ import {
 } from "@pramanasystems/core";
 
 import {
+  signExecutionToken,
+} from "@pramanasystems/execution";
+
+import {
   executionContext,
+  signer,
 } from "../../fixtures/execution-context-fixture";
 
 describe(
@@ -21,15 +26,23 @@ describe(
       "execution artifacts remain independently verifiable",
       () => {
 
+        const token = {
+          ...executionContext.token,
+
+          execution_id:
+            "portable-verification-1",
+        };
+
         const context = {
           ...executionContext,
 
-          token: {
-            ...executionContext.token,
+          token,
 
-            execution_id:
-              "portable-verification-1",
-          },
+          token_signature:
+            signExecutionToken(
+              token,
+              signer
+            ),
         };
 
         const execution =

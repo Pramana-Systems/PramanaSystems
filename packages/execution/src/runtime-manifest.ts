@@ -1,5 +1,6 @@
 import {
   hashRuntime,
+  runtimeManifestDefinition,
 } from "./hash-runtime";
 
 export interface RuntimeManifest {
@@ -7,36 +8,16 @@ export interface RuntimeManifest {
 
   runtime_hash: string;
 
-  supported_schema_versions: string[];
+  supported_schema_versions: readonly string[];
 
-  capabilities: string[];
+  capabilities: readonly string[];
 }
 
 export function getRuntimeManifest(): RuntimeManifest {
 
   return {
-    runtime_version:
-      "1.0.0",
-
     runtime_hash:
       hashRuntime(),
-
-    supported_schema_versions: [
-      "1.0.0",
-    ],
-
-    capabilities: [
-      "deterministic-evaluation",
-
-      "attestation-signing",
-
-      "replay-protection",
-
-      "bundle-verification",
-    ],
+    ...runtimeManifestDefinition,
   };
 }
-
-
-
-

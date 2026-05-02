@@ -1,5 +1,10 @@
+import fs from "fs";
+
 import {
   getRuntimeManifest,
+  LocalSigner,
+  LocalVerifier,
+  signExecutionToken,
 } from "@pramanasystems/execution";
 
 import type {
@@ -63,24 +68,34 @@ export const executionToken = {
     ).toISOString(),
 };
 
-export const signer = {
-  sign() {
-    return "signed";
-  },
-};
+export const signer =
+  new LocalSigner(
+    fs.readFileSync(
+      "./dev-keys/bundle_signing_key",
+      "utf8"
+    )
+  );
 
-export const verifier = {
-  verify() {
-    return true;
-  },
-};
+export const verifier =
+  new LocalVerifier(
+    fs.readFileSync(
+      "./dev-keys/bundle_signing_key.pub",
+      "utf8"
+    )
+  );
+
+export const tokenSignature =
+  signExecutionToken(
+    executionToken,
+    signer
+  );
 
 export const executionContext = {
   token:
     executionToken,
 
   token_signature:
-    "signature",
+    tokenSignature,
 
   signer,
 

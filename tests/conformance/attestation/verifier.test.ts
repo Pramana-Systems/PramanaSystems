@@ -86,7 +86,8 @@ describe(
         const result =
           verifyAttestation(
             attestation,
-            verifier
+            verifier,
+            runtimeManifest
           );
 
         expect(result.valid)
@@ -139,7 +140,8 @@ describe(
         const result =
           verifyAttestation(
             attestation,
-            verifier
+            verifier,
+            runtimeManifest
           );
 
         expect(result.valid)

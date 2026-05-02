@@ -1,20 +1,34 @@
 import crypto from "crypto";
 
-import fs from "fs";
+import {
+  canonicalize,
+} from "@pramanasystems/bundle";
+
+export const runtimeManifestDefinition = {
+  runtime_version:
+    "1.0.0",
+
+  supported_schema_versions: [
+    "1.0.0",
+  ],
+
+  capabilities: [
+    "deterministic-evaluation",
+    "attestation-signing",
+    "replay-protection",
+    "bundle-verification",
+  ],
+} as const;
 
 export function hashRuntime(): string {
-  const manifest =
-    fs.readFileSync(
-      "./runtime/runtime.manifest.json",
-      "utf8"
-    );
-
   return crypto
     .createHash(
       "sha256"
     )
     .update(
-      manifest
+      canonicalize(
+        runtimeManifestDefinition
+      )
     )
     .digest(
       "hex"

@@ -2,7 +2,15 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "src",
+    "paths": {
+      "@pramanasystems/bundle": [
+        "../bundle/dist"
+      ],
+      "@pramanasystems/crypto": [
+        "../crypto/dist"
+      ]
+    }
   },
   "include": ["src"]
 }

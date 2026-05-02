@@ -34,6 +34,79 @@ import {
   verifyExecutionToken,
 } from "./verify-token";
 
+function getMissingExecutionRequirements(
+  capabilities: readonly string[],
+  executionRequirements: ExecutionContext["execution_requirements"]
+): string[] {
+  const missing =
+    new Set<string>();
+
+  if (
+    executionRequirements
+      .replay_protection_required &&
+    !capabilities.includes(
+      "replay-protection"
+    )
+  ) {
+    missing.add(
+      "replay-protection"
+    );
+  }
+
+  if (
+    executionRequirements
+      .attestation_required &&
+    !capabilities.includes(
+      "attestation-signing"
+    )
+  ) {
+    missing.add(
+      "attestation-signing"
+    );
+  }
+
+  if (
+    executionRequirements
+      .audit_chain_required &&
+    !capabilities.includes(
+      "bundle-verification"
+    )
+  ) {
+    missing.add(
+      "bundle-verification"
+    );
+  }
+
+  if (
+    executionRequirements
+      .independent_verification_required
+  ) {
+    if (
+      !capabilities.includes(
+        "attestation-signing"
+      )
+    ) {
+      missing.add(
+        "attestation-signing"
+      );
+    }
+
+    if (
+      !capabilities.includes(
+        "bundle-verification"
+      )
+    ) {
+      missing.add(
+        "bundle-verification"
+      );
+    }
+  }
+
+  return [
+    ...missing,
+  ];
+}
+
 const defaultReplayStore =
   new MemoryReplayStore();
 
@@ -77,6 +150,18 @@ export function executeDecision(
     );
   }
 
+  if (
+    !runtime_manifest
+      .supported_schema_versions
+      .includes(
+        "1.0.0"
+      )
+  ) {
+    throw new Error(
+      "Unsupported runtime schema version"
+    );
+  }
+
   for (
     const capability of
     runtime_requirements
@@ -90,6 +175,21 @@ export function executeDecision(
         `Missing runtime capability: ${capability}`
       );
     }
+  }
+
+  const missingExecutionRequirements =
+    getMissingExecutionRequirements(
+      runtime_manifest.capabilities,
+      execution_requirements
+    );
+
+  if (
+    missingExecutionRequirements.length >
+    0
+  ) {
+    throw new Error(
+      `Missing execution requirement: ${missingExecutionRequirements.join(", ")}`
+    );
   }
 
   const valid =

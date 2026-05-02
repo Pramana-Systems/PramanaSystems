@@ -2,9 +2,7 @@ import fs from "fs";
 
 import crypto from "crypto";
 
-import {
-  verifySignature,
-} from "@pramanasystems/crypto";
+import path from "path";
 
 const manifestPath =
   "release-manifest.json";
@@ -38,10 +36,36 @@ const signature =
     "utf8"
   );
 
+const trustRoot =
+  JSON.parse(
+    fs.readFileSync(
+      "trust/trust-root.json",
+      "utf8"
+    )
+  ) as {
+    public_key_file: string;
+  };
+
+const publicKey =
+  fs.readFileSync(
+    path.join(
+      "trust",
+      trustRoot.public_key_file
+    ),
+    "utf8"
+  );
+
 const valid =
-  verifySignature(
-    manifestPath,
-    signature
+  crypto.verify(
+    null,
+    fs.readFileSync(
+      manifestPath
+    ),
+    publicKey,
+    Buffer.from(
+      signature,
+      "base64"
+    )
   );
 
 if (!valid) {

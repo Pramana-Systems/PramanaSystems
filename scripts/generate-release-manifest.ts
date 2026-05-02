@@ -4,8 +4,6 @@ import path from "path";
 
 import crypto from "crypto";
 
-import child_process from "child_process";
-
 function sha256(
   filePath: string
 ): string {
@@ -28,42 +26,56 @@ const packages = [
   "execution",
   "verifier",
   "core",
+  "verifier-cli",
 ];
 
 const artifacts =
   packages.map(
     (pkg) => {
-
-      const packageDir =
+      const packageManifestPath =
         path.join(
           "packages",
-          pkg
+          pkg,
+          "package.json"
         );
+
+      const packageManifest =
+        JSON.parse(
+          fs.readFileSync(
+            packageManifestPath,
+            "utf8"
+          )
+        ) as {
+          name: string;
+          version: string;
+        };
 
       const tarball =
-        fs.readdirSync(
-          packageDir
-        ).find(
-          (file) =>
-            file.endsWith(
-              ".tgz"
-            )
-        );
-
-      if (!tarball) {
-        throw new Error(
-          `Missing tarball for ${pkg}`
-        );
-      }
+        `${packageManifest.name
+          .replace(/^@/, "")
+          .replace(/\//g, "-")}-${packageManifest.version}.tgz`;
 
       const tarballPath =
-        path.join(
-          packageDir,
+        path.resolve(
           tarball
         );
 
+      if (
+        !fs.existsSync(
+          tarballPath
+        )
+      ) {
+        throw new Error(
+          `Missing tarball for ${packageManifest.name}: ${tarball}`
+        );
+      }
+
       return {
-        package: pkg,
+        package:
+          packageManifest.name,
+
+        version:
+          packageManifest.version,
 
         artifact:
           tarball,
@@ -76,40 +88,9 @@ const artifacts =
     }
   );
 
-const gitCommit =
-  child_process
-    .execSync(
-      "git rev-parse HEAD"
-    )
-    .toString()
-    .trim();
-
-const gitTag =
-  process.env.GITHUB_REF_NAME ??
-  "development";
-
-const generatedBy =
-  "PramanaSystems-release-pipeline";
-
 const manifest = {
   manifest_version:
     "1.0.0",
-
-  generated_at:
-    new Date()
-      .toISOString(),
-
-  git_commit:
-    gitCommit,
-
-  git_tag:
-    gitTag,
-
-  generated_by:
-    generatedBy,
-
-  node_version:
-    process.version,
 
   artifacts,
 };

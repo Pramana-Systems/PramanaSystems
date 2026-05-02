@@ -18,15 +18,15 @@
 
     "paths": {
       "@pramanasystems/bundle": [
-        "./packages/bundle/dist"
+        "./packages/bundle/src"
       ],
 
       "@pramanasystems/crypto": [
-        "./packages/crypto/dist"
+        "./packages/crypto/src"
       ],
 
       "@pramanasystems/governance": [
-        "./packages/governance/dist"
+        "./packages/governance/src"
       ],
 
       "@pramanasystems/cli": [
@@ -34,7 +34,7 @@
       ],
 
       "@pramanasystems/execution": [
-        "./packages/execution/dist"
+        "./packages/execution/src"
       ],
 
       "@pramanasystems/verifier": [

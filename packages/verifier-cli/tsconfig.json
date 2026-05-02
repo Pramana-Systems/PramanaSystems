@@ -2,7 +2,12 @@
   "extends": "../../tsconfig.json",
 
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "paths": {
+      "@pramanasystems/core": [
+        "../core/dist"
+      ]
+    }
   },
 
   "include": [

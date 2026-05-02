@@ -30,14 +30,6 @@ describe(
         ).toBeTruthy();
 
         expect(
-          manifest.generated_at
-        ).toBeTruthy();
-
-        expect(
-          manifest.git_commit
-        ).toBeTruthy();
-
-        expect(
           manifest.artifacts
         ).toBeTruthy();
 
@@ -73,6 +65,3 @@ describe(
     );
   }
 );
-
-
-

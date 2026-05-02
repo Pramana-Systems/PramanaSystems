@@ -1,45 +1,24 @@
 import fs from "fs";
 
-import child_process from "child_process";
+import crypto from "crypto";
 
-const manifest =
-  JSON.parse(
-    fs.readFileSync(
-      "release-manifest.json",
-      "utf8"
-    )
+const manifestBytes =
+  fs.readFileSync(
+    "release-manifest.json"
   );
 
-const verifier =
-  process.env.USER ??
-  "independent-verifier";
-
-const verifiedAt =
-  new Date()
-    .toISOString();
-
-const gitCommit =
-  child_process
-    .execSync(
-      "git rev-parse HEAD"
-    )
-    .toString()
-    .trim();
+const manifestHash =
+  crypto
+    .createHash("sha256")
+    .update(manifestBytes)
+    .digest("hex");
 
 const attestation = {
   attestation_version:
     "1.0.0",
 
-  verified_at:
-    verifiedAt,
-
-  verifier,
-
-  git_commit:
-    gitCommit,
-
   release_manifest_hash:
-    manifest.artifacts,
+    manifestHash,
 
   verification_result:
     "PASSED",
