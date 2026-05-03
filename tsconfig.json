@@ -53,7 +53,8 @@
         "./packages/sdk-client/src"
       ]
     }
-  }
+  },
+  "exclude": ["packages/dashboard"]
 }
 
 
