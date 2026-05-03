@@ -80,6 +80,17 @@ function getLastRecordHash():
   );
 }
 
+/**
+ * Appends a hash-chained audit record for `token` to `./runtime-audit/executions.jsonl`.
+ *
+ * Each record includes a `previous_record_hash` field (SHA-256 of the prior JSONL
+ * entry, or `"GENESIS"` for the first record), creating an append-only chain that
+ * makes undetected record deletion or insertion infeasible.
+ *
+ * The audit directory is created on first write if it does not exist.
+ *
+ * @param token - The execution token being recorded.
+ */
 export function appendAuditRecord(
   token: ExecutionToken
 ): void {

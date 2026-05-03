@@ -10,6 +10,13 @@ import {
   loadPrivateKey,
 } from "./keys";
 
+/**
+ * Reads the manifest JSON at `manifestPath`, canonicalizes it, and returns a
+ * base64-encoded Ed25519 signature produced with the dev private key.
+ *
+ * @param manifestPath - Absolute or CWD-relative path to a `bundle.manifest.json` file.
+ * @returns Base64-encoded Ed25519 signature over the canonical manifest bytes.
+ */
 export function signManifest(
   manifestPath: string
 ): string {

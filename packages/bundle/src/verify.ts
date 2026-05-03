@@ -10,6 +10,17 @@ import type {
   VerifyResult,
 } from "./types";
 
+/**
+ * Re-hashes every file under `directory` and recomputes the bundle hash, then
+ * compares it against `manifest.bundle_hash`.
+ *
+ * Returns `valid: true` only when the on-disk content matches the manifest
+ * commitment exactly.  Any file addition, deletion, or modification produces
+ * a differing hash and `valid: false`.
+ *
+ * @param manifest  - The reference manifest containing the expected bundle hash.
+ * @param directory - Bundle directory whose contents will be re-hashed.
+ */
 export function verifyManifest(
   manifest: BundleManifest,
   directory: string

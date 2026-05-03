@@ -12,6 +12,10 @@ const PUBLIC_KEY_PATH =
     "./dev-keys/bundle_signing_key.pub"
   );
 
+/**
+ * Reads the Ed25519 private key PEM from `./dev-keys/bundle_signing_key`.
+ * For production deployments inject the key via `PRAMANA_PRIVATE_KEY` instead.
+ */
 export function loadPrivateKey(): string {
 
   return fs.readFileSync(
@@ -20,6 +24,10 @@ export function loadPrivateKey(): string {
   );
 }
 
+/**
+ * Reads the Ed25519 public key PEM from `./dev-keys/bundle_signing_key.pub`.
+ * For production deployments inject the key via `PRAMANA_PUBLIC_KEY` instead.
+ */
 export function loadPublicKey(): string {
 
   return fs.readFileSync(

@@ -10,6 +10,19 @@ import type {
   BundleManifest,
 } from "./types";
 
+/**
+ * Generates a content-addressed {@link BundleManifest} for `policyId`/`policyVersion`
+ * by hashing every file under `directory` (manifest and sig files excluded).
+ *
+ * JSON files are canonicalized before hashing; other files have CRLF normalized
+ * to LF.  The final `bundle_hash` is SHA-256 of the canonical manifest with
+ * `bundle_hash` set to `""`, making it a deterministic commitment over all
+ * artifact content.
+ *
+ * @param policyId      - Policy identifier to embed in the manifest.
+ * @param policyVersion - Policy version string (e.g. `"v1"`).
+ * @param directory     - Absolute path to the bundle directory.
+ */
 export function generateManifest(
   policyId: string,
   policyVersion: string,

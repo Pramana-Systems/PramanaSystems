@@ -39,9 +39,9 @@
     },
     {
       "package": "@pramanasystems/verifier-cli",
-      "version": "1.0.4",
-      "artifact": "pramanasystems-verifier-cli-1.0.4.tgz",
-      "sha256": "0123e33bde389764046aad1bcfd969d3f8fa747bbc5efa9a08bb647a9ccff961"
+      "version": "1.0.5",
+      "artifact": "pramanasystems-verifier-cli-1.0.5.tgz",
+      "sha256": "a73ae549274aa3aa43e09eb378d465cbb728b043741869f38867f9456d10aaf2"
     }
   ]
 }

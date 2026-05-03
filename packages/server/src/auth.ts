@@ -1,5 +1,15 @@
 import type { FastifyRequest, FastifyReply } from "fastify";
 
+/**
+ * Fastify pre-handler hook that enforces Bearer token authentication.
+ *
+ * When `PRAMANA_API_KEY` is set in the environment, every request must supply
+ * the header `Authorization: Bearer <key>`.  If the key is absent or wrong the
+ * hook sends `401 Unauthorized` and terminates the request.
+ *
+ * When `PRAMANA_API_KEY` is unset (dev mode), all requests pass through
+ * without authentication.
+ */
 export async function authHook(
   req: FastifyRequest,
   reply: FastifyReply

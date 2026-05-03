@@ -1,3 +1,10 @@
+/**
+ * Serializes `value` to a stable, pretty-printed JSON string with object keys
+ * sorted recursively.  This is the canonical byte representation used for all
+ * bundle hashing and manifest signing operations.
+ *
+ * Arrays preserve their original order; only object keys are sorted.
+ */
 export function canonicalize(value: unknown): string {
   return JSON.stringify(sortKeys(value), null, 2);
 }

@@ -1,3 +1,4 @@
+/** Returns `true` when `value` is a non-empty, non-whitespace-only string. */
 export function assertNonEmptyString(
   value: unknown
 ): boolean {
@@ -7,6 +8,7 @@ export function assertNonEmptyString(
   );
 }
 
+/** Returns `true` when `value` is an array. */
 export function assertArray(
   value: unknown
 ): boolean {
@@ -62,6 +64,16 @@ function scanObject(
   return true;
 }
 
+/**
+ * Recursively scans `payload` and returns `false` if any object key matches
+ * a name in `forbiddenFields`.
+ *
+ * Used by {@link LocalValidator} to enforce that operational-metadata fields
+ * have not contaminated the deterministic signing scope.
+ *
+ * @param payload         - The payload object to inspect.
+ * @param forbiddenFields - Field names that must not appear anywhere in the payload.
+ */
 export function assertNoOperationalMetadata(
   payload: unknown,
   forbiddenFields:

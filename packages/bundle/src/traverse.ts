@@ -6,6 +6,15 @@ const EXCLUDED_FILES = [
   "bundle.sig",
 ];
 
+/**
+ * Recursively enumerates all non-excluded files under `directory`, returning
+ * normalized POSIX-style paths relative to `root` (defaults to `directory`).
+ * Entries are sorted deterministically by name at each level.
+ * `bundle.manifest.json` and `bundle.sig` are always excluded.
+ *
+ * @param directory - The directory to traverse.
+ * @param root      - The root used for computing relative output paths.
+ */
 export function traverseDirectory(
   directory: string,
   root: string = directory

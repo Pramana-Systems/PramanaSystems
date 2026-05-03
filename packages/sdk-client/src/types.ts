@@ -1,7 +1,7 @@
 import type { paths } from "./openapi.js";
 
 // ── Extracted from openapi.d.ts via indexed-access types ─────────────────
-// All types here are derived directly from the generated spec — no manual
+// All types are derived directly from the generated spec — no manual
 // duplication means they stay in sync whenever `npm run generate` is re-run.
 
 /** Response body for GET /health */

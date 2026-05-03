@@ -1,6 +1,10 @@
 import fs from "fs";
 import path from "path";
 
+/**
+ * Writes a base64 signature string to `<directory>/bundle.sig`.
+ * Overwrites any existing file at that path.
+ */
 export function writeSignature(
   signature: string,
   directory: string
@@ -17,6 +21,7 @@ export function writeSignature(
   );
 }
 
+/** Reads and returns the raw base64 signature from `<directory>/bundle.sig`. */
 export function readSignature(
   directory: string
 ): string {

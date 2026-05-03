@@ -77,9 +77,13 @@ const S_NOT_IMPLEMENTED = {
 
 // ── Deps / body types ─────────────────────────────────────────────────────
 
+/** Runtime dependencies injected into each route handler at registration time. */
 export interface RouteDeps {
+  /** Signer used to produce attestations in the `/execute` route. */
   signer: Signer;
+  /** Verifier used to check attestation signatures in the `/verify` route. */
   verifier: Verifier;
+  /** Active runtime manifest embedded in every execution result. */
   runtimeManifest: RuntimeManifest;
 }
 
@@ -92,6 +96,23 @@ interface ExecuteBody {
 
 // ── Route registration ────────────────────────────────────────────────────
 
+/**
+ * Registers all governance API routes on `app`.
+ *
+ * Active routes (fully implemented):
+ * - `GET  /health`   — runtime health and version.
+ * - `POST /execute`  — deterministic governance decision with signed attestation.
+ * - `POST /verify`   — independent attestation verification.
+ *
+ * Stub routes (return `501 Not Implemented`):
+ * - `GET  /runtime/manifest`    — signed runtime bundle manifest.
+ * - `GET  /runtime/capabilities` — runtime capability declarations.
+ * - `POST /evaluate`             — policy dry-run (no attestation).
+ * - `POST /simulate`             — full pipeline dry-run (no side effects).
+ *
+ * @param app  - The Fastify instance to register routes on.
+ * @param deps - Signer, verifier, and runtime manifest to inject into route handlers.
+ */
 export function registerRoutes(
   app: FastifyInstance,
   deps: RouteDeps

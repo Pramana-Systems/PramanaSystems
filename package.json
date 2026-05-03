@@ -82,7 +82,9 @@
 
     "release:validate": "npm run build && npm run check && npm run pack:packages && npm run release:manifest && npm run release:attest && npm run release:reproducibility && node ./PramanaSystems-consumer-test/test.mjs",
 
-    "publish:packages": "npm run release:validate && npm publish --workspace packages/bundle --access public && npm publish --workspace packages/crypto --access public && npm publish --workspace packages/governance --access public && npm publish --workspace packages/execution --access public && npm publish --workspace packages/verifier --access public && npm publish --workspace packages/core --access public && npm publish --workspace packages/verifier-cli --access public"
+    "publish:packages": "npm run release:validate && npm publish --workspace packages/bundle --access public && npm publish --workspace packages/crypto --access public && npm publish --workspace packages/governance --access public && npm publish --workspace packages/execution --access public && npm publish --workspace packages/verifier --access public && npm publish --workspace packages/core --access public && npm publish --workspace packages/verifier-cli --access public",
+
+    "dashboard": "npm run dev --workspace=packages/dashboard"
   },
 
   "keywords": [

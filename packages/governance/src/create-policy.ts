@@ -1,6 +1,14 @@
 import fs from "fs";
 import path from "path";
 
+/**
+ * Scaffolds a new policy directory at `./policies/<policyId>/v1/` and writes
+ * a skeleton `policy.json` to it.
+ *
+ * @param policyId - Unique policy identifier.  Must not already exist on disk.
+ * @returns Absolute path of the created `v1` version directory.
+ * @throws When `./policies/<policyId>` already exists.
+ */
 export function createPolicy(
   policyId: string
 ): string {

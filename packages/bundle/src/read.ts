@@ -5,6 +5,11 @@ import type {
   BundleManifest,
 } from "./types";
 
+/**
+ * Reads and JSON-parses `bundle.manifest.json` from `directory`.
+ *
+ * @param directory - Path to a bundle directory containing `bundle.manifest.json`.
+ */
 export function readManifest(
   directory: string
 ): BundleManifest {

@@ -14,6 +14,22 @@ import type {
   ExecutionToken,
 } from "./execution-token";
 
+/**
+ * Issues a signed, time-limited {@link ExecutionToken} authorizing a single
+ * governance decision execution.
+ *
+ * The policy must pass {@link validatePolicy} before the token is issued, and
+ * the bundle hash is read directly from the policy's manifest so the token is
+ * bound to the exact bundle version on disk.
+ *
+ * @param policyId      - The policy to authorize.
+ * @param policyVersion - The specific policy version directory (e.g. `"v1"`).
+ * @param decisionType  - The decision type to execute (e.g. `"approve"`).
+ * @param signalsHash   - SHA-256 hex digest of the input signals payload.
+ * @param ttlSeconds    - Token validity window in seconds (default: 300 s / 5 min).
+ * @returns A populated {@link ExecutionToken} ready to be signed and passed to {@link executeDecision}.
+ * @throws When `validatePolicy` fails for the given `policyId`.
+ */
 export function issueExecutionToken(
   policyId: string,
   policyVersion: string,

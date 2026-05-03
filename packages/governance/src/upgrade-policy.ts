@@ -1,6 +1,16 @@
 import fs from "fs";
 import path from "path";
 
+/**
+ * Creates the next version directory for `policyId` by copying the latest
+ * existing version and incrementing its numeric suffix (e.g. `v1` → `v2`).
+ * The copied `policy.json` has its `version` field updated to the new version
+ * string.
+ *
+ * @param policyId - An existing policy identifier under `./policies/`.
+ * @returns Absolute path of the newly created version directory.
+ * @throws When the policy does not exist on disk.
+ */
 export function upgradePolicy(
   policyId: string
 ): string {

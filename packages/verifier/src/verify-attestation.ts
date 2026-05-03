@@ -15,6 +15,21 @@ import type {
   VerificationResult,
 } from "./types";
 
+/**
+ * Verifies an {@link ExecutionAttestation} against a trusted runtime manifest.
+ *
+ * Performs three independent checks:
+ * - **Signature** — cryptographic verification of `attestation.signature` over `attestation.result`.
+ * - **Runtime** — the result's `runtime_hash` and `runtime_version` match `runtimeManifest`.
+ * - **Schema** — the result's `schema_version` is in `runtimeManifest.supported_schema_versions`.
+ *
+ * All three must pass for `valid` to be `true`.  This function is the primary
+ * entry point for independent out-of-runtime verification.
+ *
+ * @param attestation    - The attestation to verify.
+ * @param verifier       - Verifier holding the public key of the signing authority.
+ * @param runtimeManifest - The trusted runtime manifest to compare against.
+ */
 export function verifyAttestation(
   attestation: ExecutionAttestation,
   verifier: Verifier,

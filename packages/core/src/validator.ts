@@ -16,11 +16,26 @@ import { ValidationResult } from "./types/validation";
 
 import { SignedEnvelope } from "./types/envelope";
 
+/**
+ * Multi-stage validator for {@link SignedEnvelope} values.
+ *
+ * Runs up to five sequential checks (structure → canonical → deterministic →
+ * metadata isolation → cryptographic) and returns a detailed
+ * {@link ValidationResult} with per-stage flags and error messages.
+ *
+ * **Note:** the `cryptographic` stage is not yet implemented and always returns
+ * `false`, so `valid` is always `false`.  Use `@pramanasystems/verifier` for
+ * cryptographic attestation verification.
+ */
 export class LocalValidator {
 
   private readonly config:
     ValidatorConfig;
 
+  /**
+   * @param config - Optional override for {@link ValidatorConfig}.
+   *   Defaults to using {@link forbiddenDeterministicFields}.
+   */
   constructor(
     config: ValidatorConfig = {}
   ) {
@@ -36,6 +51,7 @@ export class LocalValidator {
     return envelope.payload;
   }
 
+  /** Returns `true` when `envelope` has `payload` (any value) and `signature` (string). */
   validateStructure(
     envelope: SignedEnvelope<unknown>
   ): boolean {
@@ -49,6 +65,7 @@ export class LocalValidator {
     );
   }
 
+  /** Returns `true` when `payload` can be serialized through the canonical JSON pipeline without error. */
   validateCanonical(
     payload: unknown
   ): boolean {
@@ -65,6 +82,11 @@ export class LocalValidator {
     }
   }
 
+  /**
+   * Returns `true` when the canonical form of the payload alone equals the
+   * canonical form of `{ payload }`, confirming that no metadata fields have
+   * leaked into the deterministic signing scope.
+   */
   validateMetadataIsolation(
     envelope: SignedEnvelope<unknown>
   ): boolean {
@@ -97,6 +119,10 @@ export class LocalValidator {
     }
   }
 
+  /**
+   * Runs all five validation stages against `envelope` and returns a
+   * {@link ValidationResult} with per-stage flags and accumulated error messages.
+   */
   validate(
     envelope: SignedEnvelope<unknown>
   ): ValidationResult {

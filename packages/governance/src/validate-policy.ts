@@ -11,6 +11,16 @@ import {
   verifySignature,
 } from "@pramanasystems/crypto";
 
+/**
+ * Validates every version directory under `./policies/<policyId>` by
+ * re-verifying all bundle manifests (content hashes) and cryptographic
+ * signatures (bundle.sig).
+ *
+ * Returns `true` only when every version passes all checks.
+ *
+ * @param policyId - Policy identifier whose version directories will be checked.
+ * @throws When the policy directory does not exist.
+ */
 export function validatePolicy(
   policyId: string
 ): boolean {

@@ -130,6 +130,24 @@ function getMissingExecutionRequirements(
 const defaultReplayStore =
   new MemoryReplayStore();
 
+/**
+ * Executes a governance decision through the full deterministic pipeline:
+ *
+ * 1. **Version compatibility** — verifies the runtime version and schema version
+ *    satisfy the requirements declared in the bundle manifest.
+ * 2. **Capability check** — ensures the runtime advertises every capability
+ *    required by the bundle and by `execution_requirements`.
+ * 3. **Token verification** — validates the cryptographic signature on the token.
+ * 4. **Expiry check** — rejects tokens that have exceeded their TTL.
+ * 5. **Replay protection** — rejects execution IDs already present in `replayStore`.
+ * 6. **Audit logging** — appends a hash-chained audit record.
+ * 7. **Attestation** — builds an {@link ExecutionResult} and signs it, returning an
+ *    {@link ExecutionAttestation} that can be independently verified.
+ *
+ * @param context     - Full execution context including the pre-signed token.
+ * @param replayStore - Store used for replay protection (default: module-level MemoryReplayStore).
+ * @throws On any verification failure — execution fails closed.
+ */
 export function executeDecision(
   context: ExecutionContext,
   replayStore: ReplayStore =
@@ -306,6 +324,20 @@ export function executeDecision(
   return attestation;
 }
 
+/**
+ * Convenience wrapper around {@link executeDecision} that handles token issuance
+ * and signing internally.
+ *
+ * Uses a minimal {@link ExecutionContext} with all security flags set to `false`,
+ * making it suitable for simple integrations and the REST API's `/execute` route.
+ * For high-assurance deployments construct the {@link ExecutionContext} manually
+ * with the appropriate {@link ExecutionRequirements}.
+ *
+ * @param input   - Policy reference and decision inputs.
+ * @param signer  - Signer used for both token signing and result attestation.
+ * @param verifier - Verifier used to authenticate the token.
+ * @param store   - Optional replay store (default: module-level MemoryReplayStore).
+ */
 export function executeSimple(
   input: {
     policyId: string;

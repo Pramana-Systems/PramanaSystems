@@ -5,15 +5,21 @@ import type {
   VerificationResult,
 } from "./types.js";
 
+/** Construction options for {@link PramanaClient}. */
 export interface PramanaClientOptions {
-  /** Base URL of the PramanaSystems server, e.g. "http://localhost:3000" */
+  /** Base URL of the PramanaSystems server, e.g. `"http://localhost:3000"`. Trailing slashes are stripped. */
   baseUrl: string;
-  /** Bearer token — required when the server has PRAMANA_API_KEY set */
+  /** Bearer token for API authentication — required when the server has `PRAMANA_API_KEY` set. */
   apiKey?: string;
 }
 
-/** Thrown whenever the server returns a non-2xx status. */
+/**
+ * Thrown by {@link PramanaClient} whenever the server returns a non-2xx HTTP status.
+ * The `status` property holds the HTTP status code; `message` contains the
+ * server's `error` field (or `statusText` as a fallback).
+ */
 export class PramanaApiError extends Error {
+  /** HTTP status code returned by the server. */
   readonly status: number;
 
   constructor(status: number, message: string) {
@@ -23,10 +29,32 @@ export class PramanaApiError extends Error {
   }
 }
 
+/**
+ * Type-safe HTTP client for the PramanaSystems governance REST API.
+ *
+ * All request and response types are derived directly from the generated
+ * `openapi.d.ts` spec, so they stay in sync with the server automatically.
+ *
+ * @example
+ * ```ts
+ * const client = new PramanaClient({ baseUrl: "http://localhost:3000", apiKey: "secret" });
+ *
+ * const attestation = await client.execute({
+ *   policy_id: "access-control",
+ *   policy_version: "v1",
+ *   decision_type: "approve",
+ *   signals_hash: "abc123...",
+ * });
+ *
+ * const result = await client.verify(attestation);
+ * console.log(result.valid); // true
+ * ```
+ */
 export class PramanaClient {
   private readonly baseUrl: string;
   private readonly defaultHeaders: Record<string, string>;
 
+  /** @param options - Client configuration including the server URL and optional API key. */
   constructor(options: PramanaClientOptions) {
     this.baseUrl = options.baseUrl.replace(/\/$/, "");
     this.defaultHeaders = {

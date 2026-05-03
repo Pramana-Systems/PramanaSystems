@@ -186,6 +186,20 @@ function validateSignals(
   }
 }
 
+/**
+ * Loads the policy JSON at `./policies/<policyId>/<policyVersion>/policy.json`
+ * and evaluates the rule tree against `signals`.
+ *
+ * Evaluation is deterministic: given the same policy, version, and signals the
+ * result is always identical.  Rules support `all` (logical AND), `any` (logical OR),
+ * and leaf conditions (`equals`, `greater_than`, `less_than`).
+ *
+ * @param policyId      - Policy identifier.
+ * @param policyVersion - Policy version directory name (e.g. `"v1"`).
+ * @param signals       - Typed signal map.  Required signals must be present.
+ * @returns The policy's `decision` string on success, or `"deny"` when rules fail.
+ * @throws When the schema version is unsupported or a required signal is missing/wrong type.
+ */
 export function evaluatePolicy(
   policyId: string,
   policyVersion: string,

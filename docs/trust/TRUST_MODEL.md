@@ -1,599 +1,230 @@
-\# PramanaSystems Trust Model
+# PramanaSystems Trust Model
 
+## Trust Philosophy
 
+PramanaSystems is built on explicit, portable, and cryptographically verifiable trust. Trust is never assumed implicitly through:
 
-\## Trust Philosophy
+- Infrastructure ownership
+- Deployment location
+- Runtime environment
+- Platform control
+- Organizational authority
 
+All critical governance operations are:
 
+- Explicitly authorized
+- Cryptographically verifiable
+- Independently reproducible
+- Auditable
+- Deterministic
 
-PramanaSystems is designed around explicit, portable, and cryptographically verifiable trust.
+Verification remains portable across environments.
 
+---
 
-
-Trust is never assumed implicitly through:
-
-
-
-\- infrastructure ownership
-
-\- deployment location
-
-\- runtime environment
-
-\- platform control
-
-\- organizational authority
-
-
-
-All critical governance operations must remain:
-
-
-
-\- explicitly authorized
-
-\- cryptographically verifiable
-
-\- independently reproducible
-
-\- auditable
-
-\- deterministic
-
-
-
-Verification must remain portable across environments.
-
-
-
-\---
-
-
-
-\# Trust Boundaries
-
-
+## Trust Boundaries
 
 | Component | Trust Model |
-
 |---|---|
-
 | Governance artifacts | Cryptographically verified |
-
 | Policies | Explicitly versioned and signed |
-
 | Execution runtime | Version-governed and attestable |
-
-| Signals | Externally generated but governed |
-
+| Signals | Externally generated but governed by policy schema |
 | AI systems | Not trusted for deterministic enforcement |
-
 | Release artifacts | Independently verifiable |
-
 | Verifiers | Portable and independently executable |
-
 | Infrastructure providers | Intentionally untrusted |
+| External storage | Not trusted without signature verification |
+| Runtime metadata | Audit-only — excluded from deterministic decisions |
 
-| External storage systems | Not trusted without verification |
+Trust is established through deterministic verification, not infrastructure ownership.
 
-| Runtime metadata | Audit-only and excluded from deterministic decisions |
+---
 
+## Trust Roots
 
+PramanaSystems uses explicit cryptographic trust roots. A trust root is an Ed25519 public key that serves as the authoritative verification anchor for:
 
-Trust is established through deterministic verification rather than infrastructure ownership.
+- Release manifest signatures
+- Attestation signatures
+- Governance artifact signatures
+- Trust governance operations
 
+Trust roots are distributed as portable public verification artifacts. They are designed to remain:
 
+- Immutable — a published root key is never modified in place
+- Independently distributable — available without trusting any platform
+- Reproducibly verifiable — multiple independent sources can confirm authenticity
+- Version-governed — root versions are explicit and tracked
 
-\---
+Private trust material (private keys) must never be distributed publicly.
 
+---
 
+## Signing Model
 
-\# Trust Roots
-
-
-
-PramanaSystems uses explicit cryptographic trust roots.
-
-
-
-Trust roots define the authoritative verification anchors for:
-
-
-
-\- release verification
-
-\- manifest signing
-
-\- attestation validation
-
-\- trust governance operations
-
-
-
-Trust roots are distributed as portable public verification artifacts.
-
-
-
-Public trust roots are intended to remain:
-
-
-
-\- immutable
-
-\- independently distributable
-
-\- reproducibly verifiable
-
-\- version-governed
-
-
-
-Private trust material must never be distributed publicly.
-
-
-
-\---
-
-
-
-\# Signing Model
-
-
-
-PramanaSystems uses deterministic signing semantics.
-
-
+All signing and verification operations act on **canonical serialized bytes** — JSON with object keys sorted recursively. This prevents ambiguity-based signature bypass where different serializations of semantically identical content would produce different signatures.
 
 Signing operations include:
 
+- Bundle manifest signing (`bundle.sig`)
+- Release provenance signing (`release-manifest.sig`)
+- Execution result attestation signing
+- Runtime manifest signing
+- Trust governance operations
 
+Unsigned or unverifiable artifacts are treated as invalid and rejected.
 
-\- governance manifest signing
+---
 
-\- release provenance signing
+## Key Infrastructure
 
-\- execution attestation signing
+### Development Keys
 
-\- trust governance signing
+Located at `./dev-keys/bundle_signing_key` and `./dev-keys/bundle_signing_key.pub`. Used for local development and CI. Never used in production.
 
-\- trust rotation authorization
+### Production Keys
 
+Injected via `PRAMANA_PRIVATE_KEY` and `PRAMANA_PUBLIC_KEY` environment variables. The server falls back to dev-keys and then generates ephemeral keys if neither is available.
 
+### AWS KMS
 
-All signing and verification operations use canonical serialized bytes.
+For production deployments requiring hardware-backed or auditable signing, `AwsKmsSigner` provides ECDSA_SHA_256 signing via AWS KMS. Key material never leaves the HSM.
 
+---
 
+## Distributed Governance Authorities
 
-Equivalent semantic content must always produce identical hashes and signatures.
+PramanaSystems is designed to support distributed governance authority models where operations may require:
 
+- Multiple signers
+- Quorum-based approval
+- Role-specific authorization
+- Distributed trust control
 
+Examples include release approval, trust-root rotation, governance certification, and runtime authorization. Distributed governance reduces dependence on single-authority trust.
 
-Unsigned or unverifiable artifacts are treated as invalid.
+---
 
+## Trust-Root Rotation
 
+Trust evolution is explicitly governed. Rotation requires:
 
-\---
+- Explicit lineage preservation — the prior root authorizes the next
+- Signed trust transition records
+- Deterministic authorization
+- Independently verifiable rotation history
 
+Trust rotation preserves cryptographic continuity rather than replacing trust implicitly. An observer with only the original root can trace the chain to the current root.
 
+---
 
-\# Distributed Governance Authorities
+## Independent Verification Model
 
+External verifiers must be able to validate all of the following using only distributed artifacts and the trust root — without trusting PramanaSystems infrastructure, CI systems, deployment environments, or runtime operators:
 
+- Release artifact integrity
+- Bundle manifest signatures
+- Execution attestations
+- Governance lineage
+- Reproducibility equivalence
+- Trust-root transitions
 
-PramanaSystems supports distributed governance authority models.
+---
 
+## Explicit Non-Trust Assumptions
 
+PramanaSystems intentionally does not trust:
 
-Governance operations may require:
+- AI-generated outputs (signals are trusted only after policy schema validation)
+- Probabilistic inference systems
+- Unsigned artifacts
+- Unverifiable runtimes
+- Mutable infrastructure
+- Uncontrolled external services
+- Implicit deployment trust
+- Non-versioned dependencies
+- Unverifiable execution environments
 
+All critical governance operations require explicit, deterministic verification.
 
+---
 
-\- multiple authorities
+## Compromise Model
 
-\- quorum approval
+PramanaSystems assumes compromise scenarios must be survivable through deterministic governance controls:
 
-\- role-specific authorization
+| Compromise | Response |
+|---|---|
+| Signing key compromise | Rotate trust root with explicit lineage; prior attestations remain verifiable against old root |
+| Release artifact tampering | Manifest hash mismatch detected; artifact rejected |
+| Replay attack | Single-use execution IDs; replay detected and execution terminated |
+| Unauthorized governance changes | Signature verification fails; change rejected |
+| Invalid trust transition | Lineage break detected; transition rejected |
+| Runtime incompatibility | Capability/version check fails; execution terminated |
 
-\- distributed trust control
+Compromised or unverifiable states fail closed. Trust recovery preserves explicit lineage.
 
+---
 
+## Replay Protection
 
-Examples include:
+Replay-safe execution is a mandatory trust invariant. Execution identifiers are single-use. The replay store (in-process `MemoryReplayStore` or distributed `RedisReplayStore`) records every consumed `execution_id`. Duplicate submissions are deterministically rejected at the start of the execution pipeline.
 
+---
 
+## Runtime Trust Semantics
 
-\- release approval
+An execution runtime is trusted only when:
 
-\- trust-root rotation
+- Its version satisfies the bundle's `supported_runtime_versions`
+- Its capabilities satisfy the bundle's `required_capabilities`
+- Its schema versions overlap with the bundle's `supported_schema_versions`
+- Attestation verification succeeds against the expected `runtime_hash`
 
-\- governance certification
+Runtime trust is governed deterministically through explicit compatibility validation — not through operator identity or deployment location.
 
-\- runtime authorization
+---
 
-
-
-Distributed governance reduces dependence on single-authority trust.
-
-
-
-\---
-
-
-
-\# Trust-Root Rotation Governance
-
-
-
-Trust evolution is explicitly governed.
-
-
-
-Trust-root rotation requires:
-
-
-
-\- explicit lineage preservation
-
-\- signed trust transitions
-
-\- deterministic authorization
-
-\- independently verifiable rotation history
-
-
-
-New trust roots must be authorized by previously trusted governance authority.
-
-
-
-Trust rotation preserves cryptographic continuity rather than replacing trust implicitly.
-
-
-
-\---
-
-
-
-\# Independent Verification Model
-
-
-
-External verification must remain portable.
-
-
-
-Independent verifiers must be able to validate:
-
-
-
-\- release artifacts
-
-\- manifest signatures
-
-\- execution attestations
-
-\- governance lineage
-
-\- reproducibility equivalence
-
-\- trust-root transitions
-
-
-
-without requiring trust in:
-
-
-
-\- PramanaSystems infrastructure
-
-\- deployment environments
-
-\- CI systems
-
-\- runtime operators
-
-
-
-Verification must remain executable using only distributed governance artifacts and trust roots.
-
-
-
-\---
-
-
-
-\# Explicit Non-Trust Assumptions
-
-
-
-PramanaSystems intentionally does not inherently trust:
-
-
-
-\- AI-generated outputs
-
-\- probabilistic inference systems
-
-\- unsigned artifacts
-
-\- unverifiable runtimes
-
-\- mutable infrastructure
-
-\- uncontrolled external services
-
-\- implicit deployment trust
-
-\- non-versioned dependencies
-
-\- unverifiable execution environments
-
-
-
-All critical governance operations require explicit verification.
-
-
-
-\---
-
-
-
-\# Compromise Model
-
-
-
-PramanaSystems assumes compromise scenarios must remain survivable through deterministic governance controls.
-
-
-
-Examples include:
-
-
-
-\- signing key compromise
-
-\- release artifact tampering
-
-\- replay attempts
-
-\- unauthorized governance changes
-
-\- invalid trust transitions
-
-\- verifier mismatch
-
-\- runtime incompatibility
-
-
-
-Compromised or unverifiable states must fail closed.
-
-
-
-Trust recovery must preserve explicit lineage and auditability.
-
-
-
-\---
-
-
-
-\# Replay Protection
-
-
-
-Execution replay protection is a mandatory trust invariant.
-
-
-
-Execution identifiers are single-use.
-
-
-
-Previously executed governance actions are deterministically rejected.
-
-
-
-Replay-safe execution applies to:
-
-
-
-\- execution tokens
-
-\- governance operations
-
-\- attestations
-
-\- workflow execution
-
-
-
-Replay detection failures terminate execution.
-
-
-
-\---
-
-
-
-\# Runtime Trust Semantics
-
-
-
-Execution runtimes are trusted only when:
-
-
-
-\- version compatibility is satisfied
-
-\- governance requirements are validated
-
-\- attestation verification succeeds
-
-\- runtime provenance remains valid
-
-
-
-Runtime trust is governed explicitly through deterministic compatibility semantics.
-
-
-
-\---
-
-
-
-\# Release Provenance Trust
-
-
+## Release Provenance Trust
 
 Release artifacts are trusted only when:
 
-
-
-\- manifest hashes match
-
-\- signatures validate
-
-\- provenance metadata is consistent
-
-\- reproducibility verification succeeds
-
-\- trust-root verification succeeds
-
-
+- Artifact hashes in `release-manifest.json` match on-disk files
+- The release signature validates against the trust root
+- Provenance metadata is internally consistent
+- Reproducibility verification produces equivalent hashes
+- Trust-root verification succeeds
 
 Release verification must remain independently executable.
 
+---
 
+## Trust Invariants
 
-\---
+The following invariants are mandatory and enforced at every layer:
 
+- Unsigned artifacts are invalid
+- Unverifiable lineage is rejected
+- Replayed execution is rejected
+- Unverifiable trust transitions are invalid
+- Governance operations require explicit authorization
+- Trust-root lineage must remain preservable
+- Execution fails closed on verification failure
+- Deterministic verification semantics are mandatory
+- Portable verification must remain possible
 
+---
 
-\# Governance Workflow Trust
+## Future Direction
 
+Planned trust infrastructure evolution:
 
+- Programmable trust governance policies
+- Distributed governance federation
+- Deterministic governance DAG authorization
+- Multi-party trust orchestration
+- Policy-governed trust execution
+- Reproducible governance supply-chain verification
 
-Governance workflows are treated as deterministic governance artifacts.
-
-
-
-Workflow trust requires:
-
-
-
-\- deterministic execution ordering
-
-\- explicit dependency lineage
-
-\- replay-safe orchestration
-
-\- governed authorization semantics
-
-\- attestable execution transitions
-
-
-
-Governance orchestration must remain reproducible and independently auditable.
-
-
-
-\---
-
-
-
-\# Trust Invariants
-
-
-
-The following invariants are mandatory:
-
-
-
-\- unsigned artifacts are invalid
-
-\- unverifiable lineage is rejected
-
-\- replayed execution is rejected
-
-\- unverifiable trust transitions are invalid
-
-\- governance operations require explicit authorization
-
-\- trust-root lineage must remain preservable
-
-\- execution must fail closed on verification failure
-
-\- deterministic verification semantics are mandatory
-
-\- portable verification must remain possible
-
-
-
-These invariants are foundational to PramanaSystems governance integrity.
-
-
-
-\---
-
-
-
-\# Trust Portability
-
-
-
-Trust in PramanaSystems is intentionally portable.
-
-
-
-Verification must remain possible across:
-
-
-
-\- infrastructure providers
-
-\- deployment environments
-
-\- customer-owned systems
-
-\- external verifier environments
-
-\- independent rebuild workflows
-
-
-
-Portable trust is treated as a core architectural requirement rather than an operational convenience.
-
-
-
-\---
-
-
-
-\# Future Direction
-
-
-
-Future trust infrastructure evolution includes:
-
-
-
-\- programmable trust governance
-
-\- distributed governance federation
-
-\- deterministic governance DAG authorization
-
-\- multi-party trust orchestration
-
-\- policy-governed trust execution
-
-\- reproducible governance supply-chain verification
-
-
-
-Future evolution must preserve deterministic reproducibility and independent verifiability.
-
-
-
-
+All future evolution must preserve deterministic reproducibility and independent verifiability.

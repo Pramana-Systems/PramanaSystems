@@ -10,119 +10,130 @@ Deterministic governance infrastructure for enforceable, auditable, and independ
 
 ## What is PramanaSystems?
 
-PramanaSystems separates:
+PramanaSystems separates AI signal generation from governance enforcement.
 
-- AI systems (probabilistic signal generation)
-- Governance systems (deterministic enforcement)
-
-It ensures that decisions are:
-
-- reproducible
-- verifiable
-- replay-safe
-- cryptographically attestable
-
----
-
-## Core Principle
-
-```text
+```
 AI → Signals → Deterministic Governance → Attested Decision
+                        │
+              ┌─────────┴─────────┐
+              │  Execution Token  │
+              │  Signed Result    │
+              │  Replay Guard     │
+              └─────────┬─────────┘
+                        │
+              Independent Verification
 ```
 
-AI never directly enforces outcomes.
+AI never directly enforces outcomes. Every governance decision is:
+
+- **Deterministic** — same inputs always produce the same signed result
+- **Replay-safe** — each execution token is consumed exactly once
+- **Cryptographically attested** — results are signed at execution time
+- **Independently verifiable** — any party can verify without trusting the runtime
 
 ---
 
-## Documentation
-
-- Architecture → `docs/architecture/`
-- Governance → `docs/governance/`
-- Trust Model → `docs/trust/`
-- Verification → `docs/verification/`
-- Examples → `examples/`
-- 
 ## Quickstart
 
-Install the portable runtime SDK:
+### Embedded SDK
 
 ```bash
 npm install @pramanasystems/core
 ```
 
-Example:
+```ts
+import { executeDecision, LocalSigner, LocalVerifier } from "@pramanasystems/core";
 
-```js
-import {
-  LocalSigner,
-  verifyExecutionResult
-} from "@pramanasystems/core";
+const signer   = new LocalSigner();
+const verifier = new LocalVerifier(signer.publicKeyPem);
 
-const signer = new LocalSigner();
+const { attestation } = executeDecision(
+  "loan-approval", "v1", "approve", "abc123signals",
+  signer
+);
 
-console.log(signer);
-console.log(typeof verifyExecutionResult);
+console.log(attestation.result.decision);  // "approve"
+console.log(attestation.signature);        // base64 Ed25519 signature
 ```
 
-Run:
+### HTTP Server
 
 ```bash
-node verify.mjs
+npm install @pramanasystems/server
+npx pramana-server          # listens on :3000
+```
+
+### Typed HTTP Client
+
+```bash
+npm install @pramanasystems/sdk-client
+```
+
+```ts
+import { PramanaClient } from "@pramanasystems/sdk-client";
+
+const client = new PramanaClient({ baseUrl: "http://localhost:3000" });
+
+const attestation = await client.execute({
+  policy_id:      "loan-approval",
+  policy_version: "v1",
+  decision_type:  "approve",
+  signals_hash:   "abc123signals",
+});
+
+const result = await client.verify(attestation);
+console.log(result.valid);  // true
 ```
 
 ---
 
 ## Package Ecosystem
 
-| Package | Responsibility |
-|---|---|
-| `@pramanasystems/core` | Portable runtime SDK and orchestration surface |
-| `@pramanasystems/execution` | Deterministic execution runtime |
-| `@pramanasystems/verifier` | Independent verification and compatibility validation |
-| `@pramanasystems/governance` | Policy lifecycle and governance tooling |
-| `@pramanasystems/bundle` | Deterministic artifact generation and canonicalization |
-| `@pramanasystems/crypto` | Signing and verification primitives |
+| Package | npm | Purpose |
+|---|---|---|
+| [`@pramanasystems/core`](packages/core) | [![npm](https://img.shields.io/npm/v/@pramanasystems/core)](https://www.npmjs.com/package/@pramanasystems/core) | Portable runtime SDK — single install for governance lifecycle + execution + verification |
+| [`@pramanasystems/execution`](packages/execution) | [![npm](https://img.shields.io/npm/v/@pramanasystems/execution)](https://www.npmjs.com/package/@pramanasystems/execution) | Deterministic execution runtime — tokens, signing, replay protection |
+| [`@pramanasystems/verifier`](packages/verifier) | [![npm](https://img.shields.io/npm/v/@pramanasystems/verifier)](https://www.npmjs.com/package/@pramanasystems/verifier) | Independent attestation verification |
+| [`@pramanasystems/governance`](packages/governance) | [![npm](https://img.shields.io/npm/v/@pramanasystems/governance)](https://www.npmjs.com/package/@pramanasystems/governance) | Policy lifecycle and governance tooling |
+| [`@pramanasystems/bundle`](packages/bundle) | [![npm](https://img.shields.io/npm/v/@pramanasystems/bundle)](https://www.npmjs.com/package/@pramanasystems/bundle) | Deterministic artifact canonicalization and hashing |
+| [`@pramanasystems/crypto`](packages/crypto) | [![npm](https://img.shields.io/npm/v/@pramanasystems/crypto)](https://www.npmjs.com/package/@pramanasystems/crypto) | Signing and verification primitives |
+| [`@pramanasystems/server`](packages/server) | [![npm](https://img.shields.io/npm/v/@pramanasystems/server)](https://www.npmjs.com/package/@pramanasystems/server) | Fastify REST API server — HTTP wrapper over the execution runtime |
+| [`@pramanasystems/sdk-client`](packages/sdk-client) | [![npm](https://img.shields.io/npm/v/@pramanasystems/sdk-client)](https://www.npmjs.com/package/@pramanasystems/sdk-client) | Type-safe fetch client for the HTTP server |
+| [`@pramanasystems/verifier-cli`](packages/verifier-cli) | [![npm](https://img.shields.io/npm/v/@pramanasystems/verifier-cli)](https://www.npmjs.com/package/@pramanasystems/verifier-cli) | CLI tool for offline attestation verification |
+
+### Dependency graph
+
+```
+sdk-client  server  verifier-cli
+               │         │
+               ▼         ▼
+             core ◄──────┘
+            / │ \
+    execution │ verifier
+        │    governance
+       bundle + crypto
+```
 
 ---
 
 ## Local Development
 
-Install dependencies:
-
 ```bash
-npm install
+npm install         # install all workspace dependencies
+npm run build       # build all packages (turbo, respects dep order)
+npm test            # run all tests
+npm run check       # typecheck + lint
+npm run release:validate   # full deterministic validation pipeline
 ```
 
-Build workspace packages:
+### AWS KMS integration tests
 
 ```bash
-npm run build
+AWS_KMS_KEY_ID=<key-id>  AWS_ACCESS_KEY_ID=<key>  AWS_SECRET_ACCESS_KEY=<secret>  AWS_REGION=us-east-1 \
+npx vitest run tests/integration/aws-kms
 ```
 
-Run tests:
-
-```bash
-npm run test
-```
-
-Run full deterministic validation pipeline:
-
-```bash
-npm run release:validate
-```
-
----
-
-## Key Properties
-
-- Deterministic execution
-- Replay protection
-- Fail-closed enforcement
-- Immutable provenance
-- Independent verification
-- Portable governance runtime
-
----
+See [tests/integration/aws-kms/README.md](tests/integration/aws-kms/README.md) for full setup instructions.
 
 ---
 
@@ -130,20 +141,19 @@ npm run release:validate
 
 | Document | Purpose |
 |---|---|
-| `docs/getting-started.md` | External SDK onboarding |
-| `docs/verification.md` | Independent verification architecture |
-| `examples/quickstart` | Minimal runtime SDK example |
-| `examples/decision-flow` | Deterministic governance lifecycle overview |
-| `docs/architecture/ARCHITECTURE.md` | Core deterministic governance architecture |
-| `docs/trust/TRUST_MODEL.md` | Governance trust assumptions |
-| `docs/trust/THREAT_MODEL.md` | Security and adversarial analysis |
-| `docs/architecture/PORTABILITY_GUARANTEES.md` | Runtime portability guarantees |
-| `docs/verification/RELEASE_VERIFICATION.md` | Reproducible release validation |
+| [`docs/getting-started.md`](docs/getting-started.md) | External onboarding guide |
+| [`docs/verification.md`](docs/verification.md) | Independent verification guide |
+| [`docs/architecture/ARCHITECTURE.md`](docs/architecture/ARCHITECTURE.md) | Core deterministic governance architecture |
+| [`docs/trust/TRUST_MODEL.md`](docs/trust/TRUST_MODEL.md) | Governance trust assumptions |
+| [`docs/trust/THREAT_MODEL.md`](docs/trust/THREAT_MODEL.md) | Security and adversarial analysis |
+| [`docs/verification/RELEASE_VERIFICATION.md`](docs/verification/RELEASE_VERIFICATION.md) | Reproducible release validation |
+| [`docs/architecture/PORTABILITY_GUARANTEES.md`](docs/architecture/PORTABILITY_GUARANTEES.md) | Runtime portability guarantees |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Contribution guide |
+| [`SECURITY.md`](SECURITY.md) | Vulnerability reporting |
+| [`CHANGELOG.md`](CHANGELOG.md) | Version history |
+
+---
 
 ## License
 
 Apache-2.0
-
-
-
-

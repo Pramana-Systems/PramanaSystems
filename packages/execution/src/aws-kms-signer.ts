@@ -7,12 +7,29 @@ import type {
   AsyncSigner,
 } from "./async-signer-interface";
 
+/**
+ * AWS KMS-backed implementation of {@link AsyncSigner} using ECDSA_SHA_256.
+ *
+ * The KMS key must be an asymmetric signing key with the `ECDSA_SHA_256`
+ * signing algorithm enabled.  AWS credentials are resolved from the environment
+ * via the standard AWS SDK credential chain.
+ *
+ * @example
+ * ```ts
+ * const signer = new AwsKmsSigner("arn:aws:kms:us-east-1:123456789012:key/...");
+ * const sig = await signer.sign(canonicalPayload);
+ * ```
+ */
 export class AwsKmsSigner
   implements AsyncSigner {
 
   private readonly client:
     KMSClient;
 
+  /**
+   * @param keyId  - KMS key ID or ARN of the signing key.
+   * @param region - AWS region where the key is hosted (default: `"us-east-1"`).
+   */
   constructor(
     private readonly keyId: string,
     region = "us-east-1"
@@ -24,6 +41,11 @@ export class AwsKmsSigner
       });
   }
 
+  /**
+   * Signs `payload` (raw bytes, UTF-8 encoded) using ECDSA_SHA_256 via KMS
+   * and returns a base64-encoded DER signature.
+   * @throws When KMS returns an empty or undefined `Signature`.
+   */
   async sign(
     payload: string
   ): Promise<string> {

@@ -1,603 +1,226 @@
-\## Vision
+# PramanaSystems Architecture
 
+## Vision
 
+PramanaSystems is a deterministic governance infrastructure for systems where decisions must be:
 
-PramanaSystems is a deterministic governance infrastructure designed for systems where decisions must be:
+- **Provable** — every decision is cryptographically attested and independently verifiable.
+- **Reproducible** — the same policy, signals, runtime version, and bundle hash always yield the same decision.
+- **Auditable** — a hash-chained append-only audit log records every execution.
+- **Independently verifiable** — any holder of the trust-root public key can verify an attestation without trusting the runtime operator.
 
+PramanaSystems separates probabilistic evaluation (AI-generated signals and recommendations) from deterministic enforcement. AI systems may contribute signals; they never control execution.
 
+---
 
-\- provable
+## Core Principles
 
-\- reproducible
+### Deterministic Execution
 
-\- auditable
+Given identical inputs — policy, signals, runtime version, bundle hash — the system always produces the same governance decision. Deterministic reproducibility is a foundational invariant, not an optimization goal.
 
-\- independently verifiable
+### Governed Signals
 
+Signals are the sole inputs to the execution engine. They are explicit, typed, versioned, and externally generated. Operational metadata (hostnames, trace IDs, timestamps) is excluded from the signing scope and preserved only for auditability.
 
+### Fail-Closed Governance
 
-PramanaSystems separates AI-assisted evaluation from deterministic enforcement.
+Any unverifiable or invalid state terminates execution immediately. Invalid signatures, replay attacks, incompatible runtimes, missing capabilities, and failed attestations all result in hard errors. Silent degradation to permissive behavior is prohibited.
 
+### Immutable Lineage
 
+Governance artifacts preserve immutable lineage through versioned policies, signed manifests, release provenance, attestations, and trust-root history. Lineage must remain independently reconstructable from public artifacts alone.
 
-AI systems may generate signals, recommendations, classifications, or risk assessments, but enforcement decisions are executed deterministically through governed policies and reproducible runtime semantics.
+### Replay-Safe Execution
 
+Execution tokens are single-use. Every `execution_id` is recorded in the replay store on first use; duplicate IDs are deterministically rejected.
 
+### Canonical Serialization
 
-The system is designed to fail closed, preserve immutable lineage, and support portable verification across environments.
+All hashing and signing operations act on canonical JSON: object keys recursively sorted, deterministic whitespace. Semantically equivalent content always produces identical bytes.
 
+### Portable Verification
 
+Verification must be independently executable outside the originating environment. Any entity with the public trust root can verify release integrity, attestations, manifests, signatures, and governance lineage without platform trust.
 
-\---
+### No AI in the Enforcement Path
 
+AI systems may assist signal generation or evaluation. They never directly control deterministic governance execution. Enforcement is exclusively policy-governed and deterministic.
 
+---
 
-\# Core Principles
+## System Architecture
 
-
-
-\## Deterministic Execution
-
-
-
-The same:
-
-
-
-\- policy
-
-\- signals
-
-\- versions
-
-\- runtime semantics
-
-
-
-must always produce the same decision result.
-
-
-
-Deterministic reproducibility is a foundational invariant.
-
-
-
-\---
-
-
-
-\## Governed Signals
-
-
-
-Signals are the only inputs to deterministic decision execution.
-
-
-
-Signals are:
-
-
-
-\- explicit
-
-\- typed
-
-\- versioned
-
-\- externally generated
-
-
-
-Metadata is excluded from decision logic and preserved only for auditability.
-
-
-
-\---
-
-
-
-\## Fail-Closed Governance
-
-
-
-Invalid or unverifiable execution states must terminate execution.
-
-
-
-Examples include:
-
-
-
-\- invalid signatures
-
-\- replay detection
-
-\- incompatible runtimes
-
-\- failed attestations
-
-\- invalid governance artifacts
-
-
-
-Execution never silently degrades into permissive behavior.
-
-
-
-\---
-
-
-
-\## Immutable Lineage
-
-
-
-Governance artifacts preserve immutable lineage through:
-
-
-
-\- versioned policies
-
-\- signed manifests
-
-\- release provenance
-
-\- attestations
-
-\- trust-root lineage
-
-
-
-Lineage must remain independently reconstructable.
-
-
-
-\---
-
-
-
-\## Replay-Safe Execution
-
-
-
-Execution tokens are single-use and replay protected.
-
-
-
-Previously executed identifiers are rejected deterministically.
-
-
-
-Replay protection is treated as a core governance invariant.
-
-
-
-\---
-
-
-
-\## Canonical Serialization
-
-
-
-Signing and verification operate on canonical serialized bytes.
-
-
-
-Equivalent semantic content must always produce identical hashes and signatures.
-
-
-
-Canonicalization is mandatory for deterministic verification.
-
-
-
-\---
-
-
-
-\## Portable Verification
-
-
-
-Verification must be independently executable outside the originating environment.
-
-
-
-External systems must be able to verify:
-
-
-
-\- release integrity
-
-\- attestations
-
-\- manifests
-
-\- signatures
-
-\- governance lineage
-
-
-
-without requiring platform trust.
-
-
-
-\---
-
-
-
-\## No AI in Enforcement Path
-
-
-
-AI systems may assist evaluation or signal generation.
-
-
-
-AI systems never directly control deterministic governance execution.
-
-
-
-Enforcement remains deterministic and policy-governed.
-
-
-
-\---
-
-
-
-\# System Architecture
-
-
-
-```text
-
+```
 AI Systems
-
-&#x20;   ↓
-
-Governed Signals
-
-&#x20;   ↓
-
+    │
+    ▼  (governed signals)
 Governance Policies
-
-&#x20;   ↓
-
+    │
+    ▼  (bundle + manifest)
 Deterministic Execution Runtime
-
-&#x20;   ↓
-
-Execution Attestations
-
-&#x20;   ↓
-
+    │
+    ▼  (signed attestation)
 Independent Verification
 
+REST API (optional)         SDK Client (optional)       Dashboard (optional)
+  @pramanasystems/server  ←→  @pramanasystems/sdk-client  ←→  @pramanasystems/dashboard
+```
 
+The architecture deliberately separates:
 
-The architecture intentionally separates:
+1. **Probabilistic evaluation** — performed outside the system boundary by AI or rule-based signal producers.
+2. **Deterministic governance enforcement** — performed by the execution runtime using versioned, signed policy bundles.
+3. **Independent verification** — performed by any party holding the trust-root public key.
 
+---
 
+## Package Responsibilities
 
-probabilistic evaluation
+| Package | Responsibility |
+|---|---|
+| `@pramanasystems/bundle` | Canonical serialization, content-addressed manifests, artifact hashing, and bundle verification. |
+| `@pramanasystems/crypto` | Ed25519 signing, signature verification, and key persistence. |
+| `@pramanasystems/governance` | Policy lifecycle — create, upgrade, validate, bundle generation. |
+| `@pramanasystems/execution` | Deterministic runtime — token lifecycle, execution pipeline, attestation generation, audit logging. |
+| `@pramanasystems/verifier` | Portable, independent verification of attestations, bundles, and runtime compatibility. |
+| `@pramanasystems/core` | Public orchestration surface — re-exports all governance APIs and types as a single entry point. |
+| `@pramanasystems/server` | Fastify REST API exposing governance execution and verification over HTTP. |
+| `@pramanasystems/sdk-client` | Type-safe fetch client generated from the server's OpenAPI spec. |
+| `@pramanasystems/dashboard` | React + Vite SPA for health monitoring, decision execution, and attestation verification. Private — not published to npm. |
 
-deterministic governance enforcement
+Each package maintains explicit deterministic boundaries; packages higher in the stack depend on packages lower in the stack, never the reverse.
 
+---
 
+## Execution Pipeline
 
-This separation preserves reproducibility and auditability.
+```
+issueExecutionToken()
+    │  validates policy + reads bundle hash
+    ▼
+signExecutionToken()
+    │  Ed25519 over canonical token
+    ▼
+executeDecision()
+    ├─ verify runtime version compatibility
+    ├─ verify runtime capabilities
+    ├─ verify token signature
+    ├─ check token expiry
+    ├─ check replay store (single-use)
+    ├─ append hash-chained audit record
+    └─ sign ExecutionResult → ExecutionAttestation
+```
 
+### ExecutionAttestation
 
+The terminal artifact of every successful execution.  It contains:
 
-Package Responsibilities
+- An `ExecutionResult` — immutable record of the decision, policy version, runtime hash, signals hash, and timestamp.
+- A base64 Ed25519 signature over the canonical `ExecutionResult`, enabling independent verification.
 
-Package	Responsibility
+---
 
-@pramanasystems/bundle	Deterministic governance artifacts and canonicalization
+## Verification Model
 
-@pramanasystems/crypto	Signing, verification, and trust primitives
+Independent verification proceeds in three checks via `verifyAttestation()`:
 
-@pramanasystems/governance	Policy lifecycle and governance artifact generation
+| Check | What is verified |
+|---|---|
+| **Signature** | The Ed25519 signature over the canonical `ExecutionResult`. |
+| **Runtime** | The `runtime_hash` and `runtime_version` match the trusted manifest. |
+| **Schema** | The `schema_version` is supported by the runtime. |
 
-@pramanasystems/execution	Deterministic runtime enforcement and attestation generation
+All three must pass for `valid: true`.
 
-@pramanasystems/verifier	Independent verification and compatibility validation
+---
 
-@pramanasystems/core	Public orchestration and external SDK surface
+## REST API Layer (`@pramanasystems/server`)
 
+The server exposes a Fastify HTTP API on port `3000` (configurable via `PORT`).
 
+| Route | Method | Description |
+|---|---|---|
+| `/health` | GET | Runtime health and version. |
+| `/execute` | POST | Run a governance decision; returns a signed `ExecutionAttestation`. |
+| `/verify` | POST | Independently verify an `ExecutionAttestation`. |
+| `/runtime/manifest` | GET | Signed bundle manifest (stub — 501). |
+| `/runtime/capabilities` | GET | Runtime capability list (stub — 501). |
+| `/evaluate` | POST | Policy dry-run without attestation (stub — 501). |
+| `/simulate` | POST | Full pipeline simulation with no side effects (stub — 501). |
 
-Each package maintains explicit deterministic boundaries.
+Authentication is Bearer-token gated when `PRAMANA_API_KEY` is set; unauthenticated in dev mode.
 
+The key pair is resolved in priority order: environment variables → dev-keys on disk → ephemeral in-process key pair.
 
+---
 
-Deterministic Guarantees
+## SDK Client Layer (`@pramanasystems/sdk-client`)
 
+`PramanaClient` is a type-safe fetch wrapper generated from the server's OpenAPI spec.  All request and response types are derived via indexed-access types on the generated `openapi.d.ts`, so they stay in sync automatically.
 
+```ts
+const client = new PramanaClient({ baseUrl: "http://localhost:3000" });
+const attestation = await client.execute({ ... });
+const result = await client.verify(attestation);
+```
 
-The following must remain deterministic:
+Non-2xx responses throw `PramanaApiError` with the HTTP status code and server error message.
 
+---
 
+## Deterministic Guarantees
 
-policy evaluation
+The following are guaranteed to be deterministic given identical inputs and versions:
 
-canonical serialization
+- Policy evaluation
+- Canonical serialization
+- Signature verification
+- Manifest hashing
+- Attestation validation
+- Replay protection
+- Compatibility enforcement
+- Governance workflow execution
 
-signature verification
+Explicitly excluded from deterministic guarantees:
 
-manifest hashing
+- External AI inference
+- Uncontrolled external services
+- Non-versioned runtime dependencies
+- Mutable infrastructure state
 
-attestation validation
+---
 
-replay protection
+## Trust Model Summary
 
-compatibility enforcement
+PramanaSystems uses explicit cryptographic trust. Core trust primitives:
 
-governance workflow execution
+- Immutable trust roots (Ed25519 public keys distributed as portable artifacts)
+- Signed bundle manifests
+- Release provenance records
+- Execution attestations
+- Trust-root rotation lineage
 
+Trust is established through deterministic cryptographic verification, never through infrastructure ownership or deployment location.
 
+---
 
-Determinism is scoped to:
+## Failure Semantics
 
+Execution is rejected and an error is thrown when:
 
+- Token signature is invalid
+- Token has expired
+- Execution ID has already been consumed (replay)
+- Runtime version is unsupported
+- Required capability is missing
+- Runtime schema version is incompatible
+- Policy validation fails
 
-governed inputs
+Silent fallback behavior is prohibited at every level of the stack.
 
-explicit versions
+---
 
-defined runtime semantics
+## Portability Philosophy
 
-
-
-The following are intentionally excluded from deterministic guarantees:
-
-
-
-external AI inference
-
-uncontrolled external services
-
-non-versioned runtime dependencies
-
-mutable infrastructure state
-
-Trust Model Summary
-
-
-
-PramanaSystems uses explicit cryptographic trust infrastructure.
-
-
-
-Core trust primitives include:
-
-
-
-immutable trust roots
-
-signed manifests
-
-release provenance
-
-execution attestations
-
-distributed governance authorities
-
-trust-root rotation lineage
-
-
-
-Verification is designed to remain portable and independently executable.
-
-
-
-Trust assumptions are documented explicitly and never implied implicitly through infrastructure ownership.
-
-
-
-Governance Lifecycle
-
-
-
-Governance execution follows a deterministic lifecycle:
-
-
-
-Policy authoring
-
-Governance validation
-
-Bundle generation
-
-Canonical serialization
-
-Manifest signing
-
-Deterministic execution
-
-Attestation generation
-
-Independent verification
-
-Release provenance validation
-
-Trust governance validation
-
-
-
-Each stage preserves deterministic lineage and reproducibility guarantees.
-
-
-
-Failure Semantics
-
-
-
-PramanaSystems fails closed by design.
-
-
-
-Execution is rejected when:
-
-
-
-signatures are invalid
-
-attestations fail verification
-
-runtimes are incompatible
-
-replay detection triggers
-
-governance policies are invalid
-
-trust requirements are unsatisfied
-
-provenance validation fails
-
-
-
-Failure behavior is deterministic and explicit.
-
-
-
-Silent fallback behavior is prohibited.
-
-
-
-Portability Philosophy
-
-
-
-PramanaSystems is designed for portable governance execution.
-
-
-
-Customers may operate:
-
-
-
-their own infrastructure
-
-their own compute
-
-their own storage
-
-their own AI systems
-
-
-
-PramanaSystems governs deterministic enforcement semantics independently of infrastructure ownership.
-
-
-
-Portable verification is treated as a core architectural requirement.
-
-
-
-Governance Workflow Orchestration
-
-
-
-Governance workflows are executable deterministic artifacts.
-
-
-
-Workflows support:
-
-
-
-deterministic execution ordering
-
-dependency-aware orchestration
-
-replay-safe execution
-
-attestable transitions
-
-governed trust operations
-
-
-
-Governance execution semantics are designed to remain reproducible across environments.
-
-
-
-Release Provenance
-
-
-
-Release infrastructure preserves:
-
-
-
-immutable artifact hashes
-
-signed release manifests
-
-reproducible release metadata
-
-independent verification semantics
-
-rebuild attestation support
-
-
-
-Release verification does not depend on centralized platform trust.
-
-
-
-Trust Governance
-
-
-
-Trust infrastructure supports:
-
-
-
-trust-root distribution
-
-trust-root rotation lineage
-
-distributed governance authorities
-
-quorum-based governance approval
-
-policy-governed trust enforcement
-
-
-
-Trust evolution remains explicitly governed and cryptographically verifiable.
-
-
-
-Future Direction
-
-
-
-Future architectural direction includes:
-
-
-
-deterministic governance DAG execution
-
-replay-safe workflow orchestration
-
-programmable governance execution
-
-portable governance attestations
-
-distributed governance federation
-
-deterministic trust governance infrastructure
-
-
-
-Future evolution must preserve deterministic reproducibility and independent verifiability.
-
-
-
-
+Customers may operate their own infrastructure, compute, storage, and AI systems. PramanaSystems governs deterministic enforcement semantics independently of infrastructure ownership. Portable verification is a core architectural requirement, not an operational convenience.

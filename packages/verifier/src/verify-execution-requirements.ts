@@ -6,13 +6,23 @@ import type {
   ExecutionRequirements,
 } from "@pramanasystems/governance";
 
+/** Result of verifying that a runtime satisfies a set of execution security requirements. */
 export interface ExecutionRequirementResult {
-
+  /** `true` when the runtime satisfies all requirements. */
   valid: boolean;
 
+  /** List of capability strings that are required but absent from the runtime. */
   missing_requirements: string[];
 }
 
+/**
+ * Checks that `manifest.capabilities` satisfies every flag set in
+ * `requirements`.  Returns the list of missing capabilities so callers can
+ * produce actionable error messages.
+ *
+ * @param manifest     - The runtime manifest to test.
+ * @param requirements - The execution security requirements to check against.
+ */
 export function verifyExecutionRequirements(
   manifest: RuntimeManifest,
   requirements: ExecutionRequirements
